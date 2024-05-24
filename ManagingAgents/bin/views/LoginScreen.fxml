@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import io.github.palexdev.materialfx.controls.MFXPasswordField?>
+<?import io.github.palexdev.materialfx.controls.MFXTextField?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="467.0" prefWidth="541.0" style="-fx-background-color: #FFFBD1;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.LoginScreenController">
+   <children>
+      <AnchorPane fx:id="login_form" layoutX="289.0" prefHeight="467.0" prefWidth="276.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <ImageView fitHeight="58.0" fitWidth="70.0" layoutX="109.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/group.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="26.0" fitWidth="31.0" layoutX="14.0" layoutY="148.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/user.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="26.0" fitWidth="26.0" layoutX="14.0" layoutY="208.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/door-key.png" />
+               </image>
+            </ImageView>
+            <MFXTextField fx:id="username" layoutX="71.0" layoutY="143.0" maxWidth="186.0" minHeight="35.0" onAction="#loginAdmin" prefHeight="35.0" prefWidth="186.0" promptText="User name" />
+            <MFXPasswordField fx:id="password" layoutX="71.0" layoutY="203.0" maxHeight="35.0" minHeight="35.0" onAction="#loginAdmin" prefHeight="35.0" prefWidth="186.0" promptText="Password" />
+            <MFXButton fx:id="loginBtn" buttonType="RAISED" depthLevel="LEVEL1" layoutX="111.0" layoutY="279.0" onAction="#loginAdmin" prefHeight="35.0" prefWidth="72.0" style="-fx-background-color: #F0E68C;" text="Login" />
+            <Label layoutX="76.0" layoutY="375.0" text="Forgot your password?" textFill="#867a09">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <ImageView fitHeight="124.0" fitWidth="121.0" layoutX="71.0" layoutY="113.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/mylogo.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="46.0" layoutY="256.0" text="Agency Management">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
