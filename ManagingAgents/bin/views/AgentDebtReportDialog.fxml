@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import io.github.palexdev.materialfx.controls.MFXTableView?>
+<?import io.github.palexdev.materialfx.controls.MFXTextField?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="753.0" prefWidth="1049.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <AnchorPane layoutX="28.0" layoutY="26.4" prefHeight="703.0" prefWidth="1049.0" style="-fx-background-color: #FFFBD1;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <effect>
+            <DropShadow>
+               <color>
+                  <Color opacity="0.30091190338134766" />
+               </color>
+            </DropShadow>
+         </effect>
+         <children>
+            <Label layoutX="32.0" layoutY="27.0" prefHeight="54.0" prefWidth="320.0" text="Agent debt report">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </Label>
+            <Label layoutX="32.0" layoutY="108.0" text="Date:" AnchorPane.leftAnchor="32.0" AnchorPane.topAnchor="108.0">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <MFXTableView layoutX="36.8" layoutY="162.4" prefHeight="483.0" prefWidth="971.0" AnchorPane.bottomAnchor="108.0" AnchorPane.leftAnchor="37.0" AnchorPane.rightAnchor="41.0" AnchorPane.topAnchor="162.0" />
+            <MFXTextField layoutX="108.0" layoutY="108.0" maxHeight="36.0" minHeight="36.0" prefHeight="36.0" prefWidth="178.0" />
+         </children>
+      </AnchorPane>
+      <MFXButton fx:id="okBtn" buttonType="RAISED" layoutX="511.0" layoutY="350.0" prefHeight="26.0" prefWidth="105.0" text="Cancel" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="10.0" />
+   </children>
+</AnchorPane>
