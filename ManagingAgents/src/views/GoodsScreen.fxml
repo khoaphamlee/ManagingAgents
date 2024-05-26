@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import io.github.palexdev.materialfx.controls.MFXButton?>
+<<<<<<< HEAD
 <?import io.github.palexdev.materialfx.controls.MFXComboBox?>
+=======
+>>>>>>> 52fe9a22f1c598089616153029f388f2f7a639c3
 <?import io.github.palexdev.materialfx.controls.MFXTableView?>
 <?import io.github.palexdev.materialfx.controls.MFXTextField?>
 <?import java.lang.String?>
@@ -30,17 +33,25 @@
                   <Font size="24.0" />
                </font>
             </Label>
+<<<<<<< HEAD
             <Label layoutX="12.0" layoutY="226.0" text="Unit:" AnchorPane.leftAnchor="12.0" AnchorPane.topAnchor="226.0">
+=======
+            <Label layoutX="12.0" layoutY="232.0" text="Quantity:" AnchorPane.leftAnchor="12.0" AnchorPane.topAnchor="232.0">
+>>>>>>> 52fe9a22f1c598089616153029f388f2f7a639c3
                <font>
                   <Font size="24.0" />
                </font>
             </Label>
+<<<<<<< HEAD
             <Label layoutX="13.0" layoutY="278.0" text="Quantity:" AnchorPane.leftAnchor="13.0" AnchorPane.topAnchor="278.0">
                <font>
                   <Font size="24.0" />
                </font>
             </Label>
             <Label layoutX="14.0" layoutY="332.0" text="Price:" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="332.0">
+=======
+            <Label layoutX="12.0" layoutY="295.0" text="Price:" AnchorPane.leftAnchor="12.0" AnchorPane.topAnchor="295.0">
+>>>>>>> 52fe9a22f1c598089616153029f388f2f7a639c3
                <font>
                   <Font size="24.0" />
                </font>
@@ -50,10 +61,16 @@
                   <Font size="39.0" />
                </font>
             </Label>
+<<<<<<< HEAD
             <MFXComboBox layoutX="217.0" layoutY="226.0" maxHeight="36.0" minHeight="36.0" prefHeight="36.0" prefWidth="222.0" AnchorPane.rightAnchor="15.800000000000011" AnchorPane.topAnchor="226.0" />
             <MFXTextField layoutX="217.0" layoutY="172.0" maxHeight="36.0" minHeight="36.0" prefHeight="36.0" prefWidth="222.0" AnchorPane.rightAnchor="15.800000000000011" AnchorPane.topAnchor="172.0" />
             <MFXTextField layoutX="217.0" layoutY="278.0" maxHeight="36.0" minHeight="36.0" prefHeight="36.0" prefWidth="222.0" AnchorPane.rightAnchor="15.800000000000011" AnchorPane.topAnchor="278.0" />
             <MFXTextField layoutX="217.0" layoutY="332.0" maxHeight="36.0" minHeight="36.0" prefHeight="36.0" prefWidth="222.0" AnchorPane.rightAnchor="15.800000000000011" AnchorPane.topAnchor="332.0" />
+=======
+            <MFXTextField layoutX="217.0" layoutY="172.0" maxHeight="36.0" minHeight="36.0" prefHeight="36.0" prefWidth="222.0" AnchorPane.rightAnchor="15.800000000000011" AnchorPane.topAnchor="172.0" />
+            <MFXTextField layoutX="217.0" layoutY="231.0" maxHeight="36.0" minHeight="36.0" prefHeight="36.0" prefWidth="222.0" AnchorPane.rightAnchor="16.0" AnchorPane.topAnchor="231.0" />
+            <MFXTextField layoutX="217.0" layoutY="294.0" maxHeight="36.0" minHeight="36.0" prefHeight="36.0" prefWidth="222.0" AnchorPane.rightAnchor="16.0" AnchorPane.topAnchor="294.0" />
+>>>>>>> 52fe9a22f1c598089616153029f388f2f7a639c3
             <MFXButton fx:id="addBtn" buttonType="RAISED" depthLevel="LEVEL1" layoutX="171.0" layoutY="510.0" prefHeight="42.0" prefWidth="130.0" text="Add new " AnchorPane.bottomAnchor="255.19999999999993" AnchorPane.rightAnchor="153.8">
                <font>
                   <Font size="18.0" />
@@ -112,7 +129,11 @@
             </DropShadow>
          </effect>
          <children>
+<<<<<<< HEAD
             <MFXTableView fx:id="table1" layoutX="31.2" layoutY="151.2" maxWidth="1066.0" minWidth="302.0" prefHeight="242.0" prefWidth="494.0" stylesheets="@../styles/MainStylesSheet.css" AnchorPane.bottomAnchor="21.0" AnchorPane.leftAnchor="31.0" AnchorPane.rightAnchor="31.0" AnchorPane.topAnchor="151.0">
+=======
+            <MFXTableView fx:id="table" layoutX="31.2" layoutY="151.2" maxWidth="1066.0" minWidth="302.0" prefHeight="242.0" prefWidth="494.0" stylesheets="@../styles/MainStylesSheet.css" AnchorPane.bottomAnchor="21.0" AnchorPane.leftAnchor="31.0" AnchorPane.rightAnchor="31.0" AnchorPane.topAnchor="151.0">
+>>>>>>> 52fe9a22f1c598089616153029f388f2f7a639c3
                <styleClass>
                   <String fx:value="mfx-button" />
                   <String fx:value="mfx-combo-box" />

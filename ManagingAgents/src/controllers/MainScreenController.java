@@ -1,5 +1,9 @@
 package controllers;
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 52fe9a22f1c598089616153029f388f2f7a639c3
 import java.io.IOException;
 import java.net.URL;
 import java.util.Comparator;
@@ -27,18 +31,36 @@ import javafx.animation.FadeTransition;
 import javafx.animation.PauseTransition;
 import javafx.beans.binding.Bindings;
 import javafx.collections.ObservableList;
+<<<<<<< HEAD
+=======
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+>>>>>>> 52fe9a22f1c598089616153029f388f2f7a639c3
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+<<<<<<< HEAD
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Dialog;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+=======
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.Dialog;
+import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Screen;
+>>>>>>> 52fe9a22f1c598089616153029f388f2f7a639c3
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.Duration;
@@ -64,6 +86,22 @@ public class MainScreenController implements Initializable  {
 	
 	@FXML
 	private MFXButton homepageBtn,agencyBtn ,goodsBtn ,exportBtn ,reportBtn ,settingBtn;
+<<<<<<< HEAD
+=======
+	
+	@FXML
+	private Label nameLbl, posLbl;
+	
+    @FXML
+    private MFXButton logoutBtn;
+    
+    @FXML
+    private MFXButton settingAccBtn;
+	
+	private String username;
+	
+	static int Id_User;
+>>>>>>> 52fe9a22f1c598089616153029f388f2f7a639c3
 ;
 
 	
@@ -75,9 +113,15 @@ public void initialize(URL arg0, ResourceBundle arg1) {
 	setupTable();
 	setupTabChange ();
     
+<<<<<<< HEAD
     
         
     }
+=======
+	//setupUsernameLabel("Default Username");
+}
+	
+>>>>>>> 52fe9a22f1c598089616153029f388f2f7a639c3
 
 	private void setupTabChange() {
 		homepageBtn.setOnAction(event -> {
@@ -267,10 +311,55 @@ public void initialize(URL arg0, ResourceBundle arg1) {
 	    
 
 	}
+<<<<<<< HEAD
 	public void setupTable() {
 		
 	}
 	
+=======
+	
+	public void setupUsernameLabel(String username) {
+	    if (nameLbl != null) {
+	        nameLbl.setText(username);
+	    } else {
+	        System.out.println("Biến nameLbl bị null");
+	    }
+	}
+	
+	public void setupTable() {
+		
+	}
+	private double x = 0;
+    private double y = 0;
+
+    
+    public void logout() {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Confirmation");
+        alert.setHeaderText(null);
+        alert.setContentText("Are you sure you want to logout?");
+
+        Optional<ButtonType> result = alert.showAndWait();
+
+        if (result.isPresent() && result.get() == ButtonType.OK) {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/LoginScreen.fxml"));
+            Parent root = null;
+            try {
+                root = loader.load();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            
+            Scene scene = new Scene(root);
+            Stage stage = (Stage) logoutBtn.getScene().getWindow();
+            stage.setScene(scene);
+            
+            stage.setX((Screen.getPrimary().getVisualBounds().getWidth() - stage.getWidth()) / 2);
+            stage.setY((Screen.getPrimary().getVisualBounds().getHeight() - stage.getHeight()) / 2);
+            stage.show(); 
+        }
+    }
+>>>>>>> 52fe9a22f1c598089616153029f388f2f7a639c3
 }
 
                                       

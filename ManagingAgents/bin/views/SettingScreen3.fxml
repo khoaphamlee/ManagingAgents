@@ -43,7 +43,11 @@
                   <Font size="36.0" />
                </font>
             </Label>
+<<<<<<< HEAD
             <MFXTableView layoutX="36.8" layoutY="108.0" prefHeight="492.0" prefWidth="680.0" AnchorPane.bottomAnchor="22.0" AnchorPane.leftAnchor="37.0" AnchorPane.rightAnchor="41.0" AnchorPane.topAnchor="108.0" />
+=======
+            <MFXTableView fx:id="table" layoutX="36.8" layoutY="108.0" prefHeight="492.0" prefWidth="680.0" AnchorPane.bottomAnchor="22.0" AnchorPane.leftAnchor="37.0" AnchorPane.rightAnchor="41.0" AnchorPane.topAnchor="108.0" />
+>>>>>>> 52fe9a22f1c598089616153029f388f2f7a639c3
          </children>
       </AnchorPane>
       <AnchorPane prefHeight="170.0" prefWidth="758.0" style="-fx-background-color: #FFFBD1;" AnchorPane.bottomAnchor="51.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="478.0">
@@ -186,11 +190,14 @@
                   <Font size="24.0" />
                </font>
             </Label>
+<<<<<<< HEAD
             <Label layoutX="12.0" layoutY="226.0" text="Unit:" AnchorPane.leftAnchor="12.0" AnchorPane.topAnchor="226.0">
                <font>
                   <Font size="24.0" />
                </font>
             </Label>
+=======
+>>>>>>> 52fe9a22f1c598089616153029f388f2f7a639c3
             <Label layoutX="164.0" layoutY="14.0" prefHeight="54.0" prefWidth="154.0" text="Type" AnchorPane.leftAnchor="164.0" AnchorPane.rightAnchor="118.40000000000003" AnchorPane.topAnchor="14.0">
                <font>
                   <Font size="39.0" />
@@ -239,7 +246,10 @@
                </font>
             </Label>
             <MFXTextField layoutX="194.0" layoutY="89.0" maxHeight="23.0" minHeight="23.0" prefHeight="20.0" prefWidth="57.0" AnchorPane.rightAnchor="176.39999999999998" AnchorPane.topAnchor="89.0" />
+<<<<<<< HEAD
             <MFXTextField layoutX="220.0" layoutY="226.0" maxHeight="36.0" minHeight="36.0" prefHeight="36.0" prefWidth="222.0" AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="226.0" />
+=======
+>>>>>>> 52fe9a22f1c598089616153029f388f2f7a639c3
          </children>
       </AnchorPane>
    </children>

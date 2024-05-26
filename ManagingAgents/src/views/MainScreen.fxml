@@ -249,8 +249,15 @@
             </ImageView>
             <Label layoutX="31.0" layoutY="167.0" prefHeight="18.0" prefWidth="62.0" text="Name:" AnchorPane.leftAnchor="31.0" />
             <Label layoutX="31.0" layoutY="193.0" text="Position:" AnchorPane.leftAnchor="31.0" />
+<<<<<<< HEAD
             <MFXButton buttonType="RAISED" depthLevel="LEVEL1" layoutX="25.0" layoutY="226.0" text="Account setting" AnchorPane.leftAnchor="25.0" />
             <MFXButton buttonType="RAISED" depthLevel="LEVEL1" layoutX="25.0" layoutY="267.0" text="Log out" />
+=======
+            <MFXButton fx:id="settingAccBtn" buttonType="RAISED" depthLevel="LEVEL1" layoutX="25.0" layoutY="226.0" text="Account setting" AnchorPane.leftAnchor="25.0" />
+            <MFXButton fx:id="logoutBtn" buttonType="RAISED" depthLevel="LEVEL1" layoutX="25.0" layoutY="267.0" onAction="#logout" text="Log out" />
+            <Label fx:id="nameLbl" layoutX="91.0" layoutY="167.0" prefHeight="18.0" prefWidth="62.0" />
+            <Label fx:id="posLbl" layoutX="99.0" layoutY="193.0" prefHeight="18.0" prefWidth="78.0" />
+>>>>>>> 52fe9a22f1c598089616153029f388f2f7a639c3
          </children>
          <effect>
             <DropShadow>

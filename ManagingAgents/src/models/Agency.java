@@ -12,8 +12,15 @@ public class Agency {
     private long phoneNumber;
     private LocalDate AcceptanceDate;
     private String Address;
+<<<<<<< HEAD
 
     public Agency(int id, String agency, String type, String district,long phoneNumber, LocalDate ad, String addrress) {
+=======
+    private boolean status;
+    private String email;
+
+    public Agency(int id, String agency, String type, String district,long phoneNumber, LocalDate ad, String addrress, String email) {
+>>>>>>> 52fe9a22f1c598089616153029f388f2f7a639c3
         this.id = id;
         this.agency = agency;
         this.type = type;
@@ -22,6 +29,11 @@ public class Agency {
         this.phoneNumber = phoneNumber;
         this.AcceptanceDate = ad;
         this.Address = addrress;
+<<<<<<< HEAD
+=======
+        this.email = email;
+        status = true;
+>>>>>>> 52fe9a22f1c598089616153029f388f2f7a639c3
     }
 
     
@@ -59,6 +71,12 @@ public class Agency {
     public String getAddress() {
 		return Address;
 	}
+<<<<<<< HEAD
+=======
+    public String getEmail() {
+        return email;
+    }
+>>>>>>> 52fe9a22f1c598089616153029f388f2f7a639c3
     
 
     @Override

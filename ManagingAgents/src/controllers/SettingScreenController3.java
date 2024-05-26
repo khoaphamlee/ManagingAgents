@@ -11,6 +11,11 @@ import java.util.ResourceBundle;
 import java.util.function.Function;
 import java.util.stream.Stream;
 
+<<<<<<< HEAD
+=======
+import Data_Access_Object.DAO_Unit;
+import datatable.SettingScreenTable;
+>>>>>>> 52fe9a22f1c598089616153029f388f2f7a639c3
 import io.github.palexdev.materialfx.beans.BiPredicateBean;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import io.github.palexdev.materialfx.controls.MFXFilterPane;
@@ -43,6 +48,12 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.Duration;
 import models.Agency;
+<<<<<<< HEAD
+=======
+import models.Agent_Type;
+import models.Items;
+import models.Unit;
+>>>>>>> 52fe9a22f1c598089616153029f388f2f7a639c3
 
 public class SettingScreenController3 implements Initializable  {
 	Stage window;
@@ -59,7 +70,11 @@ public class SettingScreenController3 implements Initializable  {
 	private MFXButton addBtn,editBtn;
 	
 	@FXML
+<<<<<<< HEAD
 	private MFXTableView<Agency> table;
+=======
+	private MFXTableView<SettingScreenTable> table;
+>>>>>>> 52fe9a22f1c598089616153029f388f2f7a639c3
 	Dialog<ButtonType> dialog = new Dialog<>();
 	
 	@FXML
@@ -67,7 +82,16 @@ public class SettingScreenController3 implements Initializable  {
 	
 	@FXML
 	private MFXButton agencyTypeBtn,districtBtn,unitBtn,staffBtn;
+<<<<<<< HEAD
 ;
+=======
+	
+	private DAO_Unit dao_Unit;
+	
+public SettingScreenController3() {
+	this.dao_Unit = DAO_Unit.getInstance();
+}
+>>>>>>> 52fe9a22f1c598089616153029f388f2f7a639c3
 
 	
 @SuppressWarnings("unchecked")
@@ -334,7 +358,29 @@ public void initialize(URL arg0, ResourceBundle arg1) {
 
 	}
 	public void setupTable() {
+<<<<<<< HEAD
 		
+=======
+		MFXTableColumn<SettingScreenTable> idColumn = new MFXTableColumn<>("ID");
+		MFXTableColumn<SettingScreenTable> nameColumn = new MFXTableColumn<>("Name");
+		MFXTableColumn<SettingScreenTable> unitColumn = new MFXTableColumn<>("Unit");
+		
+		idColumn.setRowCellFactory(item -> new MFXTableRowCell<>(SettingScreenTable::getUnit_Id));
+	    nameColumn.setRowCellFactory(item -> new MFXTableRowCell<>(SettingScreenTable::getItems_Name));
+	    unitColumn.setRowCellFactory(item -> new MFXTableRowCell<>(SettingScreenTable::getUnit_Name));
+	    
+	    table.getTableColumns().addAll(idColumn, nameColumn, unitColumn);
+	    
+	    idColumn.setPrefWidth(100);
+	    nameColumn.setPrefWidth(200);
+	    unitColumn.setPrefWidth(200);
+	    
+	    table.getFilters().addAll(
+		        new IntegerFilter<>("ID", SettingScreenTable::getUnit_Id),
+		        new StringFilter<>("Name", SettingScreenTable::getItems_Name),
+		        new StringFilter<>("Unit", SettingScreenTable::getUnit_Name)
+		);
+>>>>>>> 52fe9a22f1c598089616153029f388f2f7a639c3
 	}
 	
 }

@@ -44,7 +44,11 @@
                   <Font size="36.0" />
                </font>
             </Label>
+<<<<<<< HEAD
             <MFXTableView layoutX="36.8" layoutY="108.0" prefHeight="492.0" prefWidth="680.0" AnchorPane.bottomAnchor="22.0" AnchorPane.leftAnchor="37.0" AnchorPane.rightAnchor="41.0" AnchorPane.topAnchor="108.0" />
+=======
+            <MFXTableView fx:id="table" layoutX="36.8" layoutY="108.0" prefHeight="492.0" prefWidth="680.0" AnchorPane.bottomAnchor="22.0" AnchorPane.leftAnchor="37.0" AnchorPane.rightAnchor="41.0" AnchorPane.topAnchor="108.0" />
+>>>>>>> 52fe9a22f1c598089616153029f388f2f7a639c3
          </children>
       </AnchorPane>
       <MFXButton fx:id="staffBtn" depthLevel="LEVEL1" prefHeight="34.0" prefWidth="142.0" style="-fx-background-color: #FFFBD1;" text="Staff" AnchorPane.leftAnchor="556.0" AnchorPane.topAnchor="122.0">

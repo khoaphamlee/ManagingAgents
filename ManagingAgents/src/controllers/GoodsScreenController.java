@@ -8,9 +8,17 @@ import java.util.Locale;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.ResourceBundle;
+<<<<<<< HEAD
 import java.util.function.Function;
 import java.util.stream.Stream;
 
+=======
+import java.util.UUID;
+import java.util.function.Function;
+import java.util.stream.Stream;
+
+import Data_Access_Object.DAO_Items;
+>>>>>>> 52fe9a22f1c598089616153029f388f2f7a639c3
 import io.github.palexdev.materialfx.beans.BiPredicateBean;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import io.github.palexdev.materialfx.controls.MFXFilterPane;
@@ -26,6 +34,10 @@ import io.github.palexdev.materialfx.utils.FXCollectors;
 import javafx.animation.FadeTransition;
 import javafx.animation.PauseTransition;
 import javafx.beans.binding.Bindings;
+<<<<<<< HEAD
+=======
+import javafx.collections.FXCollections;
+>>>>>>> 52fe9a22f1c598089616153029f388f2f7a639c3
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -43,6 +55,11 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.Duration;
 import models.Agency;
+<<<<<<< HEAD
+=======
+import models.Device;
+import models.Items;
+>>>>>>> 52fe9a22f1c598089616153029f388f2f7a639c3
 
 public class GoodsScreenController implements Initializable  {
 	Stage window;
@@ -59,7 +76,12 @@ public class GoodsScreenController implements Initializable  {
 	private MFXButton addBtn,editBtn;
 	
 	@FXML
+<<<<<<< HEAD
 	private MFXTableView<Agency> table;
+=======
+	private MFXTableView<Items> table;
+	
+>>>>>>> 52fe9a22f1c598089616153029f388f2f7a639c3
 	Dialog<ButtonType> dialog = new Dialog<>();
 	
 	@FXML
@@ -69,9 +91,21 @@ public class GoodsScreenController implements Initializable  {
 	private MFXButton receiptBtn,goodsListBtn;
 	
 	private boolean noAction;
+<<<<<<< HEAD
 ;
 public GoodsScreenController() {
 	
+=======
+	
+	private DAO_Items daoItems;
+	
+	private String randomID() {
+		return UUID.randomUUID().toString();
+	}
+;
+public GoodsScreenController() {
+	this.daoItems = DAO_Items.getInstance();
+>>>>>>> 52fe9a22f1c598089616153029f388f2f7a639c3
 }
 public GoodsScreenController(boolean action) {
 	noAction = action;
@@ -315,11 +349,52 @@ public void initialize(URL arg0, ResourceBundle arg1) {
 	    
 
 	}
+<<<<<<< HEAD
 	public void setupTable() {
 		
 	}
 	
 }
+=======
+
+		
+	public void setupTable() {
+	    MFXTableColumn<Items> idColumn = new MFXTableColumn<>("ID");
+	    MFXTableColumn<Items> nameColumn = new MFXTableColumn<>("Name");
+	    //MFXTableColumn<Items> unitColumn = new MFXTableColumn<>("Unit");
+	    MFXTableColumn<Items> quantityColumn = new MFXTableColumn<>("Quantity");
+	    MFXTableColumn<Items> priceColumn = new MFXTableColumn<>("Price");
+
+
+	    idColumn.setRowCellFactory(item -> new MFXTableRowCell<>(Items::getItems_Id));
+	    nameColumn.setRowCellFactory(item -> new MFXTableRowCell<>(Items::getItems_Name));
+	    //unitColumn.setRowCellFactory(item -> new MFXTableRowCell<>(Items::getItems_Unit));
+	    quantityColumn.setRowCellFactory(item -> new MFXTableRowCell<>(Items::getItems_Quantity));
+	    priceColumn.setRowCellFactory(item -> new MFXTableRowCell<>(Items::getItems_Price));
+
+	    // Add columns to table
+	    table.getTableColumns().addAll(idColumn, nameColumn, quantityColumn, priceColumn);
+
+	    idColumn.setPrefWidth(100);
+	    nameColumn.setPrefWidth(200);
+	    //unitColumn.setPrefWidth(100); 
+	    quantityColumn.setPrefWidth(100);
+	    priceColumn.setPrefWidth(100);
+
+	    table.getFilters().addAll(
+	        new IntegerFilter<>("ID", Items::getItems_Id),
+	        new StringFilter<>("Name", Items::getItems_Name),
+	        //new StringFilter<>("Unit", Items::getItems_Unit),
+	        new IntegerFilter<>("Quantity", Items::getItems_Quantity),
+	        new DoubleFilter<>("Price", Items::getItems_Price)
+	    );
+	    //table.getTableColumns().get(1).setOnMouseClicked(null);
+	}
+
+
+	}
+	
+>>>>>>> 52fe9a22f1c598089616153029f388f2f7a639c3
 
                                       
 

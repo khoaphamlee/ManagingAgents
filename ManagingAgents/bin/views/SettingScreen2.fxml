@@ -43,7 +43,11 @@
                   <Font size="36.0" />
                </font>
             </Label>
+<<<<<<< HEAD
             <MFXTableView layoutX="36.8" layoutY="108.0" prefHeight="652.0" prefWidth="680.0" AnchorPane.bottomAnchor="48.0" AnchorPane.leftAnchor="37.0" AnchorPane.rightAnchor="41.0" AnchorPane.topAnchor="108.0" />
+=======
+            <MFXTableView fx:id="table" layoutX="36.8" layoutY="108.0" prefHeight="652.0" prefWidth="680.0" AnchorPane.bottomAnchor="48.0" AnchorPane.leftAnchor="37.0" AnchorPane.rightAnchor="41.0" AnchorPane.topAnchor="108.0" />
+>>>>>>> 52fe9a22f1c598089616153029f388f2f7a639c3
          </children>
       </AnchorPane>
       <AnchorPane layoutX="10.0" layoutY="10.0" prefHeight="170.0" prefWidth="758.0" style="-fx-background-color: #FFFBD1;" AnchorPane.bottomAnchor="51.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="478.0">
@@ -53,7 +57,11 @@
                   <Font size="24.0" />
                </font>
             </Label>
+<<<<<<< HEAD
             <MFXTextField layoutX="444.0" layoutY="69.0" maxHeight="36.0" minHeight="36.0" prefHeight="36.0" prefWidth="222.0" AnchorPane.bottomAnchor="65.4" AnchorPane.leftAnchor="444.0" />
+=======
+            <MFXTextField fx:id="maxAgency" layoutX="444.0" layoutY="69.0" maxHeight="36.0" minHeight="36.0" prefHeight="36.0" prefWidth="222.0" AnchorPane.bottomAnchor="65.4" AnchorPane.leftAnchor="444.0" />
+>>>>>>> 52fe9a22f1c598089616153029f388f2f7a639c3
          </children>
          <effect>
             <DropShadow>
@@ -191,7 +199,11 @@
                   <Font size="39.0" />
                </font>
             </Label>
+<<<<<<< HEAD
             <MFXTextField layoutX="212.0" layoutY="172.0" maxHeight="36.0" minHeight="36.0" prefHeight="36.0" prefWidth="222.0" AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="172.0" />
+=======
+            <MFXTextField fx:id="district_Name" layoutX="212.0" layoutY="172.0" maxHeight="36.0" minHeight="36.0" prefHeight="36.0" prefWidth="222.0" AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="172.0" />
+>>>>>>> 52fe9a22f1c598089616153029f388f2f7a639c3
             <MFXButton fx:id="addBtn" buttonType="RAISED" depthLevel="LEVEL1" layoutX="171.0" layoutY="510.0" prefHeight="42.0" prefWidth="130.0" text="Add new " AnchorPane.bottomAnchor="255.19999999999993" AnchorPane.rightAnchor="153.8">
                <font>
                   <Font size="18.0" />
@@ -233,7 +245,11 @@
                   <Font size="14.0" />
                </font>
             </Label>
+<<<<<<< HEAD
             <MFXTextField layoutX="194.0" layoutY="89.0" maxHeight="23.0" minHeight="23.0" prefHeight="20.0" prefWidth="57.0" AnchorPane.rightAnchor="176.39999999999998" AnchorPane.topAnchor="89.0" />
+=======
+            <MFXTextField fx:id="district_Id" layoutX="194.0" layoutY="89.0" maxHeight="23.0" minHeight="23.0" prefHeight="20.0" prefWidth="57.0" AnchorPane.rightAnchor="176.39999999999998" AnchorPane.topAnchor="89.0" />
+>>>>>>> 52fe9a22f1c598089616153029f388f2f7a639c3
          </children>
       </AnchorPane>
    </children>

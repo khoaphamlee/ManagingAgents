@@ -35,10 +35,18 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Dialog;
+<<<<<<< HEAD
+=======
+import javafx.scene.control.DialogPane;
+>>>>>>> 52fe9a22f1c598089616153029f388f2f7a639c3
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+<<<<<<< HEAD
+=======
+import javafx.scene.layout.Pane;
+>>>>>>> 52fe9a22f1c598089616153029f388f2f7a639c3
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.Duration;
@@ -67,6 +75,17 @@ public class GoodsScreenController2 implements Initializable  {
 	
 	@FXML
 	private MFXButton receiptBtn,goodsListBtn;
+<<<<<<< HEAD
+=======
+	
+	@FXML
+	private MFXButton importDialogBtn;
+	
+	private MFXButton cancelBtn;
+	
+	
+	
+>>>>>>> 52fe9a22f1c598089616153029f388f2f7a639c3
 ;
 
 	
@@ -83,6 +102,45 @@ public void initialize(URL arg0, ResourceBundle arg1) {
     }
 
 	private void setupTabChange() {
+<<<<<<< HEAD
+=======
+		Parent root0;
+		try {
+			root0 = FXMLLoader.load(getClass().getResource("/views/GoodsReceiptDialog.fxml"));
+            dialog.getDialogPane().setContent(root0);
+            
+		
+		
+			
+			cancelBtn = (MFXButton) root0.lookup("#cancelBtn");
+			Stage stage = (Stage) dialog.getDialogPane().getScene().getWindow();
+	        stage.initStyle(StageStyle.UNDECORATED);
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+
+
+        
+        
+        
+		
+		addBtn.setOnAction(event -> {
+			dialog.showAndWait();
+			
+			
+        });
+		
+		
+		
+		cancelBtn.setOnAction(event -> {
+			System.out.print("ME");
+			window = (Stage)cancelBtn.getScene().getWindow();
+			window.close();
+		});
+>>>>>>> 52fe9a22f1c598089616153029f388f2f7a639c3
 		homepageBtn.setOnAction(event -> {
 			window = (Stage)menuImg.getScene().getWindow();
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/MainScreen.fxml"));

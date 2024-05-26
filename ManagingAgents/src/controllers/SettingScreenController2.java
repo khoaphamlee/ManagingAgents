@@ -2,6 +2,11 @@ package controllers;
 
 import java.io.IOException;
 import java.net.URL;
+<<<<<<< HEAD
+=======
+import java.sql.ResultSet;
+import java.sql.SQLException;
+>>>>>>> 52fe9a22f1c598089616153029f388f2f7a639c3
 import java.util.Comparator;
 import java.util.List;
 import java.util.Locale;
@@ -11,11 +16,21 @@ import java.util.ResourceBundle;
 import java.util.function.Function;
 import java.util.stream.Stream;
 
+<<<<<<< HEAD
+=======
+import Data_Access_Object.DAO_Agent;
+import Data_Access_Object.DAO_District;
+import Data_Access_Object.DAO_Fixed_Values;
+>>>>>>> 52fe9a22f1c598089616153029f388f2f7a639c3
 import io.github.palexdev.materialfx.beans.BiPredicateBean;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import io.github.palexdev.materialfx.controls.MFXFilterPane;
 import io.github.palexdev.materialfx.controls.MFXTableColumn;
 import io.github.palexdev.materialfx.controls.MFXTableView;
+<<<<<<< HEAD
+=======
+import io.github.palexdev.materialfx.controls.MFXTextField;
+>>>>>>> 52fe9a22f1c598089616153029f388f2f7a639c3
 import io.github.palexdev.materialfx.controls.cell.MFXTableRowCell;
 
 import io.github.palexdev.materialfx.filter.DoubleFilter;
@@ -26,13 +41,23 @@ import io.github.palexdev.materialfx.utils.FXCollectors;
 import javafx.animation.FadeTransition;
 import javafx.animation.PauseTransition;
 import javafx.beans.binding.Bindings;
+<<<<<<< HEAD
 import javafx.collections.ObservableList;
+=======
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+>>>>>>> 52fe9a22f1c598089616153029f388f2f7a639c3
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+<<<<<<< HEAD
+=======
+import javafx.scene.control.Alert;
+>>>>>>> 52fe9a22f1c598089616153029f388f2f7a639c3
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Dialog;
 import javafx.scene.control.TableColumn;
@@ -43,6 +68,12 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.Duration;
 import models.Agency;
+<<<<<<< HEAD
+=======
+import models.Agent;
+import models.Agent_Type;
+import models.District;
+>>>>>>> 52fe9a22f1c598089616153029f388f2f7a639c3
 
 public class SettingScreenController2 implements Initializable  {
 	Stage window;
@@ -59,7 +90,11 @@ public class SettingScreenController2 implements Initializable  {
 	private MFXButton addBtn,editBtn;
 	
 	@FXML
+<<<<<<< HEAD
 	private MFXTableView<Agency> table;
+=======
+	private MFXTableView<District> table;
+>>>>>>> 52fe9a22f1c598089616153029f388f2f7a639c3
 	Dialog<ButtonType> dialog = new Dialog<>();
 	
 	@FXML
@@ -67,6 +102,18 @@ public class SettingScreenController2 implements Initializable  {
 	
 	@FXML
 	private MFXButton agencyTypeBtn,districtBtn,unitBtn,staffBtn;
+<<<<<<< HEAD
+=======
+	
+    @FXML
+    private MFXTextField maxAgency, district_Id, district_Name;
+    
+    private ObservableList<District> districtList;
+    
+    private DAO_District daoDistrict;
+    
+    private DAO_Fixed_Values daoFixedValue;
+>>>>>>> 52fe9a22f1c598089616153029f388f2f7a639c3
 ;
 
 	
@@ -76,12 +123,26 @@ public void initialize(URL arg0, ResourceBundle arg1) {
 	 
 	setupScreen();
 	setupTable();
+<<<<<<< HEAD
+=======
+	loadDataFromDatabase();
+>>>>>>> 52fe9a22f1c598089616153029f388f2f7a639c3
 	setupTabChange ();
     
     
         
     }
 
+<<<<<<< HEAD
+=======
+public SettingScreenController2() {
+
+	this.daoDistrict = DAO_District.getInstance();
+	this.districtList = FXCollections.observableArrayList();
+}
+
+
+>>>>>>> 52fe9a22f1c598089616153029f388f2f7a639c3
 	private void setupTabChange() {
 		homepageBtn.setOnAction(event -> {
 			window = (Stage)menuImg.getScene().getWindow();
@@ -249,6 +310,7 @@ public void initialize(URL arg0, ResourceBundle arg1) {
 }
 
 	public void setupScreen() {
+<<<<<<< HEAD
 		
 			
 
@@ -263,6 +325,13 @@ public void initialize(URL arg0, ResourceBundle arg1) {
 		darkPane.setVisible(false);
 
 
+=======
+	    district_Id.setText(String.valueOf(generatedId()));
+	    district_Id.setEditable(false);
+		
+		darkPane.setVisible(false);
+
+>>>>>>> 52fe9a22f1c598089616153029f388f2f7a639c3
 	    javafx.animation.FadeTransition fadeTransition=new javafx.animation.FadeTransition(Duration.seconds(0.39),darkPane);
 	    fadeTransition.setFromValue(1);
 	    fadeTransition.setToValue(0);
@@ -272,8 +341,11 @@ public void initialize(URL arg0, ResourceBundle arg1) {
 	    translateTransition.setByX(-600);
 	    translateTransition.play();
 
+<<<<<<< HEAD
 	   
 	    
+=======
+>>>>>>> 52fe9a22f1c598089616153029f388f2f7a639c3
 	    canChange = true;
 	    menuPane.setOnMouseEntered(event -> {
 	    	timeChange += 1;
@@ -286,8 +358,11 @@ public void initialize(URL arg0, ResourceBundle arg1) {
 	        //fadeTransition1.setToValue(0.1);
 	        fadeTransition1.play();
 	        
+<<<<<<< HEAD
 	        
 
+=======
+>>>>>>> 52fe9a22f1c598089616153029f388f2f7a639c3
 	        javafx.animation.TranslateTransition translateTransition1=new javafx.animation.TranslateTransition(Duration.seconds(0.39),detailMenuPane);
 	        translateTransition1.setByX(+600);
 	        translateTransition1.setOnFinished(event1 -> {
@@ -297,11 +372,14 @@ public void initialize(URL arg0, ResourceBundle arg1) {
 	        });
 	        translateTransition1.play();
 	        
+<<<<<<< HEAD
 	        
 	        
 	        
 	        
 	       
+=======
+>>>>>>> 52fe9a22f1c598089616153029f388f2f7a639c3
 	    	}
 	        
 	    });
@@ -330,6 +408,7 @@ public void initialize(URL arg0, ResourceBundle arg1) {
 	        translateTransition1.play();
 	    	}
 	    });
+<<<<<<< HEAD
 	    
 
 	}
@@ -337,6 +416,102 @@ public void initialize(URL arg0, ResourceBundle arg1) {
 		
 	}
 	
+=======
+
+	}
+	private void showAlert(String message) {
+	    Alert alert = new Alert(Alert.AlertType.ERROR);
+	    alert.setTitle("Error");
+	    alert.setHeaderText(null);
+	    alert.setContentText(message);
+	    alert.showAndWait();
+	}
+	
+	private void addToDatabase(District newDistrict) {
+		daoDistrict.Add(newDistrict);
+    }
+	
+	private void loadDataFromDatabase() {
+	    //table.getItems().clear();
+
+	    List<District> districts = daoDistrict.selectAll();
+
+	    table.getItems().addAll(districts);
+	}
+	public void setupTable() {
+		MFXTableColumn<District> idColumn = new MFXTableColumn<>("ID");
+		MFXTableColumn<District> nameColumn = new MFXTableColumn<>("Name");
+		//MFXTableColumn<District> maxAgencyColumn = new MFXTableColumn<>("Maximum agency");
+		
+		idColumn.setRowCellFactory(item -> new MFXTableRowCell<>(District::getDistrict_Id));
+	    nameColumn.setRowCellFactory(item -> new MFXTableRowCell<>(District::getDistrict_Name));
+	    //maxAgencyColumn.setRowCellFactory(item -> new MFXTableRowCell<>(District::getMaximum_Agent));
+	    
+	    table.getTableColumns().addAll(idColumn, nameColumn);
+	    
+	    idColumn.setPrefWidth(100);
+	    nameColumn.setPrefWidth(200);
+	    //maxAgencyColumn.setPrefWidth(200);
+	    
+	    table.getFilters().addAll(
+		        new IntegerFilter<>("ID", District::getDistrict_Id),
+		        new StringFilter<>("Name", District::getDistrict_Name)
+		        //new IntegerFilter<>("Maximum agency", District::getMaximum_Agent)
+		);
+	    
+	    addBtn.setOnAction(event->handleAddButtonAction(event));
+	    
+	    setupScreen();
+	}
+	
+	
+	
+	private int generatedId() {
+		int Id = 0;
+        try {
+            ResultSet resultSet = daoDistrict.getCurrentId(); 
+            if (resultSet.next()) {
+                Id = resultSet.getInt(1) + 1;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return Id;
+	}
+	
+	@FXML
+    private void handleAddButtonAction(ActionEvent event) {
+		Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+	    alert.setTitle("Confirmation");
+	    alert.setHeaderText(null);
+	    alert.setContentText("Are you sure you want to add?");
+	    
+		Optional<ButtonType> result = alert.showAndWait();
+		    if (result.isPresent() && result.get() == ButtonType.OK) {
+		        try {
+	
+		            int id = Integer.parseInt(district_Id.getText());
+		            String name = district_Name.getText();
+		            int maxx = Integer.parseInt(maxAgency.getText());
+	
+		            District newDistrict = new District(id, name, maxx);
+		            
+		            District newDistrict2 = new District(id, name);
+		            table.getItems().add(newDistrict2);
+	
+		            addToDatabase(newDistrict);
+		        } catch (NumberFormatException e) {
+		            e.printStackTrace();
+	
+		       }
+		        
+		        district_Id.setText(String.valueOf(generatedId()));
+		        district_Name.clear();
+		        maxAgency.clear();
+		        
+    }
+	}
+>>>>>>> 52fe9a22f1c598089616153029f388f2f7a639c3
 }
 
                                       

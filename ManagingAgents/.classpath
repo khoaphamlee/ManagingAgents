@@ -16,8 +16,15 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
+<<<<<<< HEAD
 	<classpathentry kind="lib" path="D:/Homework/NMCNPM/Agency-Management-main/Agency-Management-main/ManagingAgents/jar_files/adapter-0.2.0.jar"/>
 	<classpathentry kind="lib" path="D:/Homework/NMCNPM/Agency-Management-main/Agency-Management-main/ManagingAgents/jar_files/materialfx-11.13.5.jar"/>
 	<classpathentry kind="lib" path="D:/Homework/NMCNPM/Agency-Management-main/Agency-Management-main/ManagingAgents/jar_files/virtualizedfx-11.2.6.1.jar"/>
+=======
+	<classpathentry kind="lib" path="C:/Users/khoan/Agency-Management-main/Agency-Management-main/ManagingAgents/jar_files/adapter-0.2.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/khoan/Agency-Management-main/Agency-Management-main/ManagingAgents/jar_files/materialfx-11.13.5.jar"/>
+	<classpathentry kind="lib" path="C:/Users/khoan/Agency-Management-main/Agency-Management-main/ManagingAgents/jar_files/virtualizedfx-11.2.6.1.jar"/>
+	<classpathentry kind="lib" path="D:/App/mysql-connector-j-8.4.0/mysql-connector-j-8.4.0/mysql-connector-j-8.4.0.jar"/>
+>>>>>>> 52fe9a22f1c598089616153029f388f2f7a639c3
 	<classpathentry kind="output" path="bin"/>
 </classpath>
