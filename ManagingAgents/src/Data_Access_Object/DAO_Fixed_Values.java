@@ -7,7 +7,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import Database.JDBCUtil;
-import models.Agent;
+
 import models.Fixed_Values;
 
 public class DAO_Fixed_Values implements Interface<Fixed_Values>{
@@ -23,9 +23,9 @@ public class DAO_Fixed_Values implements Interface<Fixed_Values>{
 			
 			Statement st = connect.createStatement();
 			
-			String sql = "INSERT INTO FIXED_VALUES(Maximum_Agent, Maximum_InDebt, Maximum_IsOverPay)"
+			String sql = "INSERT INTO FIXED_VALUES(Maximum_Agent, Rate, Maximum_IsOverPay)"
 					+ "VALUES (" + t.getMaximum_Agent() + " , " 
-					+ t.getMaximum_InDebt() + " , " 
+					+ t.getRate() + " , " 
 					+ t.getMaximum_IsOverPay() +")";
 			int kq = st.executeUpdate(sql);
 			
@@ -51,7 +51,7 @@ public class DAO_Fixed_Values implements Interface<Fixed_Values>{
 			String sql = "UPDATE FIXED_VALUES "+
 						 " SET "+
 						 " Maximum_Agent= " + t.getMaximum_Agent() + "" +
-						 ", Maximum_InDebt= " + t.getMaximum_InDebt() + "" +
+						 ", Rate= " + t.getRate() + "" +
 						 ", Maximum_IsOverPay= " + t.getMaximum_IsOverPay() + "";
 			int kq = st.executeUpdate(sql);
 			
@@ -103,10 +103,10 @@ public class DAO_Fixed_Values implements Interface<Fixed_Values>{
 			
 			while (rs.next()) {
 				int Maximum_Agent = rs.getInt("Maximum_Agent");
-				BigDecimal Maximum_InDebt = rs.getBigDecimal("Maximum_InDebt");
+				BigDecimal Rate = rs.getBigDecimal("Rate");
 				BigDecimal Maximum_IsOverPay = rs.getBigDecimal("Maximum_IsOverPay");
 				
-				Fixed_Values fixed_values = new Fixed_Values(Maximum_Agent, Maximum_InDebt, Maximum_IsOverPay);
+				Fixed_Values fixed_values = new Fixed_Values(Maximum_Agent, Rate, Maximum_IsOverPay);
 				kq.add(fixed_values);
 			}
 			
@@ -132,10 +132,10 @@ public class DAO_Fixed_Values implements Interface<Fixed_Values>{
 			
 			while (rs.next()) {
 				int Maximum_Agent = rs.getInt("Maximum_Agent");
-				BigDecimal Maximum_InDebt = rs.getBigDecimal("Maximum_InDebt");
+				BigDecimal Rate = rs.getBigDecimal("Rate");
 				BigDecimal Maximum_IsOverPay = rs.getBigDecimal("Maximum_IsOverPay");
 				
-				kq = new Fixed_Values(Maximum_Agent, Maximum_InDebt, Maximum_IsOverPay);
+				kq = new Fixed_Values(Maximum_Agent, Rate, Maximum_IsOverPay);
 			}
 			
 		} catch (Exception e) {
@@ -160,10 +160,10 @@ public class DAO_Fixed_Values implements Interface<Fixed_Values>{
 	        
 	        while (rs.next()) {
 				int Maximum_Agent = rs.getInt("Maximum_Agent");
-				BigDecimal Maximum_InDebt = rs.getBigDecimal("Maximum_InDebt");
+				BigDecimal Rate = rs.getBigDecimal("Rate");
 				BigDecimal Maximum_IsOverPay = rs.getBigDecimal("Maximum_IsOverPay");
 	            
-				Fixed_Values fixed_values = new Fixed_Values(Maximum_Agent, Maximum_InDebt, Maximum_IsOverPay);
+				Fixed_Values fixed_values = new Fixed_Values(Maximum_Agent, Rate, Maximum_IsOverPay);
 	            kq.add(fixed_values);
 	        }
 	        

@@ -22,9 +22,9 @@ public class DAO_Receipt implements Interface<Receipt>{
 			
 			Statement st = connect.createStatement();
 			
-			String sql = "INSERT INTO RECEIPT(Receipt_Id, Id_Agent, Phone, Email, ReceiptDate, MoneyReceived)"
-					+ "VALUES (" + t.getReceipt_Id() + " , " + t.getId_Agent() + " , '" + t.getPhone()
-					+ "' , '" + t.getEmail() + "' , '" + t.getReceiptDate() + "' , " + t.getMoneyReceived()+")";
+			String sql = "INSERT INTO RECEIPT(Receipt_Id, Id_Agent, Id_User, ReceiptDate, MoneyReceived, IsReceived)"
+					+ "VALUES (" + t.getReceipt_Id() + " , " + t.getId_Agent() + " , " + t.getId_User()
+					+ " , '" + t.getReceiptDate() + "' , " + t.getMoneyReceived() + " , '" + t.getIsReceived()+"')";
 			int kq = st.executeUpdate(sql);
 			
 			System.out.println("Bạn đã thực thi");
@@ -49,10 +49,10 @@ public class DAO_Receipt implements Interface<Receipt>{
 			String sql = "UPDATE RECEIPT "+
 						 " SET "+
 						 " Id_Agent= " + t.getId_Agent() + "" +
-						 ", Phone= '" + t.getPhone() + "'" +
-						 ", Email= '" + t.getEmail() + "'" +
-						 ", ReceiptDate= '" + t.getReceiptDate() + "'" + 
-						 ", MoneyReceived= " + t.getMoneyReceived() + "" +
+						 ", Id_User= " + t.getId_User() + "" +
+						 ", ReceiptDate= '" + t.getReceiptDate() + "'" +
+						 ", MoneyReceived= " + t.getMoneyReceived() + "" + 
+						 ", IsReceived= '" + t.getIsReceived() + "'" +
 						 " WHERE Receipt_Id= " + t.getReceipt_Id() + "" ;
 			int kq = st.executeUpdate(sql);
 			
@@ -106,12 +106,12 @@ public class DAO_Receipt implements Interface<Receipt>{
 			while (rs.next()) {
 				int Receipt_Id = rs.getInt("Receipt_Id");
 				int Id_Agent = rs.getInt("Id_Agent");
-				String Phone = rs.getString("Phone");
-				String Email = rs.getString("Email");
+				int Id_User = rs.getInt("Id_User");
 				Date ReceiptDate = rs.getDate("ReceiptDate");
-				double MoneyReceived = rs.getDouble("MoneyReceived");
+				Double MoneyReceived = rs.getDouble("MoneyReceived");
+				Boolean IsReceived = rs.getBoolean("IsReceived");
 				
-				Receipt recept = new Receipt(Receipt_Id, Id_Agent, Phone, Email, ReceiptDate, MoneyReceived);
+				Receipt recept = new Receipt(Receipt_Id, Id_Agent, Id_User, ReceiptDate, MoneyReceived, IsReceived);
 				kq.add(recept);
 			}
 			
@@ -138,12 +138,12 @@ public class DAO_Receipt implements Interface<Receipt>{
 			while (rs.next()) {
 				int Receipt_Id = rs.getInt("Receipt_Id");
 				int Id_Agent = rs.getInt("Id_Agent");
-				String Phone = rs.getString("Phone");
-				String Email = rs.getString("Email");
+				int Id_User = rs.getInt("Id_User");
 				Date ReceiptDate = rs.getDate("ReceiptDate");
-				double MoneyReceived = rs.getDouble("MoneyReceived");
+				Double MoneyReceived = rs.getDouble("MoneyReceived");
+				Boolean IsReceived = rs.getBoolean("IsReceived");
 				
-				kq = new Receipt(Receipt_Id, Id_Agent, Phone, Email, ReceiptDate, MoneyReceived);
+				kq = new Receipt(Receipt_Id, Id_Agent, Id_User, ReceiptDate, MoneyReceived, IsReceived);
 			}
 			
 		} catch (Exception e) {
@@ -169,12 +169,12 @@ public class DAO_Receipt implements Interface<Receipt>{
 	        while (rs.next()) {
 	        	int Receipt_Id = rs.getInt("Receipt_Id");
 				int Id_Agent = rs.getInt("Id_Agent");
-				String Phone = rs.getString("Phone");
-				String Email = rs.getString("Email");
+				int Id_User = rs.getInt("Id_User");
 				Date ReceiptDate = rs.getDate("ReceiptDate");
-				double MoneyReceived = rs.getDouble("MoneyReceived");
+				Double MoneyReceived = rs.getDouble("MoneyReceived");
+				Boolean IsReceived = rs.getBoolean("IsReceived");
 	            
-				Receipt recept = new Receipt(Receipt_Id, Id_Agent, Phone, Email, ReceiptDate, MoneyReceived);
+				Receipt recept = new Receipt(Receipt_Id, Id_Agent, Id_User, ReceiptDate, MoneyReceived, IsReceived);
 	            kq.add(recept);
 	        }
 	        

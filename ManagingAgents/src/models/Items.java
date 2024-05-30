@@ -10,7 +10,7 @@ public class Items {
 		super();
 	}
 	
-	public Items(int items_Id, String items_Name, double items_Price, int items_Quentity) {
+	public Items(int items_Id, String items_Name, double items_Price, int items_Quentity, boolean Items_Status) {
 		super();
 		Items_Id = items_Id;
 		Items_Name = items_Name;

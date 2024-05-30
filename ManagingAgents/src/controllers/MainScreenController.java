@@ -100,12 +100,15 @@ public void initialize(URL arg0, ResourceBundle arg1) {
 	
 
 	private void setupTabChange() {
+
+		
 		homepageBtn.setOnAction(event -> {
 			window = (Stage)menuImg.getScene().getWindow();
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/MainScreen.fxml"));
             Parent root = null;
 			try {
 				root = loader.load();
+				
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

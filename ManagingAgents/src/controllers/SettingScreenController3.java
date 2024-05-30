@@ -2,6 +2,8 @@ package controllers;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Locale;
@@ -12,12 +14,15 @@ import java.util.function.Function;
 import java.util.stream.Stream;
 
 import Data_Access_Object.DAO_Unit;
+import datatable.DistrictScreenTable;
 import datatable.SettingScreenTable;
 import io.github.palexdev.materialfx.beans.BiPredicateBean;
 import io.github.palexdev.materialfx.controls.MFXButton;
+import io.github.palexdev.materialfx.controls.MFXComboBox;
 import io.github.palexdev.materialfx.controls.MFXFilterPane;
 import io.github.palexdev.materialfx.controls.MFXTableColumn;
 import io.github.palexdev.materialfx.controls.MFXTableView;
+import io.github.palexdev.materialfx.controls.MFXTextField;
 import io.github.palexdev.materialfx.controls.cell.MFXTableRowCell;
 
 import io.github.palexdev.materialfx.filter.DoubleFilter;
@@ -29,12 +34,14 @@ import javafx.animation.FadeTransition;
 import javafx.animation.PauseTransition;
 import javafx.beans.binding.Bindings;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Dialog;
 import javafx.scene.control.TableColumn;
@@ -46,6 +53,7 @@ import javafx.stage.StageStyle;
 import javafx.util.Duration;
 import models.Agency;
 import models.Agent_Type;
+import models.District;
 import models.Items;
 import models.Unit;
 
@@ -72,11 +80,24 @@ public class SettingScreenController3 implements Initializable  {
 	
 	@FXML
 	private MFXButton agencyTypeBtn,districtBtn,unitBtn,staffBtn;
+	@FXML
+    private MFXComboBox<String> statusCbb;
+
+    @FXML
+    private MFXTextField unitTf, rateTf, idTf;
 	
-	private DAO_Unit dao_Unit;
+	private DAO_Unit daoUnit;
+	
+    private String convertIntToStatusString(int status) {
+        return status == 1 ? "Active" : "Inactive";
+    }
+
+    private int convertStatusStringToInt(String status) {
+        return "Active".equalsIgnoreCase(status) ? 1 : 0;
+    }
 	
 public SettingScreenController3() {
-	this.dao_Unit = DAO_Unit.getInstance();
+	this.daoUnit = DAO_Unit.getInstance();
 }
 
 	
@@ -86,10 +107,9 @@ public void initialize(URL arg0, ResourceBundle arg1) {
 	 
 	setupScreen();
 	setupTable();
+	loadDataFromDatabase();
 	setupTabChange ();
     
-    
-        
     }
 
 	private void setupTabChange() {
@@ -260,16 +280,8 @@ public void initialize(URL arg0, ResourceBundle arg1) {
 
 	public void setupScreen() {
 		
-			
-
-		
-		
-		
-		
-		
-		
-		
-		
+		idTf.setText(String.valueOf(generatedId()));
+	    idTf.setEditable(false);
 		darkPane.setVisible(false);
 
 
@@ -296,8 +308,6 @@ public void initialize(URL arg0, ResourceBundle arg1) {
 	        //fadeTransition1.setToValue(0.1);
 	        fadeTransition1.play();
 	        
-	        
-
 	        javafx.animation.TranslateTransition translateTransition1=new javafx.animation.TranslateTransition(Duration.seconds(0.39),detailMenuPane);
 	        translateTransition1.setByX(+600);
 	        translateTransition1.setOnFinished(event1 -> {
@@ -307,11 +317,6 @@ public void initialize(URL arg0, ResourceBundle arg1) {
 	        });
 	        translateTransition1.play();
 	        
-	        
-	        
-	        
-	        
-	       
 	    	}
 	        
 	    });
@@ -340,31 +345,102 @@ public void initialize(URL arg0, ResourceBundle arg1) {
 	        translateTransition1.play();
 	    	}
 	    });
-	    
+	       
+	}
+	private void addToDatabase(Unit newUnit) {
+		daoUnit.Add(newUnit);
+    }
+	
+	private void loadDataFromDatabase() {
+	    table.getItems().clear();
 
+	    List<Unit> units = daoUnit.selectAll();
+
+	    for (Unit unit : units) {
+	        String stringStatus = convertIntToStatusString(unit.getUnit_Status());
+
+	        SettingScreenTable settingTable = new SettingScreenTable(
+	                unit.getUnit_Id(),
+	                unit.getUnit_Name(),
+	                stringStatus
+	        );
+
+	        table.getItems().add(settingTable);
+	    }
 	}
 	public void setupTable() {
 		MFXTableColumn<SettingScreenTable> idColumn = new MFXTableColumn<>("ID");
 		MFXTableColumn<SettingScreenTable> nameColumn = new MFXTableColumn<>("Name");
-		MFXTableColumn<SettingScreenTable> unitColumn = new MFXTableColumn<>("Unit");
+		MFXTableColumn<SettingScreenTable> statusColumn = new MFXTableColumn<>("Status");
 		
 		idColumn.setRowCellFactory(item -> new MFXTableRowCell<>(SettingScreenTable::getUnit_Id));
-	    nameColumn.setRowCellFactory(item -> new MFXTableRowCell<>(SettingScreenTable::getItems_Name));
-	    unitColumn.setRowCellFactory(item -> new MFXTableRowCell<>(SettingScreenTable::getUnit_Name));
+	    nameColumn.setRowCellFactory(item -> new MFXTableRowCell<>(SettingScreenTable::getUnit_Name));
+	    statusColumn.setRowCellFactory(item -> new MFXTableRowCell<>(SettingScreenTable::getUnit_Status));
 	    
-	    table.getTableColumns().addAll(idColumn, nameColumn, unitColumn);
+	    table.getTableColumns().addAll(idColumn, nameColumn, statusColumn);
 	    
 	    idColumn.setPrefWidth(100);
 	    nameColumn.setPrefWidth(200);
-	    unitColumn.setPrefWidth(200);
+	    statusColumn.setPrefWidth(200);
 	    
 	    table.getFilters().addAll(
 		        new IntegerFilter<>("ID", SettingScreenTable::getUnit_Id),
-		        new StringFilter<>("Name", SettingScreenTable::getItems_Name),
-		        new StringFilter<>("Unit", SettingScreenTable::getUnit_Name)
+		        new StringFilter<>("Name", SettingScreenTable::getUnit_Name),
+		        new StringFilter<>("Status", SettingScreenTable::getUnit_Status)
 		);
+	    
+	    statusCbb.getItems().addAll("Active", "Inactive");
+        statusCbb.setPromptText("Select Status");
+        
+	    addBtn.setOnAction(event->handleAddButtonAction(event));
+	    
+	    setupScreen();
 	}
 	
+	private int generatedId() {
+		int Id = 0;
+        try {
+            ResultSet resultSet = daoUnit.getCurrentId(); 
+            if (resultSet.next()) {
+                Id = resultSet.getInt(1) + 1;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return Id;
+	}
+	
+	@FXML
+	private void handleAddButtonAction(ActionEvent event) {
+	    Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+	    alert.setTitle("Confirmation");
+	    alert.setHeaderText(null);
+	    alert.setContentText("Are you sure you want to add?");
+	    
+	    Optional<ButtonType> result = alert.showAndWait();
+	    if (result.isPresent() && result.get() == ButtonType.OK) {
+	        try {
+	            int id = Integer.parseInt(idTf.getText());
+	            String name = unitTf.getText();
+	            String stringStatus = statusCbb.getValue();
+	            //int rate = Integer.parseInt(rateTf.getText());
+	            int status = convertStatusStringToInt(stringStatus);
+
+	            Unit newUnit = new Unit(id, name, status);
+	            
+	            SettingScreenTable newSettingScreenTable = new SettingScreenTable(id, name, stringStatus);
+	            
+	            table.getItems().add(newSettingScreenTable);
+
+	            addToDatabase(newUnit);
+	        } catch (NumberFormatException e) {
+	            e.printStackTrace();
+	        }
+	        idTf.setText(String.valueOf(generatedId()));
+	        unitTf.clear();
+	        statusCbb.getSelectionModel().clearSelection();
+	    }
+	}
 }
 
                                       

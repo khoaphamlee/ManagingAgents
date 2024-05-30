@@ -1,6 +1,5 @@
 package models;
 
-import java.time.LocalDate;
 
 public class Agent {
 	private int Agent_Id;
@@ -30,8 +29,8 @@ public class Agent {
 		Agent_Status = true;
 	}
 	
-	public Agent(int agent_Id, String agent_Name, String agent_Phone, String agent_Address, String agent_District,
-			double agent_Debt, String agent_Type, String agent_Email, boolean agent_Status) {
+	public Agent(int agent_Id, String agent_Name, String agent_Phone, String agent_Address, String agent_District, boolean agent_Status,
+			double agent_Debt, String agent_Type, String agent_Email) {
 		super();
 		Agent_Id = agent_Id;
 		Agent_Name = agent_Name;

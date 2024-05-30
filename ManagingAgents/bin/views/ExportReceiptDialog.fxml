@@ -98,7 +98,7 @@
             <MFXTextField layoutX="861.0" layoutY="765.0" maxHeight="36.0" minHeight="36.0" prefHeight="36.0" prefWidth="146.0" />
          </children>
       </AnchorPane>
-      <MFXButton fx:id="okBtn" buttonType="RAISED" layoutX="511.0" layoutY="350.0" prefHeight="26.0" prefWidth="105.0" text="OK" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="10.0" />
+      <MFXButton fx:id="okBtn" buttonType="RAISED" layoutX="511.0" layoutY="350.0" prefHeight="26.0" prefWidth="105.0" text="Collect money" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="10.0" />
       <MFXButton fx:id="cancelBtn" buttonType="RAISED" layoutX="427.0" layoutY="471.0" prefHeight="26.0" prefWidth="105.0" text="Cancel" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="128.4" />
    </children>
 </AnchorPane>

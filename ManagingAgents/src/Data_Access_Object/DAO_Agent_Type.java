@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import Database.JDBCUtil;
-import models.Agent;
 import models.Agent_Type;
 
 public class DAO_Agent_Type implements Interface<Agent_Type> {
@@ -20,23 +19,29 @@ public class DAO_Agent_Type implements Interface<Agent_Type> {
 	
 	@Override
 	public int Add(Agent_Type t) {
-	    try {
-	        Connection connect = JDBCUtil.getConnection();
-	        Statement st = connect.createStatement();
+        String sql = "INSERT INTO AGENT_TYPE (AgentType_Id, AgentType_Name, AgentType_MaxDebt, AgentType_Status) VALUES (?, ?, ?, ?)";
+        
+        try {
+            Connection connect = JDBCUtil.getConnection();
+            PreparedStatement ps = connect.prepareStatement(sql);
 
-	        String sql = "INSERT INTO AGENT_TYPE(AgentType_Id, AgentType_Name, AgentType_MaxDebt)" +
-	                     "VALUES (" + t.getAgentType_Id() + " , '" + t.getAgentType_Name() + "', " + t.getAgentType_MaxDebt() + ")";
-	        int kq = st.executeUpdate(sql);
+            // Set the values for the prepared statement
+            ps.setInt(1, t.getAgentType_Id());
+            ps.setString(2, t.getAgentType_Name());
+            ps.setLong(3, t.getAgentType_MaxDebt());
+            ps.setInt(4, t.getAgentType_Status()); 
 
-	        System.out.println("Bạn đã thực thi");
-	        JDBCUtil.closeConnection(connect);
+            int kq = ps.executeUpdate();
 
-	        return kq;
-	    } catch (Exception e) {
-	        e.printStackTrace();
-	        return -1; // Trả về -1 nếu có lỗi xảy ra
-	    }
-	}
+            System.out.println("Bạn đã thực thi");
+            JDBCUtil.closeConnection(connect);
+
+            return kq;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return -1; // Trả về -1 nếu có lỗi xảy ra
+        }
+    }
 
 	@Override
 	public int Update(Agent_Type t) {
@@ -47,7 +52,8 @@ public class DAO_Agent_Type implements Interface<Agent_Type> {
 	        String sql = "UPDATE AGENT_TYPE " +
 	                     "SET " +
 	                     "AgentType_Name = '" + t.getAgentType_Name() + "', " +
-	                     "AgentType_MaxDebt = " + t.getAgentType_MaxDebt() + " " + // Thêm AgentType_MaxDebt vào câu SQL
+	                     "AgentType_MaxDebt = " + t.getAgentType_MaxDebt() + ", " +
+	                     "AgentType_Status = " + t.getAgentType_Status() + " " + // Sử dụng giá trị int
 	                     "WHERE AgentType_Id = " + t.getAgentType_Id();
 	        int kq = st.executeUpdate(sql);
 
@@ -96,8 +102,9 @@ public class DAO_Agent_Type implements Interface<Agent_Type> {
 	            int AgentType_Id = rs.getInt("AgentType_Id");
 	            String AgentType_Name = rs.getString("AgentType_Name");
 	            long AgentType_MaxDebt = rs.getLong("AgentType_MaxDebt");
+	            int AgentType_Status = rs.getInt("AgentType_Status"); // Lấy giá trị int trực tiếp
 
-	            Agent_Type agentType = new Agent_Type(AgentType_Id, AgentType_Name, AgentType_MaxDebt);
+	            Agent_Type agentType = new Agent_Type(AgentType_Id, AgentType_Name, AgentType_MaxDebt, AgentType_Status);
 	            kq.add(agentType);
 	        }
 
@@ -124,14 +131,14 @@ public class DAO_Agent_Type implements Interface<Agent_Type> {
 				int AgentType_Id = rs.getInt("AgentType_Id");
 				String AgentType_Name = rs.getString("AgentType_Name");
 				long AgentType_MaxDebt = rs.getLong("AgentType_MaxDebt");
+				int AgentType_Status = rs.getInt("AgentType_Status"); // Lấy giá trị int trực tiếp
 				
-				kq = new Agent_Type(AgentType_Id, AgentType_Name, AgentType_MaxDebt);
+				kq = new Agent_Type(AgentType_Id, AgentType_Name, AgentType_MaxDebt, AgentType_Status);
 			}
 			
 		} catch (Exception e) {
-			// TODO: handle exception
+			e.printStackTrace();
 		}
-		// TODO Auto-generated method stub
 		return kq;
 	}
 
@@ -152,8 +159,9 @@ public class DAO_Agent_Type implements Interface<Agent_Type> {
 	        	int AgentType_Id = rs.getInt("AgentType_Id");
 				String AgentType_Name = rs.getString("AgentType_Name");
 				long AgentType_MaxDebt = rs.getLong("AgentType_MaxDebt");
-	            
-				Agent_Type agentType = new Agent_Type(AgentType_Id, AgentType_Name, AgentType_MaxDebt);
+				int AgentType_Status = rs.getInt("AgentType_Status"); // Lấy giá trị int trực tiếp
+				
+				Agent_Type agentType = new Agent_Type(AgentType_Id, AgentType_Name, AgentType_MaxDebt, AgentType_Status);
 				kq.add(agentType);
 	        }
 	        
@@ -233,9 +241,7 @@ public class DAO_Agent_Type implements Interface<Agent_Type> {
 	        JDBCUtil.closeConnection(con);
 	    } catch (Exception e) {
 	        e.printStackTrace();
-	        // Xử lý ngoại lệ nếu cần
 	    }
 	    return agentTypeName;
 	}
-
 }

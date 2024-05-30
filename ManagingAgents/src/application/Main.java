@@ -36,7 +36,7 @@ public class Main extends Application {
         MainScreenController mainScreenController = new MainScreenController();
         
         loginController.setMainScreenController(mainScreenController);
-        
+        primaryStage.setTitle("JavaFX App");
         primaryStage.setScene(new Scene(loginRoot));
         primaryStage.show();
     }

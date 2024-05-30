@@ -6,7 +6,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import Database.JDBCUtil;
-import models.Agent;
+
 import models.Export_Detail;
 
 public class DAO_Export_Detail implements Interface<Export_Detail>{
@@ -22,15 +22,14 @@ public class DAO_Export_Detail implements Interface<Export_Detail>{
 			
 			Statement st = connect.createStatement();
 			
-			String sql = "INSERT INTO EXPORT_DETAIL(ExportDetail_Id, IdExport, ItemsUnit, Items, ItemsQuantity, PriceExport, TotalMoney_Export, Remaining)"
+			String sql = "INSERT INTO EXPORT_DETAIL(ExportDetail_Id, IdExport, ItemsUnit, Items, ItemsQuantity, PriceExport, TotalMoney_Export)"
 					+ "VALUES (" + t.getExportDetail_Id() + " , " 
 					+ t.getIdExport() + " , " 
 					+ t.getItemsUnit() + " , " 
 					+ t.getItems() + " , " 
 					+ t.getItemsQuantity() + " , " 
 					+ t.getPriceExport() + " , " 
-					+ t.getTotalMoney_Export() + " , " 
-					+ t.getRemaining() +")";
+					+ t.getTotalMoney_Export() +")";
 			int kq = st.executeUpdate(sql);
 			
 			System.out.println("Bạn đã thực thi");
@@ -60,7 +59,6 @@ public class DAO_Export_Detail implements Interface<Export_Detail>{
 						 ", ItemsQuantity= " + t.getItemsQuantity() + "" + 
 						 ", PriceExport= " + t.getPriceExport() + "" +
 						 ", TotalMoney_Export= " + t.getTotalMoney_Export() + "" +
-						 ", Remaining= " + t.getRemaining() + "" +
 						 " WHERE ExportDetail_Id= " + t.getExportDetail_Id() + "" ;
 			int kq = st.executeUpdate(sql);
 			
@@ -119,9 +117,8 @@ public class DAO_Export_Detail implements Interface<Export_Detail>{
 				int ItemsQuantity = rs.getInt("ItemsQuantity");
 				double PriceExport = rs.getDouble("PriceExport");
 				double TotalMoney_Export = rs.getDouble("TotalMoney_Export");
-				double Remaining = rs.getDouble("Remaining");
 				
-				Export_Detail export_detail = new Export_Detail(ExportDetail_Id, IdExport, ItemsUnit, Items, ItemsQuantity, PriceExport, TotalMoney_Export, Remaining);
+				Export_Detail export_detail = new Export_Detail(ExportDetail_Id, IdExport, ItemsUnit, Items, ItemsQuantity, PriceExport, TotalMoney_Export );
 				kq.add(export_detail);
 			}
 			
@@ -153,9 +150,8 @@ public class DAO_Export_Detail implements Interface<Export_Detail>{
 				int ItemsQuantity = rs.getInt("ItemsQuantity");
 				double PriceExport = rs.getDouble("PriceExport");
 				double TotalMoney_Export = rs.getDouble("TotalMoney_Export");
-				double Remaining = rs.getDouble("Remaining");
 				
-				kq = new Export_Detail(ExportDetail_Id, IdExport, ItemsUnit, Items, ItemsQuantity, PriceExport, TotalMoney_Export, Remaining);
+				kq = new Export_Detail(ExportDetail_Id, IdExport, ItemsUnit, Items, ItemsQuantity, PriceExport, TotalMoney_Export );
 			}
 			
 		} catch (Exception e) {
@@ -186,9 +182,8 @@ public class DAO_Export_Detail implements Interface<Export_Detail>{
 				int ItemsQuantity = rs.getInt("ItemsQuantity");
 				double PriceExport = rs.getDouble("PriceExport");
 				double TotalMoney_Export = rs.getDouble("TotalMoney_Export");
-				double Remaining = rs.getDouble("Remaining");
-	            
-				Export_Detail export_detail = new Export_Detail(ExportDetail_Id, IdExport, ItemsUnit, Items, ItemsQuantity, PriceExport, TotalMoney_Export, Remaining);
+				
+				Export_Detail export_detail = new Export_Detail(ExportDetail_Id, IdExport, ItemsUnit, Items, ItemsQuantity, PriceExport, TotalMoney_Export );
 	            kq.add(export_detail);
 	        }
 	        

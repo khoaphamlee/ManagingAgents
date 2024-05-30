@@ -6,7 +6,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import Database.JDBCUtil;
-import models.Agent;
+
 import models.Items;
 
 public class DAO_Items implements Interface<Items>{
@@ -22,9 +22,13 @@ public class DAO_Items implements Interface<Items>{
 			
 			Statement st = connect.createStatement();
 			
-			String sql = "INSERT INTO ITEMS(Items_Id, Items_Name, Items_Price, Items_Quentity)"
-					+ "VALUES (" + t.getItems_Id() + " , '" + t.getItems_Name() + "' , " + t.getItems_Price()
-					+ " , " + t.getItems_Quantity() +")";
+			String sql = "INSERT INTO ITEMS(Items_Id, Items_Name, Items_Price, Items_Quantity, Items_Status)"
+					+ "VALUES (" 
+					+ t.getItems_Id() + " , '" 
+					+ t.getItems_Name() + "' , " 
+					+ t.getItems_Price() + " , " 
+					+ t.getItems_Quantity() + " , '" 
+					+ t.getItems_Status() + "')";
 			int kq = st.executeUpdate(sql);
 			
 			System.out.println("Bạn đã thực thi");
@@ -50,7 +54,8 @@ public class DAO_Items implements Interface<Items>{
 						 " SET "+
 						 " Items_Name= '" + t.getItems_Name() + "'" +
 						 ", Items_Price= " + t.getItems_Price() + "" +
-						 ", Items_Quentity= " + t.getItems_Quantity() + "" +
+						 ", Items_Quantity= " + t.getItems_Quantity() + "" +
+						 ", Items_Status= '" + t.getItems_Status() + "'" +
 						 " WHERE Items_Id= " + t.getItems_Id() + "" ;
 			int kq = st.executeUpdate(sql);
 			
@@ -105,9 +110,10 @@ public class DAO_Items implements Interface<Items>{
 				int Items_Id = rs.getInt("Items_Id");
 				String Items_Name = rs.getString("Items_Name");
 				double Items_Price = rs.getDouble("Items_Price");
-				int Items_Quentity = rs.getInt("Items_Quentity");
+				int Items_Quantity = rs.getInt("Items_Quantity");
+				boolean Items_Status = rs.getBoolean("Items_Status");
 				
-				Items itemS = new Items(Items_Id, Items_Name, Items_Price, Items_Quentity);
+				Items itemS = new Items(Items_Id, Items_Name, Items_Price, Items_Quantity, Items_Status);
 				kq.add(itemS);
 			}
 			
@@ -135,9 +141,10 @@ public class DAO_Items implements Interface<Items>{
 				int Items_Id = rs.getInt("Items_Id");
 				String Items_Name = rs.getString("Items_Name");
 				double Items_Price = rs.getDouble("Items_Price");
-				int Items_Quentity = rs.getInt("Items_Quentity");
+				int Items_Quantity = rs.getInt("Items_Quantity");
+				boolean Items_Status = rs.getBoolean("Items_Status");
 				
-				kq = new Items(Items_Id, Items_Name, Items_Price, Items_Quentity);
+				kq = new Items(Items_Id, Items_Name, Items_Price, Items_Quantity, Items_Status);
 			}
 			
 		} catch (Exception e) {
@@ -164,9 +171,10 @@ ArrayList<Items> kq = new ArrayList<>();
 	        	int Items_Id = rs.getInt("Items_Id");
 				String Items_Name = rs.getString("Items_Name");
 				double Items_Price = rs.getDouble("Items_Price");
-				int Items_Quentity = rs.getInt("Items_Quentity");
+				int Items_Quantity = rs.getInt("Items_Quantity");
+				boolean Items_Status = rs.getBoolean("Items_Status");
 	            
-				Items itemS = new Items(Items_Id, Items_Name, Items_Price, Items_Quentity);
+				Items itemS = new Items(Items_Id, Items_Name, Items_Price, Items_Quantity, Items_Status);
 	            kq.add(itemS);
 	        }
 	        

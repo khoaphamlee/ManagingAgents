@@ -26,16 +26,16 @@ public class DAO_Agent implements Interface<Agent> {
 			
 			Statement st = connect.createStatement();
 			
-			String sql = "INSERT INTO AGENT(Agent_Id, Agent_Name, Agent_Phone, Agent_Address, Agent_District, Agent_Debt, Agent_Type, Agent_Email, Agent_Status)"
+			String sql = "INSERT INTO AGENT(Agent_Id, Agent_Name, Agent_Phone, Agent_Address, Agent_District, Agent_Status, Agent_Debt, Agent_Type, Agent_Email)"
 					+ "VALUES (" + t.getAgent_Id() + " , '" 
 					+ t.getAgent_Name() + "' , '" 
 					+ t.getAgent_Phone() + "' , '" 
 					+ t.getAgent_Address() + "' , '" 
-					+ t.getAgent_District() + "' , "
-							+ t.getAgent_Debt() + "' , "
-									+ t.g() + "' , "
-											+ t.getAgent_District() + "' , "
-					+ t.getAgent_Debt()+")";
+					+ t.getAgent_District() + "' , '"
+					+ t.getAgent_Status() + "' , "
+					+ t.getAgent_Debt() + " , '"
+					+ t.getAgent_Type() + "' , '"
+					+ t.getAgent_Email()+"')";
 			int kq = st.executeUpdate(sql);
 			
 			System.out.println("Bạn đã thực thi");
@@ -63,8 +63,11 @@ public class DAO_Agent implements Interface<Agent> {
 						 ", Agent_Phone= '" + t.getAgent_Phone() + "'" +
 						 ", Agent_Address= '" + t.getAgent_Address() + "'" +
 						 ", Agent_District= '" + t.getAgent_District() + "'" + 
+						 ", Agent_Status= '" + t.getAgent_Status() + "'" +
 						 ", Agent_Debt= " + t.getAgent_Debt() + "" +
-						 " WHERE Agent_Id= " + t.getAgent_Id() + "\'" ;
+						 ", Agent_Type= '" + t.getAgent_Type() + "'" +
+						 ", Agent_Email= '" + t.getAgent_Email() + "'" +
+						 " WHERE Agent_Id= '" + t.getAgent_Id() + "\'" ;
 			int kq = st.executeUpdate(sql);
 			
 			System.out.println("Bạn đã thực thi");
@@ -120,12 +123,13 @@ public class DAO_Agent implements Interface<Agent> {
 				String Agent_Phone = rs.getString("Agent_Phone");
 				String Agent_Address = rs.getString("Agent_Address");
 				String Agent_District = rs.getString("Agent_District");
+				boolean Agent_Status = rs.getBoolean("Agent_Status");
 				double Agent_Debt = rs.getDouble("Agent_Debt");
 				String Agent_Type = rs.getString("Agent_Type");
 				String Agent_Email = rs.getString("Agent_Email");
-				boolean Agent_Status = rs.getBoolean("Agent_Status");
 				
-				Agent agent = new Agent(Agent_Id, Agent_Name, Agent_Phone, Agent_Address, Agent_District, Agent_Debt, Agent_Type, Agent_Email,Agent_Status);
+				
+				Agent agent = new Agent(Agent_Id, Agent_Name, Agent_Phone, Agent_Address, Agent_District, Agent_Status, Agent_Debt, Agent_Type, Agent_Email);
 				kq.add(agent);
 			}
 			
@@ -159,12 +163,12 @@ public class DAO_Agent implements Interface<Agent> {
 				String Agent_Phone = rs.getString("Agent_Phone");
 				String Agent_Address = rs.getString("Agent_Address");
 				String Agent_District = rs.getString("Agent_District");
+				boolean Agent_Status = rs.getBoolean("Agent_Status");
 				double Agent_Debt = rs.getDouble("Agent_Debt");
 				String Agent_Type = rs.getString("Agent_Type");
 				String Agent_Email = rs.getString("Agent_Email");
-				boolean Agent_Status = rs.getBoolean("Agent_Status");
 				
-				kq = new Agent(Agent_Id, Agent_Name, Agent_Phone, Agent_Address, Agent_District, Agent_Debt, Agent_Type, Agent_Email,Agent_Status);
+				kq = new Agent(Agent_Id, Agent_Name, Agent_Phone, Agent_Address, Agent_District, Agent_Status, Agent_Debt, Agent_Type, Agent_Email);
 			}
 			
 		} catch (Exception e) {
@@ -188,17 +192,17 @@ public class DAO_Agent implements Interface<Agent> {
 	        ResultSet rs = st.executeQuery(sql);
 	        
 	        while (rs.next()) {
-	            int Agent_Id = rs.getInt("Agent_Id");
-	            String Agent_Name = rs.getString("Agent_Name");
-	            String Agent_Phone = rs.getString("Agent_Phone");
-	            String Agent_Address = rs.getString("Agent_Address");
-	            String Agent_District = rs.getString("Agent_District");
-	            double Agent_Debt = rs.getDouble("Agent_Debt");
-	            String Agent_Type = rs.getString("Agent_Type");
-				String Agent_Email = rs.getString("Agent_Email");
+	        	int Agent_Id = rs.getInt("Agent_Id");
+				String Agent_Name = rs.getString("Agent_Name");
+				String Agent_Phone = rs.getString("Agent_Phone");
+				String Agent_Address = rs.getString("Agent_Address");
+				String Agent_District = rs.getString("Agent_District");
 				boolean Agent_Status = rs.getBoolean("Agent_Status");
+				double Agent_Debt = rs.getDouble("Agent_Debt");
+				String Agent_Type = rs.getString("Agent_Type");
+				String Agent_Email = rs.getString("Agent_Email");
 	            
-	            Agent agent = new Agent(Agent_Id, Agent_Name, Agent_Phone, Agent_Address, Agent_District, Agent_Debt, Agent_Type, Agent_Email,Agent_Status);
+	            Agent agent = new Agent(Agent_Id, Agent_Name, Agent_Phone, Agent_Address, Agent_District, Agent_Status, Agent_Debt, Agent_Type, Agent_Email);
 	            kq.add(agent);
 	        }
 	        
@@ -289,6 +293,24 @@ public class DAO_Agent implements Interface<Agent> {
 	    }
 	    return agentDistrict;
 	}
+	
+	public String getAgentEmailById(int agentId) {
+	    String agentEmail = null;
+	    try {
+	        Connection con = JDBCUtil.getConnection();
+	        String sql = "SELECT Agent_Email FROM AGENT WHERE Agent_Id = ?";
+	        PreparedStatement statement = con.prepareStatement(sql);
+	        statement.setInt(1, agentId);
+	        ResultSet rs = statement.executeQuery();
+	        if (rs.next()) {
+	            agentEmail = rs.getString("Agent_Email");
+	        }
+	        JDBCUtil.closeConnection(con);
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    }
+	    return agentEmail;
+	}
 
 	public double getAgentDebtById(int agentId) {
 	    double agentDebt = 0.0;
@@ -308,6 +330,23 @@ public class DAO_Agent implements Interface<Agent> {
 	    return agentDebt;
 	}
 
+	public boolean getAgentStatusById(int agentId) {
+	    boolean agentStatus = true;
+	    try {
+	        Connection con = JDBCUtil.getConnection();
+	        String sql = "SELECT Agent_Status FROM AGENT WHERE Agent_Id = ?";
+	        PreparedStatement statement = con.prepareStatement(sql);
+	        statement.setInt(1, agentId);
+	        ResultSet rs = statement.executeQuery();
+	        if (rs.next()) {
+	            agentStatus = rs.getBoolean("Agent_Status");
+	        }
+	        JDBCUtil.closeConnection(con);
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    }
+	    return agentStatus;
+	}
 
 	
 }

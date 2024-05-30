@@ -103,9 +103,9 @@ public class LoginScreenController implements Initializable {
         				stage.setX(event.getScreenX() - x);
         				stage.setY(event.getScreenY() - y);
         			});
-        			
-        			stage.initStyle(StageStyle.TRANSPARENT);	
+        				
         			stage.setScene(scene);
+        			//stage.setFullScreen(true);
         			stage.show();
     			}
     			else {

@@ -180,9 +180,8 @@
                   <Font size="39.0" />
                </font>
             </Label>
-            <MFXComboBox fx:id="agenttype_maxdebt" layoutX="217.0" layoutY="226.0" maxHeight="36.0" minHeight="36.0" prefHeight="36.0" prefWidth="222.0" AnchorPane.rightAnchor="15.800000000000011" AnchorPane.topAnchor="226.0" />
             <MFXTextField fx:id="agenttype_name" layoutX="217.0" layoutY="172.0" maxHeight="36.0" minHeight="36.0" prefHeight="36.0" prefWidth="222.0" AnchorPane.rightAnchor="15.800000000000011" AnchorPane.topAnchor="172.0" />
-            <MFXButton fx:id="addBtn" buttonType="RAISED" depthLevel="LEVEL1" layoutX="171.0" layoutY="510.0" prefHeight="42.0" prefWidth="130.0" text="Add new " AnchorPane.bottomAnchor="255.19999999999993" AnchorPane.rightAnchor="153.8">
+            <MFXButton fx:id="addBtn" buttonType="RAISED" depthLevel="LEVEL1" layoutX="214.0" layoutY="469.0" prefHeight="42.0" prefWidth="130.0" text="Add new " AnchorPane.bottomAnchor="297.0" AnchorPane.rightAnchor="98.0">
                <font>
                   <Font size="18.0" />
                </font>
@@ -194,7 +193,7 @@
                   </ImageView>
                </graphic>
             </MFXButton>
-            <MFXButton fx:id="editBtn" buttonType="RAISED" depthLevel="LEVEL1" layoutX="50.0" layoutY="510.0" prefHeight="42.0" prefWidth="110.0" text="Edit " AnchorPane.bottomAnchor="255.19999999999993" AnchorPane.rightAnchor="294.79999999999995">
+            <MFXButton fx:id="editBtn" buttonType="RAISED" depthLevel="LEVEL1" layoutX="95.0" layoutY="469.0" prefHeight="42.0" prefWidth="110.0" text="Edit " AnchorPane.bottomAnchor="297.0" AnchorPane.rightAnchor="237.0">
                <font>
                   <Font size="18.0" />
                </font>
@@ -206,24 +205,23 @@
                   </ImageView>
                </graphic>
             </MFXButton>
-            <MFXButton buttonType="RAISED" depthLevel="LEVEL1" layoutX="314.0" layoutY="510.0" prefHeight="42.0" prefWidth="130.0" text="Delete " AnchorPane.bottomAnchor="255.19999999999993" AnchorPane.rightAnchor="10.800000000000011">
-               <font>
-                  <Font size="18.0" />
-               </font>
-               <graphic>
-                  <ImageView fitHeight="21.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../images/delete.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </MFXButton>
             <Label layoutX="164.0" layoutY="91.0" text="ID" AnchorPane.rightAnchor="277.59999999999997" AnchorPane.topAnchor="91.0">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
             <MFXTextField fx:id="agenttype_id" layoutX="194.0" layoutY="89.0" maxHeight="23.0" minHeight="23.0" prefHeight="20.0" prefWidth="57.0" AnchorPane.rightAnchor="176.39999999999998" AnchorPane.topAnchor="89.0" />
+            <MFXTextField fx:id="agenttype_maxdebt" layoutX="204.0" layoutY="226.0" maxHeight="36.0" minHeight="36.0" prefHeight="36.0" prefWidth="222.0" AnchorPane.rightAnchor="16.0" AnchorPane.topAnchor="226.0" />
+            <Label layoutX="12.0" layoutY="281.0" text="Status:" AnchorPane.leftAnchor="12.0" AnchorPane.topAnchor="281.0">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <MFXComboBox fx:id="statusCbb" layoutX="204.0" layoutY="281.0" maxHeight="36.0" minHeight="36.0" prefHeight="36.0" prefWidth="222.0" text="Choose" AnchorPane.rightAnchor="16.0" AnchorPane.topAnchor="281.0">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </MFXComboBox>
          </children>
       </AnchorPane>
    </children>

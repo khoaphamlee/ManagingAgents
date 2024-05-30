@@ -4,18 +4,18 @@ import java.time.LocalDate;
 
 public class SettingScreenTable {
 	private int Unit_Id;
-	private String Items_Name;
 	private String Unit_Name;
+	private String Unit_status;
 	
 	public SettingScreenTable() {
 		super();
 	};
 		
-	public SettingScreenTable(int unit_Id, String items_Name, String unit_Name) {
+	public SettingScreenTable(int unit_Id,String unit_Name, String status ) {
 		super();
 		Unit_Id = unit_Id;
-		Items_Name = items_Name;
 		Unit_Name = unit_Name;
+		Unit_status = status;
 	}
 
 	public void setUnit_Id(int id) {
@@ -27,12 +27,12 @@ public class SettingScreenTable {
 		return Unit_Id;
 	}
 
-	public String getItems_Name() {
-		return Items_Name;
+	public String getUnit_Status() {
+		return Unit_status;
 	}
 
-	public void setItems_Name(String name) {
-		this.Items_Name = name;
+	public void setUnit_status(String Unit_status) {
+		this.Unit_status = Unit_status;
 	}
 	
 	public String getUnit_Name() {

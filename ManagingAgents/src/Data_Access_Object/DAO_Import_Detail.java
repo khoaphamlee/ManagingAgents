@@ -6,7 +6,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import Database.JDBCUtil;
-import models.Agent;
+
 import models.Import_Detail;
 
 public class DAO_Import_Detail implements Interface<Import_Detail> {
@@ -22,14 +22,14 @@ public class DAO_Import_Detail implements Interface<Import_Detail> {
 			
 			Statement st = connect.createStatement();
 			
-			String sql = "INSERT INTO IMPORT_DETAIL(Import_Detail_Id, IdImport, IdUnit, IdItems, Items_Price, Total_Money, Items_Quentity)"
+			String sql = "INSERT INTO IMPORT_DETAIL(Import_Detail_Id, IdImport, IdUnit, IdItems, Items_Price, Total_Money, Items_Quantity)"
 					+ "VALUES (" + t.getImport_Detail_Id() + " , " 
 					+ t.getIdImport() + " , " 
 					+ t.getIdUnit() + " , " 
 					+ t.getIdItems() + " , " 
 					+ t.getItems_Price() + " , " 
 					+ t.getTotal_Money() + " , "
-					+ t.getItems_Quentity() + ")";
+					+ t.getItems_Quantity() + ")";
 			int kq = st.executeUpdate(sql);
 			
 			System.out.println("Bạn đã thực thi");
@@ -58,7 +58,7 @@ public class DAO_Import_Detail implements Interface<Import_Detail> {
 						 ", IdItems= " + t.getIdItems() + "" +
 						 ", Items_Price= " + t.getItems_Price() + "" + 
 						 ", Total_Money= " + t.getTotal_Money() + "" +
-						 ", Items_Quentity= " + t.getItems_Quentity() + "" +
+						 ", Items_Quantity= " + t.getItems_Quantity() + "" +
 						 " WHERE Import_Detail_Id= " + t.getImport_Detail_Id() + "" ;
 			int kq = st.executeUpdate(sql);
 			
@@ -116,9 +116,9 @@ public class DAO_Import_Detail implements Interface<Import_Detail> {
 				int IdItems = rs.getInt("IdItems");
 				double Items_Price = rs.getDouble("Items_Price");
 				double Total_Money = rs.getDouble("Total_Money");
-				int Items_Quentity = rs.getInt("Items_Quentity");
+				int Items_Quantity = rs.getInt("Items_Quantity");
 				
-				Import_Detail Import_detail = new Import_Detail(Import_Detail_Id, IdImport, IdUnit, IdItems, Items_Price, Total_Money, Items_Quentity);
+				Import_Detail Import_detail = new Import_Detail(Import_Detail_Id, IdImport, IdUnit, IdItems, Items_Price, Total_Money, Items_Quantity);
 				kq.add(Import_detail);
 			}
 			
@@ -149,9 +149,9 @@ public class DAO_Import_Detail implements Interface<Import_Detail> {
 				int IdItems = rs.getInt("IdItems");
 				double Items_Price = rs.getDouble("Items_Price");
 				double Total_Money = rs.getDouble("Total_Money");
-				int Items_Quentity = rs.getInt("Items_Quentity");
+				int Items_Quantity = rs.getInt("Items_Quantity");
 				
-				kq = new Import_Detail(Import_Detail_Id, IdImport, IdUnit, IdItems, Items_Price, Total_Money, Items_Quentity);
+				kq = new Import_Detail(Import_Detail_Id, IdImport, IdUnit, IdItems, Items_Price, Total_Money, Items_Quantity);
 			}
 			
 		} catch (Exception e) {
@@ -181,9 +181,9 @@ public class DAO_Import_Detail implements Interface<Import_Detail> {
 				int IdItems = rs.getInt("IdItems");
 				double Items_Price = rs.getDouble("Items_Price");
 				double Total_Money = rs.getDouble("Total_Money");
-				int Items_Quentity = rs.getInt("Items_Quentity");
+				int Items_Quantity = rs.getInt("Items_Quantity");
 	            
-				Import_Detail Import_detail = new Import_Detail(Import_Detail_Id, IdImport, IdUnit, IdItems, Items_Price, Total_Money, Items_Quentity);
+				Import_Detail Import_detail = new Import_Detail(Import_Detail_Id, IdImport, IdUnit, IdItems, Items_Price, Total_Money, Items_Quantity);
 	            kq.add(Import_detail);
 	        }
 	        

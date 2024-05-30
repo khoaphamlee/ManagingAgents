@@ -6,7 +6,6 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import Database.JDBCUtil;
-import models.Agent;
 import models.Debt_Agent_Report_Detail;
 
 public class DAO_Debt_Agent_Report_Detail implements Interface<Debt_Agent_Report_Detail> {

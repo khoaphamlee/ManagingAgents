@@ -32,7 +32,7 @@ import io.github.palexdev.materialfx.controls.MFXTableColumn;
 import io.github.palexdev.materialfx.controls.MFXTableView;
 import io.github.palexdev.materialfx.controls.MFXTextField;
 import io.github.palexdev.materialfx.controls.cell.MFXTableRowCell;
-
+import io.github.palexdev.materialfx.filter.BooleanFilter;
 import io.github.palexdev.materialfx.filter.DoubleFilter;
 import io.github.palexdev.materialfx.filter.IntegerFilter;
 import io.github.palexdev.materialfx.filter.StringFilter;
@@ -79,7 +79,7 @@ public class AgencyScreenController implements Initializable  {
 	private ImageView menuImg ; 
 	
     @FXML
-    private MFXTextField idTf, nameTf, addressTf, phoneTf;
+    private MFXTextField idTf, nameTf, addressTf, phoneTf, emailTf;
     
     @FXML
     private MFXDatePicker dateDp;
@@ -107,8 +107,14 @@ public class AgencyScreenController implements Initializable  {
 	
 	private DAO_District daoDistrict = DAO_District.getInstance();
 	
+	public String convertStatus(boolean status) {
+        return status ? "Active" : "Inactive";
+    }
+	
 public AgencyScreenController() {
 	this.daoAgent = DAO_Agent.getInstance();
+	
+
 }
 
 	
@@ -120,7 +126,7 @@ public void initialize(URL arg0, ResourceBundle arg1) {
 	setupTable();
 	setupTabChange();
     setupComboBoxes();
-    loadFromDatabase();
+    //loadFromDatabase();
         
 }
 private void setupComboBoxes() {
@@ -356,6 +362,7 @@ private void setupComboBoxes() {
 		daoReception.Add(newReception);
     }
 	
+	
 	private void loadFromDatabase() {
 		List<AgencyScreenTable> tableList = new ArrayList<>();
 		
@@ -380,8 +387,15 @@ private void setupComboBoxes() {
 			String addressAgent = daoAgent.getAgentAddressById(idAgentType);
 			String districtAgent = daoAgent.getAgentDistrictById(idAgentType);
 			double debtAgent = daoAgent.getAgentDebtById(idAgentType);
+			boolean statusAgent = daoAgent.getAgentStatusById(idAgent);
+			String emailAgent = daoAgent.getAgentEmailById(idAgent);
+			String stringStatus = "";
+			if (statusAgent) 
+				stringStatus = "Active";
+			else
+				stringStatus = "Inactive";
 			
-			AgencyScreenTable agencyScreenTable = new AgencyScreenTable(idAgent, nameAgent, agentType, phoneAgent, addressAgent, districtAgent, debtAgent, dateReception.toString());
+			AgencyScreenTable agencyScreenTable = new AgencyScreenTable(idAgent, nameAgent, agentType, phoneAgent, addressAgent, districtAgent, debtAgent, dateReception, emailAgent, stringStatus);
 			
 			table.getItems().add(agencyScreenTable);
 		}
@@ -396,7 +410,9 @@ private void setupComboBoxes() {
 		MFXTableColumn<AgencyScreenTable> phoneColumn = new MFXTableColumn<>("Phone number", true, Comparator.comparing(AgencyScreenTable::getAgent_Phone));
 		MFXTableColumn<AgencyScreenTable> adColumn = new MFXTableColumn<>("Acceptance date", true, Comparator.comparing(AgencyScreenTable::getAgent_Date));
 		MFXTableColumn<AgencyScreenTable> addressColumn = new MFXTableColumn<>("Address", true, Comparator.comparing(AgencyScreenTable::getAgent_Address));
-
+		MFXTableColumn<AgencyScreenTable> emailColumn = new MFXTableColumn<>("Email", true, Comparator.comparing(AgencyScreenTable::getAgent_Email));
+		MFXTableColumn<AgencyScreenTable> statusColumn = new MFXTableColumn<>("Status", true, Comparator.comparing(AgencyScreenTable::getAgent_Status));
+		
 		idColumn.setRowCellFactory(agency -> new MFXTableRowCell<>(AgencyScreenTable::getAgent_Id));
 		nameColumn.setRowCellFactory(agency-> new MFXTableRowCell<>(AgencyScreenTable::getAgent_Name));
 		typeColumn.setRowCellFactory(agency -> new MFXTableRowCell<>(AgencyScreenTable::getAgent_Type));
@@ -405,27 +421,22 @@ private void setupComboBoxes() {
 		phoneColumn.setRowCellFactory(agency -> new MFXTableRowCell<>(AgencyScreenTable::getAgent_Phone));
 		adColumn.setRowCellFactory(agency -> new MFXTableRowCell<>(AgencyScreenTable::getAgent_Date));
 		addressColumn.setRowCellFactory(agency -> new MFXTableRowCell<>(AgencyScreenTable::getAgent_Address));
+		emailColumn.setRowCellFactory(agency -> new MFXTableRowCell<>(AgencyScreenTable::getAgent_Email));
+		statusColumn.setRowCellFactory(agency -> new MFXTableRowCell<>(AgencyScreenTable::getAgent_Status));
 		
+		table.getTableColumns().addAll(idColumn,nameColumn,typeColumn,adColumn,addressColumn,districtColumn,phoneColumn,emailColumn,debtColumn,statusColumn);
+		table.autosizeColumns();
 
-		table.getTableColumns().addAll(idColumn,nameColumn,typeColumn,adColumn,addressColumn,districtColumn,phoneColumn,debtColumn);
-		table.getTableColumns().get(0).setPrefWidth(50);
-		table.getTableColumns().get(1).setPrefWidth(200);
-		table.getTableColumns().get(2).setPrefWidth(100);
-		table.getTableColumns().get(3).setPrefWidth(200);
-		table.getTableColumns().get(4).setPrefWidth(200);
-		table.getTableColumns().get(5).setPrefWidth(200);
-		table.getTableColumns().get(6).setPrefWidth(200);
-		table.getTableColumns().get(7).setPrefWidth(200);
 		table.getFilters().addAll(
 				new IntegerFilter<>("ID", AgencyScreenTable::getAgent_Id),
 				new StringFilter<>("Name", AgencyScreenTable::getAgent_Name),
 				new StringFilter<>("Type", AgencyScreenTable::getAgent_Type),
-				new StringFilter<>("Acceptance date", AgencyScreenTable::getAgent_Date),
 				new StringFilter<>("Address", AgencyScreenTable::getAgent_Address),
 				new StringFilter<>("District", AgencyScreenTable::getAgent_District),
 				new StringFilter<>("Phone number", AgencyScreenTable::getAgent_Phone),
-				new DoubleFilter<>("Debt", AgencyScreenTable::getAgent_Debt)
-				
+				new StringFilter<>("Email", AgencyScreenTable::getAgent_Email),
+				new DoubleFilter<>("Debt", AgencyScreenTable::getAgent_Debt),
+				new StringFilter<>("Status", AgencyScreenTable::getAgent_Status)
 		);
 		
 		
@@ -441,7 +452,7 @@ private void setupComboBoxes() {
 	        }
 	    });
 	}
-	
+
 	@FXML
     private void handleAddButtonAction(ActionEvent event) {
 		Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
@@ -459,31 +470,20 @@ private void setupComboBoxes() {
 		            String address = addressTf.getText();
 		            String phone = phoneTf.getText();
 		            String district = districtCbb.getValue();
-		            String date = dateDp.getText();
+		            LocalDate lcDate = dateDp.getValue();
+		            Date date = Date.valueOf(lcDate);
 		            double debt = 0.0;
+		            String email = emailTf.getText();
+		            boolean status = true;
 		            
 		            int typeId = daoAgentType.getAgentTypeIdByName(type);
-		            String currentDateFormat = "MMMM d, yyyy";
-		            String newDateFormat = "yyyy-MM-dd";
-		            String formattedDate = null;
-
-		            try {
-		                SimpleDateFormat currentFormat = new SimpleDateFormat(currentDateFormat);
-
-		                java.util.Date utilDate = currentFormat.parse(date);
-
-		                SimpleDateFormat newFormat = new SimpleDateFormat(newDateFormat);
-
-		                formattedDate = newFormat.format(utilDate);
-
-		            } catch (Exception e) {
-		                e.printStackTrace();
-		            }
 		            
-		            Agent newAgent = new Agent(id, name, phone, address, district, debt);
-		            AgencyScreenTable dataTable = new AgencyScreenTable(id, name, type, phone, address, district, debt, date);
-		            Reception newReception = new Reception(id, id, typeId, Date.valueOf(formattedDate));
-		            System.out.println(id + "" + typeId + "" + formattedDate);
+
+		            String stringStatus = convertStatus(status);
+		            Agent newAgent = new Agent(id, name, phone, address, district, debt, type, email);
+		            AgencyScreenTable dataTable = new AgencyScreenTable(id, name, type, phone, address, district, debt, date, email, stringStatus);
+		            Reception newReception = new Reception(id, id, typeId, date);
+		            System.out.println(id + "" + typeId + "" + date);
 		            table.getItems().add(dataTable);
 		            
 		            dataList.add(dataTable);
@@ -501,9 +501,8 @@ private void setupComboBoxes() {
 		        addressTf.clear();
 		        districtCbb.getSelectionModel().clearSelection();
 		        dateDp.clear();
-		        
+		        emailTf.clear();
     }}
-	
 	
 }
 

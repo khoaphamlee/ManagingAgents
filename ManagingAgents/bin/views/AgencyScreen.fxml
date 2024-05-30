@@ -51,7 +51,7 @@
                   <Font size="24.0" />
                </font>
             </Label>
-            <Label layoutX="14.0" layoutY="437.0" prefHeight="35.0" prefWidth="190.0" text="Reception date:" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="437.0">
+            <Label layoutX="14.0" layoutY="510.0" prefHeight="35.0" prefWidth="190.0" text="Reception date:" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="510.0">
                <font>
                   <Font size="24.0" />
                </font>
@@ -64,12 +64,13 @@
             <MFXComboBox fx:id="districtCbb" layoutX="257.0" layoutY="322.0" maxHeight="36.0" minHeight="36.0" prefHeight="36.0" prefWidth="222.0" text="Choose" AnchorPane.rightAnchor="16.0" AnchorPane.topAnchor="372.0">
                <font>
                   <Font size="20.0" />
-               </font></MFXComboBox>
+               </font>
+            </MFXComboBox>
             <MFXTextField fx:id="nameTf" layoutX="257.0" layoutY="120.0" maxHeight="36.0" minHeight="36.0" prefHeight="36.0" prefWidth="222.0" AnchorPane.rightAnchor="16.0" AnchorPane.topAnchor="129.0" />
             <MFXTextField fx:id="addressTf" layoutX="257.0" layoutY="224.0" maxHeight="36.0" minHeight="36.0" prefHeight="36.0" prefWidth="222.0" AnchorPane.rightAnchor="16.0" AnchorPane.topAnchor="254.0" />
             <MFXTextField fx:id="phoneTf" layoutX="257.0" layoutY="274.0" maxHeight="36.0" minHeight="36.0" prefHeight="36.0" prefWidth="222.0" AnchorPane.rightAnchor="16.0" AnchorPane.topAnchor="314.0" />
-            <MFXDatePicker fx:id="dateDp" layoutX="217.0" layoutY="436.0" maxHeight="36.0" minHeight="36.0" prefHeight="36.0" prefWidth="222.0" AnchorPane.rightAnchor="15.800000000000011" AnchorPane.topAnchor="436.0" />
-            <MFXButton fx:id="addBtn" buttonType="RAISED" depthLevel="LEVEL1" layoutX="153.0" layoutY="607.0" onAction="#handleAddButtonAction" prefHeight="42.0" prefWidth="130.0" text="Add new " AnchorPane.bottomAnchor="193.6" AnchorPane.rightAnchor="153.40000000000003">
+            <MFXDatePicker fx:id="dateDp" layoutX="217.0" layoutY="510.0" maxHeight="36.0" minHeight="36.0" prefHeight="36.0" prefWidth="222.0" AnchorPane.rightAnchor="16.0" AnchorPane.topAnchor="510.0" />
+            <MFXButton fx:id="addBtn" buttonType="RAISED" depthLevel="LEVEL1" layoutX="172.0" layoutY="652.0" onAction="#handleAddButtonAction" prefHeight="42.0" prefWidth="130.0" text="Add new " AnchorPane.bottomAnchor="150.0" AnchorPane.rightAnchor="153.0">
                <font>
                   <Font size="18.0" />
                </font>
@@ -81,7 +82,7 @@
                   </ImageView>
                </graphic>
             </MFXButton>
-            <MFXButton fx:id="editBtn" buttonType="RAISED" depthLevel="LEVEL1" layoutX="30.0" layoutY="607.2" prefHeight="42.0" prefWidth="110.0" text="Edit " AnchorPane.bottomAnchor="193.99999999999986" AnchorPane.rightAnchor="297.0">
+            <MFXButton fx:id="editBtn" buttonType="RAISED" depthLevel="LEVEL1" layoutX="36.0" layoutY="652.0" prefHeight="42.0" prefWidth="120.0" text="Edit " AnchorPane.bottomAnchor="150.0" AnchorPane.rightAnchor="299.0">
                <font>
                   <Font size="18.0" />
                </font>
@@ -93,14 +94,14 @@
                   </ImageView>
                </graphic>
             </MFXButton>
-            <MFXButton fx:id="deleteBtn" buttonType="RAISED" depthLevel="LEVEL1" layoutX="294.0" layoutY="607.0" prefHeight="42.0" prefWidth="130.0" text="Delete " AnchorPane.bottomAnchor="194.1999999999999" AnchorPane.rightAnchor="12.400000000000034">
+            <MFXButton fx:id="deleteBtn" buttonType="RAISED" depthLevel="LEVEL1" layoutX="263.0" layoutY="733.0" prefHeight="42.0" prefWidth="130.0" text="Collect" AnchorPane.bottomAnchor="69.0" AnchorPane.rightAnchor="62.0">
                <font>
                   <Font size="18.0" />
                </font>
                <graphic>
                   <ImageView fitHeight="21.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../images/delete.png" />
+                        <Image url="@../images/dollar.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -116,6 +117,34 @@
                   <Font size="20.0" />
                </font>
             </MFXComboBox>
+            <MFXTextField fx:id="emailTf" layoutX="217.0" layoutY="437.0" maxHeight="36.0" minHeight="36.0" prefHeight="36.0" prefWidth="222.0" />
+            <Label layoutX="14.0" layoutY="437.0" text="Email:">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Label layoutX="1.0" layoutY="575.0" prefHeight="35.0" prefWidth="190.0" text="Status:" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="575.0">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <MFXComboBox fx:id="districtCbb1" layoutX="217.0" layoutY="575.0" maxHeight="36.0" minHeight="36.0" prefHeight="36.0" prefWidth="222.0" text="Choose" AnchorPane.rightAnchor="16.0" AnchorPane.topAnchor="575.0">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </MFXComboBox>
+            <MFXButton fx:id="editBtn1" buttonType="RAISED" depthLevel="LEVEL1" layoutX="36.0" layoutY="733.0" prefHeight="42.0" prefWidth="213.0" text="Transaction history" AnchorPane.bottomAnchor="69.0" AnchorPane.rightAnchor="206.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="21.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/bill.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </MFXButton>
          </children>
       </AnchorPane>
       <AnchorPane prefHeight="844.0" prefWidth="728.0" style="-fx-background-color: #FFFBD1;" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="500.0" AnchorPane.topAnchor="120.0">

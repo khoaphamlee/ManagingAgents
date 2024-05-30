@@ -7,7 +7,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import Database.JDBCUtil;
-import models.Agent;
+
 import models.Import;
 
 public class DAO_Import implements Interface<Import>{

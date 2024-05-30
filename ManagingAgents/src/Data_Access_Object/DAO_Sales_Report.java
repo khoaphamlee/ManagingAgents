@@ -7,7 +7,6 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import Database.JDBCUtil;
-import models.Agent;
 import models.Sales_Report;
 
 public class DAO_Sales_Report implements Interface<Sales_Report>{

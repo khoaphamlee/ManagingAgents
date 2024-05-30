@@ -16,8 +16,10 @@ import java.util.stream.Stream;
 import Data_Access_Object.DAO_Agent;
 import Data_Access_Object.DAO_District;
 import Data_Access_Object.DAO_Fixed_Values;
+import datatable.DistrictScreenTable;
 import io.github.palexdev.materialfx.beans.BiPredicateBean;
 import io.github.palexdev.materialfx.controls.MFXButton;
+import io.github.palexdev.materialfx.controls.MFXComboBox;
 import io.github.palexdev.materialfx.controls.MFXFilterPane;
 import io.github.palexdev.materialfx.controls.MFXTableColumn;
 import io.github.palexdev.materialfx.controls.MFXTableView;
@@ -71,7 +73,7 @@ public class SettingScreenController2 implements Initializable  {
 	private MFXButton addBtn,editBtn;
 	
 	@FXML
-	private MFXTableView<District> table;
+	private MFXTableView<DistrictScreenTable> table;
 	Dialog<ButtonType> dialog = new Dialog<>();
 	
 	@FXML
@@ -83,12 +85,22 @@ public class SettingScreenController2 implements Initializable  {
     @FXML
     private MFXTextField maxAgency, district_Id, district_Name;
     
+    @FXML
+    private MFXComboBox<String> statusCbb;
+    
     private ObservableList<District> districtList;
     
     private DAO_District daoDistrict;
     
     private DAO_Fixed_Values daoFixedValue;
-;
+    
+    private String convertIntToStatusString(int status) {
+        return status == 1 ? "Active" : "Inactive";
+    }
+
+    private int convertStatusStringToInt(String status) {
+        return "Active".equalsIgnoreCase(status) ? 1 : 0;
+    }
 
 	
 @SuppressWarnings("unchecked")
@@ -356,33 +368,48 @@ public SettingScreenController2() {
     }
 	
 	private void loadDataFromDatabase() {
-	    //table.getItems().clear();
+	    table.getItems().clear();
 
 	    List<District> districts = daoDistrict.selectAll();
 
-	    table.getItems().addAll(districts);
+	    for (District district : districts) {
+	        String stringStatus = convertIntToStatusString(district.getDistrict_Status());
+
+	        DistrictScreenTable districtTable = new DistrictScreenTable(
+	                district.getDistrict_Id(),
+	                district.getDistrict_Name(),
+	                stringStatus
+	        );
+
+	        table.getItems().add(districtTable);
+	    }
 	}
+
+
 	public void setupTable() {
-		MFXTableColumn<District> idColumn = new MFXTableColumn<>("ID");
-		MFXTableColumn<District> nameColumn = new MFXTableColumn<>("Name");
-		//MFXTableColumn<District> maxAgencyColumn = new MFXTableColumn<>("Maximum agency");
+		MFXTableColumn<DistrictScreenTable> idColumn = new MFXTableColumn<>("ID");
+		MFXTableColumn<DistrictScreenTable> nameColumn = new MFXTableColumn<>("Name");
+		MFXTableColumn<DistrictScreenTable> statusColumn = new MFXTableColumn<>("Status");
 		
-		idColumn.setRowCellFactory(item -> new MFXTableRowCell<>(District::getDistrict_Id));
-	    nameColumn.setRowCellFactory(item -> new MFXTableRowCell<>(District::getDistrict_Name));
-	    //maxAgencyColumn.setRowCellFactory(item -> new MFXTableRowCell<>(District::getMaximum_Agent));
+		idColumn.setRowCellFactory(item -> new MFXTableRowCell<>(DistrictScreenTable::getDistrict_Id));
+	    nameColumn.setRowCellFactory(item -> new MFXTableRowCell<>(DistrictScreenTable::getDistrict_Name));
+	    statusColumn.setRowCellFactory(item -> new MFXTableRowCell<>(DistrictScreenTable::getDistrict_Status));
 	    
-	    table.getTableColumns().addAll(idColumn, nameColumn);
+	    table.getTableColumns().addAll(idColumn, nameColumn, statusColumn);
 	    
 	    idColumn.setPrefWidth(100);
 	    nameColumn.setPrefWidth(200);
-	    //maxAgencyColumn.setPrefWidth(200);
+	    statusColumn.setPrefWidth(200);
 	    
 	    table.getFilters().addAll(
-		        new IntegerFilter<>("ID", District::getDistrict_Id),
-		        new StringFilter<>("Name", District::getDistrict_Name)
-		        //new IntegerFilter<>("Maximum agency", District::getMaximum_Agent)
+		        new IntegerFilter<>("ID", DistrictScreenTable::getDistrict_Id),
+		        new StringFilter<>("Name", DistrictScreenTable::getDistrict_Name),
+		        new StringFilter<>("Status", DistrictScreenTable::getDistrict_Status)
 		);
 	    
+	    statusCbb.getItems().addAll("Active", "Inactive");
+        statusCbb.setPromptText("Select Status");
+        
 	    addBtn.setOnAction(event->handleAddButtonAction(event));
 	    
 	    setupScreen();
@@ -404,36 +431,35 @@ public SettingScreenController2() {
 	}
 	
 	@FXML
-    private void handleAddButtonAction(ActionEvent event) {
-		Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+	private void handleAddButtonAction(ActionEvent event) {
+	    Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
 	    alert.setTitle("Confirmation");
 	    alert.setHeaderText(null);
 	    alert.setContentText("Are you sure you want to add?");
 	    
-		Optional<ButtonType> result = alert.showAndWait();
-		    if (result.isPresent() && result.get() == ButtonType.OK) {
-		        try {
-	
-		            int id = Integer.parseInt(district_Id.getText());
-		            String name = district_Name.getText();
-		            int maxx = Integer.parseInt(maxAgency.getText());
-	
-		            District newDistrict = new District(id, name, maxx);
-		            
-		            District newDistrict2 = new District(id, name);
-		            table.getItems().add(newDistrict2);
-	
-		            addToDatabase(newDistrict);
-		        } catch (NumberFormatException e) {
-		            e.printStackTrace();
-	
-		       }
-		        
-		        district_Id.setText(String.valueOf(generatedId()));
-		        district_Name.clear();
-		        maxAgency.clear();
-		        
-    }
+	    Optional<ButtonType> result = alert.showAndWait();
+	    if (result.isPresent() && result.get() == ButtonType.OK) {
+	        try {
+	            int id = Integer.parseInt(district_Id.getText());
+	            String name = district_Name.getText();
+	            String stringStatus = statusCbb.getValue();
+	            int maxx = Integer.parseInt(maxAgency.getText());
+	            int status = convertStatusStringToInt(stringStatus);
+
+	            District newDistrict = new District(id, name, status);
+	            
+	            DistrictScreenTable newDistrictScreenTable = new DistrictScreenTable(id, name, stringStatus);
+	            
+	            table.getItems().add(newDistrictScreenTable);
+
+	            addToDatabase(newDistrict);
+	        } catch (NumberFormatException e) {
+	            e.printStackTrace();
+	        }
+	        district_Id.setText(String.valueOf(generatedId()));
+	        district_Name.clear();
+	        statusCbb.getSelectionModel().clearSelection();
+	    }
 	}
 }
 

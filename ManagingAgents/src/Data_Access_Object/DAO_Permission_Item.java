@@ -5,10 +5,10 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
-import com.mysql.cj.xdevapi.Result;
+
 
 import Database.JDBCUtil;
-import TestDatabase.TestJDCBC;
+
 import models.Permission_Item;
 
 public class DAO_Permission_Item implements Interface<Permission_Item> {

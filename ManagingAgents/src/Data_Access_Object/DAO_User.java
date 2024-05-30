@@ -5,10 +5,8 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
-import com.mysql.cj.xdevapi.Result;
-
 import Database.JDBCUtil;
-import TestDatabase.TestJDCBC;
+
 import models.User;
 
 public class DAO_User implements Interface<User> {
@@ -23,11 +21,12 @@ public class DAO_User implements Interface<User> {
 			
 			Statement st = connect.createStatement();
 			
-			String sql = "INSERT INTO USER(User_Id, IdRole, UserName, Password)"
+			String sql = "INSERT INTO USER(User_Id, IdRole, UserName, Password, User_Status, User_Status)"
 					+ "VALUES (" + t.getUser_Id() + " , " 
 					+ t.getIdRole() + " , '" 
 					+ t.getUserName() + "' , '" 
-					+ t.getPassword() + "')";
+					+ t.getPassword() + "' , '" 
+					+ t.getUser_Status() + "')";
 			int kq = st.executeUpdate(sql);
 			
 			System.out.println("Bạn đã thực thi");
@@ -54,6 +53,7 @@ public class DAO_User implements Interface<User> {
 						 " IdRole= " + t.getIdRole() + "" +
 						 ", UserName= '" + t.getUserName() + "'" +
 						 ", Password= '" + t.getPassword() + "'" +
+						 ", User_Status= '" + t.getUser_Status() + "'" +
 						 " WHERE User_Id= " + t.getUser_Id() + "\'" ;
 			int kq = st.executeUpdate(sql);
 			
@@ -109,8 +109,9 @@ public class DAO_User implements Interface<User> {
 				int IdRole = rs.getInt("IdRole");
 				String UserName = rs.getString("UserName");
 				String Password = rs.getString("Password");
+				boolean User_Status = rs.getBoolean("User_Status");
 				
-				User user = new User(User_Id, IdRole, UserName, Password);
+				User user = new User(User_Id, IdRole, UserName, Password, User_Status);
 				kq.add(user);
 			}
 			
@@ -139,10 +140,9 @@ public class DAO_User implements Interface<User> {
 				int IdRole = rs.getInt("IdRole");
 				String UserName = rs.getString("UserName");
 				String Password = rs.getString("Password");
+				boolean User_Status = rs.getBoolean("User_Status");
 				
-				
-				
-				kq = new User(User_Id, IdRole, UserName, Password);
+				kq = new User(User_Id, IdRole, UserName, Password, User_Status);
 			}
 			
 		} catch (Exception e) {
@@ -166,14 +166,13 @@ public class DAO_User implements Interface<User> {
 	        ResultSet rs = st.executeQuery(sql);
 	        
 	        while (rs.next()) {
-	            int User_Id = rs.getInt("User_Id");
-	            int IdRole = rs.getInt("IdRole");
-	            String UserName = rs.getString("UserName");
-	            String Password = rs.getString("Password");
+	        	int User_Id = rs.getInt("User_Id");
+				int IdRole = rs.getInt("IdRole");
+				String UserName = rs.getString("UserName");
+				String Password = rs.getString("Password");
+				boolean User_Status = rs.getBoolean("User_Status");
 	            
-	            
-	            
-	            User user = new User(User_Id, IdRole, UserName, Password);
+	            User user = new User(User_Id, IdRole, UserName, Password, User_Status);
 	            kq.add(user);
 	        }
 	        

@@ -1,5 +1,6 @@
 package datatable;
 
+import java.sql.Date;
 import java.time.LocalDate;
 
 public class AgencyScreenTable {
@@ -10,14 +11,16 @@ public class AgencyScreenTable {
 	private String Agent_Address;
 	private String Agent_District;
 	private double Agent_Debt;
-	private String Agent_Date;
+	private Date Agent_Date;
+	private String Agent_Email;
+	private String Agent_Status;
 	
 	public AgencyScreenTable() {
 		super();
 	};
 		
 	public AgencyScreenTable(int agent_Id, String agent_Name,String Agent_type, String agent_Phone, String agent_Address, String agent_District,
-			double agent_Debt, String agent_Date) {
+			double agent_Debt, Date agent_Date, String agent_Email, String agent_Status) {
 		super();
 		Agent_Id = agent_Id;
 		Agent_Name = agent_Name;
@@ -27,6 +30,8 @@ public class AgencyScreenTable {
 		Agent_District = agent_District;
 		Agent_Debt = agent_Debt;
 		Agent_Date = agent_Date;
+		Agent_Email = agent_Email;
+		Agent_Status = agent_Status;
 	}
 
 	public void setAgent_Id(int id) {
@@ -86,19 +91,27 @@ public class AgencyScreenTable {
 		Agent_Debt = agent_Debt;
 	}
 	
-	/*public int getAgentType_Id() {
-		return AgentType_Id;
+	public String getAgent_Email() {
+		return Agent_Email;
 	}
 
-	public void setAgentType_Id(int agentType_Id) {
-		AgentType_Id = agentType_Id;
-	}*/
+	public void setAgent_Email(String agent_Email) {
+		Agent_Email = agent_Email;
+	}
 	
-	public void setAgentType_Date(String agent_Date) {
+	public String getAgent_Status() {
+		return Agent_Status;
+	}
+
+	public void setAgent_Status(String agent_Status) {
+		Agent_Status = agent_Status;
+	}
+
+	public void setAgentType_Date(Date agent_Date) {
 		Agent_Date = agent_Date;
 	}
 	
-	public String getAgent_Date() {
+	public Date getAgent_Date() {
 		return Agent_Date;
 	}
 	

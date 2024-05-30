@@ -5,10 +5,8 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
-import com.mysql.cj.xdevapi.Result;
-
 import Database.JDBCUtil;
-import TestDatabase.TestJDCBC;
+
 import models.RoleDetail;
 
 public class DAO_RoleDetail implements Interface<RoleDetail> {

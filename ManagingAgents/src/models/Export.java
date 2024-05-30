@@ -4,7 +4,7 @@ import java.sql.Date;
 
 public class Export {
 	private int Export_Id;
-	private int IdAgent;
+	private int Id_Agent;
 	private int Id_User;
 	private int Id_Receipt;
 	private Date Export_Date;
@@ -18,7 +18,7 @@ public class Export {
 			double payAmount, double remaining) {
 		super();
 		Export_Id = export_Id;
-		IdAgent = idAgent;
+		Id_Agent = idAgent;
 		Id_User = id_User;
 		Id_Receipt = id_Receipt;
 		Export_Date = export_Date;
@@ -32,11 +32,11 @@ public class Export {
 	public void setExport_Id(int export_Id) {
 		Export_Id = export_Id;
 	}
-	public int getIdAgent() {
-		return IdAgent;
+	public int getId_Agent() {
+		return Id_Agent;
 	}
-	public void setIdAgent(int idAgent) {
-		IdAgent = idAgent;
+	public void setId_Agent(int idAgent) {
+		Id_Agent = idAgent;
 	}
 	public int getId_User() {
 		return Id_User;
@@ -76,7 +76,7 @@ public class Export {
 	}
 	@Override
 	public String toString() {
-		return "Export [Export_Id=" + Export_Id + ", IdAgent=" + IdAgent + ", Id_User=" + Id_User + ", Export_Date="
+		return "Export [Export_Id=" + Export_Id + ", Id_Agent=" + Id_Agent + ", Id_User=" + Id_User + ", Export_Date="
 				+ Export_Date + ", Export_TotalMoney=" + Export_TotalMoney + ", PayAmount=" + PayAmount + "]";
 	}
 	

@@ -6,7 +6,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import Database.JDBCUtil;
-import models.Agent;
+
 import models.Sales_Report_Detail;
 
 public class DAO_Sales_Report_Detail implements Interface<Sales_Report_Detail> {
@@ -22,10 +22,10 @@ public class DAO_Sales_Report_Detail implements Interface<Sales_Report_Detail> {
 			
 			Statement st = connect.createStatement();
 			
-			String sql = "INSERT INTO SALES_REPORT_DETAIL(SalesReportDetail_Id, IdSalesReport, IdAgentType, AmountExport, TotalMoney, Rate)"
+			String sql = "INSERT INTO SALES_REPORT_DETAIL(SalesReportDetail_Id, IdSalesReport, IdAgent, AmountExport, TotalMoney, Rate)"
 					+ "VALUES (" + t.getSalesReportDetail_Id() + " , " 
 					+ t.getIdSalesReport() + " , " 
-					+ t.getIdAgentType() + " , " 
+					+ t.getIdAgent() + " , " 
 					+ t.getAmountExport() + " , " 
 					+ t.getTotalMoney() + " , " 
 					+ t.getRate()+")";
@@ -53,7 +53,7 @@ public class DAO_Sales_Report_Detail implements Interface<Sales_Report_Detail> {
 			String sql = "UPDATE SALES_REPORT_DETAIL "+
 						 " SET "+
 						 " IdSalesReport= " + t.getIdSalesReport() + "" +
-						 ", IdAgentType= " + t.getIdAgentType() + "" +
+						 ", IdAgent= " + t.getIdAgent() + "" +
 						 ", AmountExport= " + t.getAmountExport() + "" +
 						 ", TotalMoney= " + t.getTotalMoney() + "" + 
 						 ", Rate= " + t.getRate() + "" +
@@ -110,12 +110,12 @@ public class DAO_Sales_Report_Detail implements Interface<Sales_Report_Detail> {
 			while (rs.next()) {
 				int SalesReportDetail_Id = rs.getInt("SalesReportDetail_Id");
 				int IdSalesReport = rs.getInt("IdSalesReport");
-				int IdAgentType = rs.getInt("IdAgentType");
+				int IdAgent = rs.getInt("IdAgent");
 				int AmountExport = rs.getInt("AmountExport");
 				double TotalMoney = rs.getDouble("TotalMoney");
 				float Rate = rs.getFloat("Rate");
 				
-				Sales_Report_Detail sale_report_detail = new Sales_Report_Detail(SalesReportDetail_Id, IdSalesReport, IdAgentType, AmountExport, TotalMoney, Rate);
+				Sales_Report_Detail sale_report_detail = new Sales_Report_Detail(SalesReportDetail_Id, IdSalesReport, IdAgent, AmountExport, TotalMoney, Rate);
 				kq.add(sale_report_detail);
 			}
 			
@@ -142,12 +142,12 @@ public class DAO_Sales_Report_Detail implements Interface<Sales_Report_Detail> {
 			while (rs.next()) {
 				int SalesReportDetail_Id = rs.getInt("SalesReportDetail_Id");
 				int IdSalesReport = rs.getInt("IdSalesReport");
-				int IdAgentType = rs.getInt("IdAgentType");
+				int IdAgent = rs.getInt("IdAgent");
 				int AmountExport = rs.getInt("AmountExport");
 				double TotalMoney = rs.getDouble("TotalMoney");
 				float Rate = rs.getFloat("Rate");
 				
-				kq = new Sales_Report_Detail(SalesReportDetail_Id, IdSalesReport, IdAgentType, AmountExport, TotalMoney, Rate);
+				kq = new Sales_Report_Detail(SalesReportDetail_Id, IdSalesReport, IdAgent, AmountExport, TotalMoney, Rate);
 			}
 			
 		} catch (Exception e) {
@@ -173,12 +173,12 @@ public class DAO_Sales_Report_Detail implements Interface<Sales_Report_Detail> {
 	        while (rs.next()) {
 	        	int SalesReportDetail_Id = rs.getInt("SalesReportDetail_Id");
 				int IdSalesReport = rs.getInt("IdSalesReport");
-				int IdAgentType = rs.getInt("IdAgentType");
+				int IdAgent = rs.getInt("IdAgent");
 				int AmountExport = rs.getInt("AmountExport");
 				double TotalMoney = rs.getDouble("TotalMoney");
 				float Rate = rs.getFloat("Rate");
 	            
-				Sales_Report_Detail sale_report_detail = new Sales_Report_Detail(SalesReportDetail_Id, IdSalesReport, IdAgentType, AmountExport, TotalMoney, Rate);
+				Sales_Report_Detail sale_report_detail = new Sales_Report_Detail(SalesReportDetail_Id, IdSalesReport, IdAgent, AmountExport, TotalMoney, Rate);
 	            kq.add(sale_report_detail);
 	        }
 	        

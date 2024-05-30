@@ -3,13 +3,13 @@ package models;
 public class Unit {
 	private int Unit_Id;
 	private String Unit_Name;
-	private boolean Unit_Status;
+	private int Unit_Status;
 	
 	public Unit() {
 		super();
 	}
 	
-	public Unit(int unit_Id, String unit_Name, boolean unit_Status) {
+	public Unit(int unit_Id, String unit_Name, int unit_Status) {
 		super();
 		Unit_Id = unit_Id;
 		Unit_Name = unit_Name;
@@ -20,7 +20,7 @@ public class Unit {
 		super();
 		Unit_Id = unit_Id;
 		Unit_Name = unit_Name;
-		Unit_Status = true;
+		Unit_Status = 1;
 	}
 	
 	public int getUnit_Id() {
@@ -35,10 +35,10 @@ public class Unit {
 	public void setUnit_Name(String unit_Name) {
 		Unit_Name = unit_Name;
 	}
-	public boolean getUnit_Status() {
+	public int getUnit_Status() {
 		return Unit_Status;
 	}
-	public void setUnit_Status(boolean unit_Status) {
+	public void setUnit_Status(int unit_Status) {
 		Unit_Status = unit_Status;
 	}
 

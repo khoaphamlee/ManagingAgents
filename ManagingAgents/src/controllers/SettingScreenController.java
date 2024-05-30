@@ -15,6 +15,7 @@ import java.util.stream.Stream;
 
 import Data_Access_Object.DAO_Agent_Type;
 import Data_Access_Object.DAO_District;
+import datatable.AgentTypeScreenTable;
 import io.github.palexdev.materialfx.beans.BiPredicateBean;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import io.github.palexdev.materialfx.controls.MFXComboBox;
@@ -72,7 +73,7 @@ public class SettingScreenController implements Initializable  {
 	private MFXButton addBtn,editBtn;
 	
 	@FXML
-	private MFXTableView<Agent_Type> table;
+	private MFXTableView<AgentTypeScreenTable> table;
 	Dialog<ButtonType> dialog = new Dialog<>();
 	
 	@FXML
@@ -85,13 +86,24 @@ public class SettingScreenController implements Initializable  {
     private MFXTextField agenttype_id, agenttype_name;
 	
     @FXML
-    private MFXComboBox<Long> agenttype_maxdebt;
+    private MFXTextField agenttype_maxdebt;
+    
+    @FXML
+    private MFXComboBox<String> statusCbb;
 	
 	private boolean noAction;
 	
 	private ObservableList<Agent_Type> agentTypeList;
     
     private DAO_Agent_Type daoAgentType;
+    
+    private String convertIntToStatusString(int status) {
+        return status == 1 ? "Active" : "Inactive";
+    }
+
+    private int convertStatusStringToInt(String status) {
+        return "Active".equalsIgnoreCase(status) ? 1 : 0;
+    }
 ;
 
 public SettingScreenController() {
@@ -111,20 +123,10 @@ public void initialize(URL arg0, ResourceBundle arg1) {
 	setupTable();
 	loadDataFromDatabase();
 	setupTabChange ();
-    setupComboBoxes();
     
         
     }
 
-	private void setupComboBoxes() {
-	    ObservableList<Long> maxdebt = FXCollections.observableArrayList(
-	            10000000L,
-	            5000000L
-	    );
-	    
-	    agenttype_maxdebt.setItems(maxdebt);
-	}
-	
 	private void setupTabChange() {
 		homepageBtn.setOnAction(event -> {
 			window = (Stage)menuImg.getScene().getWindow();
@@ -295,18 +297,8 @@ public void initialize(URL arg0, ResourceBundle arg1) {
 		
 		agenttype_id.setText(String.valueOf(generatedId()));
 	    agenttype_id.setEditable(false);
-
-
-		
-		
-		
-		
-		
-		
-		
 		
 		darkPane.setVisible(false);
-
 
 	    javafx.animation.FadeTransition fadeTransition=new javafx.animation.FadeTransition(Duration.seconds(0.39),darkPane);
 	    fadeTransition.setFromValue(1);
@@ -317,8 +309,6 @@ public void initialize(URL arg0, ResourceBundle arg1) {
 	    translateTransition.setByX(-600);
 	    translateTransition.play();
 
-	   
-	    
 	    canChange = true;
 	    menuPane.setOnMouseEntered(event -> {
 	    	timeChange += 1;
@@ -330,23 +320,15 @@ public void initialize(URL arg0, ResourceBundle arg1) {
 	        //fadeTransition1.setFromValue(0);
 	        //fadeTransition1.setToValue(0.1);
 	        fadeTransition1.play();
-	        
-	        
 
 	        javafx.animation.TranslateTransition translateTransition1=new javafx.animation.TranslateTransition(Duration.seconds(0.39),detailMenuPane);
 	        translateTransition1.setByX(+600);
 	        translateTransition1.setOnFinished(event1 -> {
 	            canChange = false;
 	            
-	            
 	        });
 	        translateTransition1.play();
 	        
-	        
-	        
-	        
-	        
-	       
 	    	}
 	        
 	    });
@@ -363,7 +345,6 @@ public void initialize(URL arg0, ResourceBundle arg1) {
 	        	darkPane.setVisible(false);
 	        });
 
-
 	        javafx.animation.TranslateTransition translateTransition1=new javafx.animation.TranslateTransition(Duration.seconds(0.39),detailMenuPane);
 	        translateTransition1.setByX(-600);
 	        translateTransition1.setOnFinished(event1 -> {
@@ -376,29 +357,46 @@ public void initialize(URL arg0, ResourceBundle arg1) {
 	    	}
 	    });
 	    
+	    
 	}
 	public void setupTable() {
-		MFXTableColumn<Agent_Type> idColumn = new MFXTableColumn<>("ID");
-		MFXTableColumn<Agent_Type> nameColumn = new MFXTableColumn<>("Name");
-		MFXTableColumn<Agent_Type> maxdebtColumn = new MFXTableColumn<>("Maximum debt");
+		MFXTableColumn<AgentTypeScreenTable> idColumn = new MFXTableColumn<>("ID");
+		MFXTableColumn<AgentTypeScreenTable> nameColumn = new MFXTableColumn<>("Name");
+		MFXTableColumn<AgentTypeScreenTable> statusColumn = new MFXTableColumn<>("Status");
 		
-		idColumn.setRowCellFactory(item -> new MFXTableRowCell<>(Agent_Type::getAgentType_Id));
-	    nameColumn.setRowCellFactory(item -> new MFXTableRowCell<>(Agent_Type::getAgentType_Name));
-	    maxdebtColumn.setRowCellFactory(item -> new MFXTableRowCell<>(Agent_Type::getAgentType_MaxDebt));
+		idColumn.setRowCellFactory(item -> new MFXTableRowCell<>(AgentTypeScreenTable::getAgentType_Id));
+	    nameColumn.setRowCellFactory(item -> new MFXTableRowCell<>(AgentTypeScreenTable::getAgentType_Name));
+	    statusColumn.setRowCellFactory(item -> new MFXTableRowCell<>(AgentTypeScreenTable::getAgentType_Status));
 	    
-	    table.getTableColumns().addAll(idColumn, nameColumn, maxdebtColumn);
+	    table.getTableColumns().addAll(idColumn, nameColumn, statusColumn);
 	    
 	    idColumn.setPrefWidth(100);
 	    nameColumn.setPrefWidth(200);
-	    maxdebtColumn.setPrefWidth(200);
+	    statusColumn.setPrefWidth(100);
 	    
 	    table.getFilters().addAll(
-		        new IntegerFilter<>("ID", Agent_Type::getAgentType_Id),
-		        new StringFilter<>("Name", Agent_Type::getAgentType_Name),
-		        new LongFilter<>("Maximum debt", Agent_Type::getAgentType_MaxDebt)
+		        new IntegerFilter<>("ID", AgentTypeScreenTable::getAgentType_Id),
+		        new StringFilter<>("Name", AgentTypeScreenTable::getAgentType_Name),
+		        new StringFilter<>("Status", AgentTypeScreenTable::getAgentType_Status)
 		);
 	    
+        statusCbb.getItems().addAll("Active", "Inactive");
+        statusCbb.setPromptText("Select Status");
+        
 	    addBtn.setOnAction(event->handleAddButtonAction(event));
+	    
+
+	    
+	    table.getSelectionModel().selectionProperty().addListener((observable, oldValue, newValue) -> {
+			if (newValue != null) {
+				newValue.values().stream().findFirst().ifPresent(p -> {
+					agenttype_id.setText(String.valueOf(p.getAgentType_Id()));
+					agenttype_name.setText(p.getAgentType_Name());
+					agenttype_maxdebt.setText(String.valueOf(p.getAgentType_MaxDebt()));
+					statusCbb.setText(p.getAgentType_Status());
+				});
+			}
+		});
 	    
 	    setupScreen();
 	}
@@ -428,41 +426,55 @@ public void initialize(URL arg0, ResourceBundle arg1) {
 	}
 	
 	private void loadDataFromDatabase() {
-	    //table.getItems().clear();
+	    table.getItems().clear();
 
 	    List<Agent_Type> agentTypes = daoAgentType.selectAll();
 
-	    table.getItems().addAll(agentTypes);
-	}
+	    for (Agent_Type agentType : agentTypes) {
+	        String stringStatus = convertIntToStatusString(agentType.getAgentType_Status());
 
+	        AgentTypeScreenTable agentTypeTable = new AgentTypeScreenTable(
+	                agentType.getAgentType_Id(),
+	                agentType.getAgentType_Name(),
+	                agentType.getAgentType_MaxDebt(),
+	                stringStatus
+	        );
+
+	        table.getItems().add(agentTypeTable);
+	    }
+	}
 	@FXML
-    private void handleAddButtonAction(ActionEvent event) {
-		Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+	private void handleAddButtonAction(ActionEvent event) {
+	    Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
 	    alert.setTitle("Confirmation");
 	    alert.setHeaderText(null);
 	    alert.setContentText("Are you sure you want to add?");
 	    
-		Optional<ButtonType> result = alert.showAndWait();
-		    if (result.isPresent() && result.get() == ButtonType.OK) {
-		        try {
-	
-		            int id = generatedId();
-		            String name = agenttype_name.getText();
-		            long maxx = agenttype_maxdebt.getValue();
-		            Agent_Type newAgentType = new Agent_Type(id, name, maxx);
-	
-		            table.getItems().add(newAgentType);
-	
-		            addToDatabase(newAgentType);
-		        } catch (NumberFormatException e) {
-		            e.printStackTrace();
-	
-		       }
-			    agenttype_id.setText(String.valueOf(generatedId()));
-		        agenttype_name.clear();
-		        agenttype_maxdebt.getSelectionModel().clearSelection();
-		        
-    }}
+	    Optional<ButtonType> result = alert.showAndWait();
+	    if (result.isPresent() && result.get() == ButtonType.OK) {
+	        try {
+	            int id = generatedId();
+	            String name = agenttype_name.getText();
+	            long maxx = Long.parseLong(agenttype_maxdebt.getText());
+	            String stringStatus = statusCbb.getValue();
+	            int status = convertStatusStringToInt(stringStatus);
+	            
+	            Agent_Type newAgentType = new Agent_Type(id, name, maxx, status);
+	            AgentTypeScreenTable newAgentTypeTable = new AgentTypeScreenTable(id, name, maxx, stringStatus);
+	            table.getItems().add(newAgentTypeTable);
+
+	            addToDatabase(newAgentType);
+	        } catch (NumberFormatException e) {
+	            e.printStackTrace();
+	        }
+
+	        agenttype_id.setText(String.valueOf(generatedId()));
+	        agenttype_name.clear();
+	        agenttype_maxdebt.clear();
+	        statusCbb.getSelectionModel().clearSelection();
+	    }
+	}
+
 	
 }
 

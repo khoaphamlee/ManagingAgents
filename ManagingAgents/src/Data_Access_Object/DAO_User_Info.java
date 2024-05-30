@@ -6,10 +6,10 @@ import java.sql.Date;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
-import com.mysql.cj.xdevapi.Result;
+
 
 import Database.JDBCUtil;
-import TestDatabase.TestJDCBC;
+
 import models.User_Info;
 
 public class DAO_User_Info implements Interface<User_Info> {
@@ -24,13 +24,14 @@ public class DAO_User_Info implements Interface<User_Info> {
 			
 			Statement st = connect.createStatement();
 			
-			String sql = "INSERT INTO USER_INFO(UserInfo_Id, IdUser, UserInfo_Name, UserInfo_Address, UserInfo_BirthDate, UserInfo_Email)"
+			String sql = "INSERT INTO USER_INFO(UserInfo_Id, IdUser, UserInfo_Name, UserInfo_Address, UserInfo_BirthDate, UserInfo_Email, UserInfo_Phone)"
 					+ "VALUES (" + t.getUserInfo_Id() + " , " 
 					+ t.getIdUser() + " , '" 
 					+ t.getUserInfo_Name() + "' , '" 
 					+ t.getUserInfo_Address() + "' , '" 
 					+ t.getUserInfo_BirthDate() + "' , '"
-					+ t.getUserInfo_Email() +"')";
+					+ t.getUserInfo_Email()+ "' , '" 
+					+ t.getUserInfo_Phone() +"')";
 			int kq = st.executeUpdate(sql);
 			
 			System.out.println("Bạn đã thực thi");
@@ -59,6 +60,7 @@ public class DAO_User_Info implements Interface<User_Info> {
 						 ", UserInfo_Address= '" + t.getUserInfo_Address() + "'" +
 						 ", UserInfo_BirthDate= '" + t.getUserInfo_BirthDate() + "'" +
 						 ", UserInfo_Email= '" + t.getUserInfo_Email() + "'" +
+						 ", UserInfo_Phone= '" + t.getUserInfo_Phone() + "'" +
 						 " WHERE UserInfo_Id= " + t.getUserInfo_Id() + "\'" ;
 			int kq = st.executeUpdate(sql);
 			
@@ -116,8 +118,9 @@ public class DAO_User_Info implements Interface<User_Info> {
 				String UserInfo_Address = rs.getString("UserInfo_Address");
 				Date UserInfo_BirthDate = rs.getDate("UserInfo_BirthDate");
 				String UserInfo_Email = rs.getString("UserInfo_Email");
+				String UserInfo_Phone = rs.getString("UserInfo_Phone");
 				
-				User_Info user_info = new User_Info(UserInfo_Id, IdUser, UserInfo_Name, UserInfo_Address, UserInfo_BirthDate, UserInfo_Email);
+				User_Info user_info = new User_Info(UserInfo_Id, IdUser, UserInfo_Name, UserInfo_Address, UserInfo_BirthDate, UserInfo_Email, UserInfo_Phone);
 				kq.add(user_info);
 			}
 			
@@ -148,8 +151,9 @@ public class DAO_User_Info implements Interface<User_Info> {
 				String UserInfo_Address = rs.getString("UserInfo_Address");
 				Date UserInfo_BirthDate = rs.getDate("UserInfo_BirthDate");
 				String UserInfo_Email = rs.getString("UserInfo_Email");
+				String UserInfo_Phone = rs.getString("UserInfo_Phone");
 				
-				kq = new User_Info(UserInfo_Id, IdUser, UserInfo_Name, UserInfo_Address, UserInfo_BirthDate, UserInfo_Email);
+				kq = new User_Info(UserInfo_Id, IdUser, UserInfo_Name, UserInfo_Address, UserInfo_BirthDate, UserInfo_Email, UserInfo_Phone);
 			}
 			
 		} catch (Exception e) {
@@ -173,14 +177,15 @@ public class DAO_User_Info implements Interface<User_Info> {
 	        ResultSet rs = st.executeQuery(sql);
 	        
 	        while (rs.next()) {
-	            int UserInfo_Id = rs.getInt("UserInfo_Id");
-	            int IdUser = rs.getInt("IdUser");
-	            String UserInfo_Name = rs.getString("UserInfo_Name");
-	            String UserInfo_Address = rs.getString("UserInfo_Address");
-	            Date UserInfo_BirthDate = rs.getDate("UserInfo_BirthDate");
-	            String UserInfo_Email = rs.getString("UserInfo_Email");
+	        	int UserInfo_Id = rs.getInt("UserInfo_Id");
+				int IdUser = rs.getInt("IdUser");
+				String UserInfo_Name = rs.getString("UserInfo_Name");
+				String UserInfo_Address = rs.getString("UserInfo_Address");
+				Date UserInfo_BirthDate = rs.getDate("UserInfo_BirthDate");
+				String UserInfo_Email = rs.getString("UserInfo_Email");
+				String UserInfo_Phone = rs.getString("UserInfo_Phone");
 	            
-	            User_Info user_info = new User_Info(UserInfo_Id, IdUser, UserInfo_Name, UserInfo_Address, UserInfo_BirthDate, UserInfo_Email);
+	            User_Info user_info = new User_Info(UserInfo_Id, IdUser, UserInfo_Name, UserInfo_Address, UserInfo_BirthDate, UserInfo_Email, UserInfo_Phone);
 	            kq.add(user_info);
 	        }
 	        

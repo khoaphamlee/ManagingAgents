@@ -14,7 +14,7 @@ public class User_Info_Insert {
 		LocalDate slDate = LocalDate.of(2012,04,21);
 		Date b = Date.valueOf(slDate);
 		
-		User_Info User_Info1 = new User_Info(0, 0, null, null, b, null);
+		User_Info User_Info1 = new User_Info(0, 0, null, null, b, null, null);
 		
 		DAO_User_Info.getInstance().Add(User_Info1);
 
