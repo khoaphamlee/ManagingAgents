@@ -2,9 +2,12 @@ package datatable;
 
 import java.sql.Date;
 import java.time.LocalDate;
+<<<<<<< HEAD
 import java.util.Optional;
 
 import io.github.palexdev.materialfx.controls.MFXTableView;
+=======
+>>>>>>> 906790c5ce4401371dc295a95bc25ebb2a8f9660
 
 public class AgentTypeScreenTable {
 	private int AgentType_Id;
@@ -62,4 +65,8 @@ public class AgentTypeScreenTable {
 		return "Agent_Type [AgentType_Id=" + AgentType_Id + ", AgentType_Name=" + AgentType_Name + "]";
 	}
 	
+<<<<<<< HEAD
+=======
+	
+>>>>>>> 906790c5ce4401371dc295a95bc25ebb2a8f9660
 }

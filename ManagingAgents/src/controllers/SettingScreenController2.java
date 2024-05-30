@@ -437,6 +437,7 @@ public SettingScreenController2() {
 	    alert.setHeaderText(null);
 	    alert.setContentText("Are you sure you want to add?");
 	    
+<<<<<<< HEAD
 	    Optional<ButtonType> result = alert.showAndWait();
 	    if (result.isPresent() && result.get() == ButtonType.OK) {
 	        try {
@@ -460,6 +461,32 @@ public SettingScreenController2() {
 	        district_Name.clear();
 	        statusCbb.getSelectionModel().clearSelection();
 	    }
+=======
+		Optional<ButtonType> result = alert.showAndWait();
+		    if (result.isPresent() && result.get() == ButtonType.OK) {
+		        try {
+	
+		            int id = Integer.parseInt(district_Id.getText());
+		            String name = district_Name.getText();
+		            int maxx = Integer.parseInt(maxAgency.getText());
+	
+		            District newDistrict = new District(id, name);
+		            
+		            District newDistrict2 = new District(id, name);
+		            table.getItems().add(newDistrict2);
+	
+		            addToDatabase(newDistrict);
+		        } catch (NumberFormatException e) {
+		            e.printStackTrace();
+	
+		       }
+		        
+		        district_Id.setText(String.valueOf(generatedId()));
+		        district_Name.clear();
+		        maxAgency.clear();
+		        
+    }
+>>>>>>> 906790c5ce4401371dc295a95bc25ebb2a8f9660
 	}
 }
 

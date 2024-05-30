@@ -25,11 +25,17 @@ public class DAO_Agent_Type implements Interface<Agent_Type> {
             Connection connect = JDBCUtil.getConnection();
             PreparedStatement ps = connect.prepareStatement(sql);
 
+<<<<<<< HEAD
             // Set the values for the prepared statement
             ps.setInt(1, t.getAgentType_Id());
             ps.setString(2, t.getAgentType_Name());
             ps.setLong(3, t.getAgentType_MaxDebt());
             ps.setInt(4, t.getAgentType_Status()); 
+=======
+	        String sql = "INSERT INTO AGENT_TYPE(AgentType_Id, AgentType_Name, AgentType_MaxDebt, AgentType_Status)" +
+	                     "VALUES (" + t.getAgentType_Id() + " , '" + t.getAgentType_Name() + "', " + t.getAgentType_MaxDebt() + " , '" + t.getAgentType_Status() + "')";
+	        int kq = st.executeUpdate(sql);
+>>>>>>> 906790c5ce4401371dc295a95bc25ebb2a8f9660
 
             int kq = ps.executeUpdate();
 
@@ -52,8 +58,13 @@ public class DAO_Agent_Type implements Interface<Agent_Type> {
 	        String sql = "UPDATE AGENT_TYPE " +
 	                     "SET " +
 	                     "AgentType_Name = '" + t.getAgentType_Name() + "', " +
+<<<<<<< HEAD
 	                     "AgentType_MaxDebt = " + t.getAgentType_MaxDebt() + ", " +
 	                     "AgentType_Status = " + t.getAgentType_Status() + " " + // Sử dụng giá trị int
+=======
+	                     "AgentType_MaxDebt = " + t.getAgentType_MaxDebt() + " " + // Thêm AgentType_MaxDebt vào câu SQL
+	                     "AgentType_Status = '" + t.getAgentType_Status() + "', " +
+>>>>>>> 906790c5ce4401371dc295a95bc25ebb2a8f9660
 	                     "WHERE AgentType_Id = " + t.getAgentType_Id();
 	        int kq = st.executeUpdate(sql);
 
@@ -102,7 +113,11 @@ public class DAO_Agent_Type implements Interface<Agent_Type> {
 	            int AgentType_Id = rs.getInt("AgentType_Id");
 	            String AgentType_Name = rs.getString("AgentType_Name");
 	            long AgentType_MaxDebt = rs.getLong("AgentType_MaxDebt");
+<<<<<<< HEAD
 	            int AgentType_Status = rs.getInt("AgentType_Status"); // Lấy giá trị int trực tiếp
+=======
+	            boolean AgentType_Status = rs.getBoolean("AgentType_Status");
+>>>>>>> 906790c5ce4401371dc295a95bc25ebb2a8f9660
 
 	            Agent_Type agentType = new Agent_Type(AgentType_Id, AgentType_Name, AgentType_MaxDebt, AgentType_Status);
 	            kq.add(agentType);
@@ -131,7 +146,11 @@ public class DAO_Agent_Type implements Interface<Agent_Type> {
 				int AgentType_Id = rs.getInt("AgentType_Id");
 				String AgentType_Name = rs.getString("AgentType_Name");
 				long AgentType_MaxDebt = rs.getLong("AgentType_MaxDebt");
+<<<<<<< HEAD
 				int AgentType_Status = rs.getInt("AgentType_Status"); // Lấy giá trị int trực tiếp
+=======
+				boolean AgentType_Status = rs.getBoolean("AgentType_Status");
+>>>>>>> 906790c5ce4401371dc295a95bc25ebb2a8f9660
 				
 				kq = new Agent_Type(AgentType_Id, AgentType_Name, AgentType_MaxDebt, AgentType_Status);
 			}
@@ -159,7 +178,11 @@ public class DAO_Agent_Type implements Interface<Agent_Type> {
 	        	int AgentType_Id = rs.getInt("AgentType_Id");
 				String AgentType_Name = rs.getString("AgentType_Name");
 				long AgentType_MaxDebt = rs.getLong("AgentType_MaxDebt");
+<<<<<<< HEAD
 				int AgentType_Status = rs.getInt("AgentType_Status"); // Lấy giá trị int trực tiếp
+=======
+				boolean AgentType_Status = rs.getBoolean("AgentType_Status");
+>>>>>>> 906790c5ce4401371dc295a95bc25ebb2a8f9660
 				
 				Agent_Type agentType = new Agent_Type(AgentType_Id, AgentType_Name, AgentType_MaxDebt, AgentType_Status);
 				kq.add(agentType);

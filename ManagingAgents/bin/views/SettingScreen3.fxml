@@ -192,7 +192,11 @@
                   <Font size="39.0" />
                </font>
             </Label>
+<<<<<<< HEAD
             <MFXTextField fx:id="unitTf" layoutX="212.0" layoutY="172.0" maxHeight="36.0" minHeight="36.0" prefHeight="36.0" prefWidth="222.0" AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="172.0" />
+=======
+            <MFXTextField layoutX="212.0" layoutY="172.0" maxHeight="36.0" minHeight="36.0" prefHeight="36.0" prefWidth="222.0" AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="172.0" />
+>>>>>>> 906790c5ce4401371dc295a95bc25ebb2a8f9660
             <MFXButton fx:id="addBtn" buttonType="RAISED" depthLevel="LEVEL1" layoutX="221.0" layoutY="511.0" prefHeight="42.0" prefWidth="130.0" text="Add new " AnchorPane.bottomAnchor="255.0" AnchorPane.rightAnchor="91.0">
                <font>
                   <Font size="18.0" />
@@ -222,13 +226,22 @@
                   <Font size="14.0" />
                </font>
             </Label>
+<<<<<<< HEAD
             <MFXTextField fx:id="idTf" layoutX="194.0" layoutY="89.0" maxHeight="23.0" minHeight="23.0" prefHeight="20.0" prefWidth="57.0" AnchorPane.rightAnchor="176.39999999999998" AnchorPane.topAnchor="89.0" />
             <Label layoutX="12.0" layoutY="229.0" text="Status:" AnchorPane.leftAnchor="12.0" AnchorPane.topAnchor="228.0">
+=======
+            <MFXTextField layoutX="194.0" layoutY="89.0" maxHeight="23.0" minHeight="23.0" prefHeight="20.0" prefWidth="57.0" AnchorPane.rightAnchor="176.39999999999998" AnchorPane.topAnchor="89.0" />
+            <Label layoutX="12.0" layoutY="229.0" text="Name: " AnchorPane.leftAnchor="12.0" AnchorPane.topAnchor="228.0">
+>>>>>>> 906790c5ce4401371dc295a95bc25ebb2a8f9660
                <font>
                   <Font size="24.0" />
                </font>
             </Label>
+<<<<<<< HEAD
             <MFXComboBox fx:id="statusCbb" layoutX="213.0" layoutY="229.0" maxHeight="36.0" minHeight="36.0" prefHeight="36.0" prefWidth="222.0" text="Choose" AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="228.0">
+=======
+            <MFXComboBox fx:id="districtCbb1" layoutX="213.0" layoutY="229.0" maxHeight="36.0" minHeight="36.0" prefHeight="36.0" prefWidth="222.0" text="Choose" AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="228.0">
+>>>>>>> 906790c5ce4401371dc295a95bc25ebb2a8f9660
                <font>
                   <Font size="20.0" />
                </font>

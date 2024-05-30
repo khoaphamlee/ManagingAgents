@@ -371,6 +371,7 @@ public void initialize(URL arg0, ResourceBundle arg1) {
 	public void setupTable() {
 		MFXTableColumn<SettingScreenTable> idColumn = new MFXTableColumn<>("ID");
 		MFXTableColumn<SettingScreenTable> nameColumn = new MFXTableColumn<>("Name");
+<<<<<<< HEAD
 		MFXTableColumn<SettingScreenTable> statusColumn = new MFXTableColumn<>("Status");
 		
 		idColumn.setRowCellFactory(item -> new MFXTableRowCell<>(SettingScreenTable::getUnit_Id));
@@ -387,6 +388,24 @@ public void initialize(URL arg0, ResourceBundle arg1) {
 		        new IntegerFilter<>("ID", SettingScreenTable::getUnit_Id),
 		        new StringFilter<>("Name", SettingScreenTable::getUnit_Name),
 		        new StringFilter<>("Status", SettingScreenTable::getUnit_Status)
+=======
+		//MFXTableColumn<SettingScreenTable> unitColumn = new MFXTableColumn<>("Unit");
+		
+		idColumn.setRowCellFactory(item -> new MFXTableRowCell<>(SettingScreenTable::getUnit_Id));
+	    nameColumn.setRowCellFactory(item -> new MFXTableRowCell<>(SettingScreenTable::getItems_Name));
+	    //unitColumn.setRowCellFactory(item -> new MFXTableRowCell<>(SettingScreenTable::getUnit_Name));
+	    
+	    table.getTableColumns().addAll(idColumn, nameColumn);
+	    
+	    idColumn.setPrefWidth(100);
+	    nameColumn.setPrefWidth(200);
+	    //unitColumn.setPrefWidth(200);
+	    
+	    table.getFilters().addAll(
+		        new IntegerFilter<>("ID", SettingScreenTable::getUnit_Id),
+		        new StringFilter<>("Name", SettingScreenTable::getItems_Name)
+		        //new StringFilter<>("Unit", SettingScreenTable::getUnit_Name)
+>>>>>>> 906790c5ce4401371dc295a95bc25ebb2a8f9660
 		);
 	    
 	    statusCbb.getItems().addAll("Active", "Inactive");

@@ -26,7 +26,11 @@ public class DAO_District implements Interface<District> {
 	        while (rs.next()) {
 	            int district_Id = rs.getInt("district_Id");
 	            String district_Name = rs.getString("district_Name");
+<<<<<<< HEAD
 	            int district_Status = rs.getInt("district_Status");
+=======
+	            boolean district_Status = rs.getBoolean("district_Status");
+>>>>>>> 906790c5ce4401371dc295a95bc25ebb2a8f9660
 	            District district = new District(district_Id, district_Name, district_Status); 
 	            districts.add(district);
 	        }
@@ -42,7 +46,11 @@ public class DAO_District implements Interface<District> {
 	         PreparedStatement ps = connect.prepareStatement("INSERT INTO DISTRICT(district_id, district_Name, district_Status) VALUES (?, ?, ?)")) {
 	        ps.setInt(1, t.getDistrict_Id());
 	        ps.setString(2, t.getDistrict_Name());
+<<<<<<< HEAD
 	        ps.setInt(3, t.getDistrict_Status());
+=======
+	    	ps.setBoolean(3, t.getDistrict_Status());
+>>>>>>> 906790c5ce4401371dc295a95bc25ebb2a8f9660
 
 	        int rowsAffected = ps.executeUpdate();
 	        System.out.println("Thực thi thành công");
@@ -57,11 +65,17 @@ public class DAO_District implements Interface<District> {
 	@Override
 	public int Update(District t) {
 	    try (Connection connect = JDBCUtil.getConnection();
+<<<<<<< HEAD
 	         PreparedStatement ps = connect.prepareStatement("UPDATE DISTRICT SET district_Name = ?, district_Status = ? WHERE district_Id = ?")) {
 	        ps.setString(1, t.getDistrict_Name());
 	        ps.setInt(2, t.getDistrict_Status());
 	        ps.setInt(3, t.getDistrict_Id());
 
+=======
+	         PreparedStatement ps = connect.prepareStatement("UPDATE DISTRICT SET district_Name = ? district_Status = ? WHERE district_Id = ?")) {
+	        ps.setString(1, t.getDistrict_Name());
+	        ps.setBoolean(2, t.getDistrict_Status());
+>>>>>>> 906790c5ce4401371dc295a95bc25ebb2a8f9660
 	        int rowsAffected = ps.executeUpdate();
 	        System.out.println("Thực thi thành công");
 	        return rowsAffected;
@@ -93,9 +107,14 @@ public class DAO_District implements Interface<District> {
 	        ps.setInt(1, t.getDistrict_Id());
 	        try (ResultSet rs = ps.executeQuery()) {
 	            if (rs.next()) {
+<<<<<<< HEAD
 	                String district_Name = rs.getString("district_Name");
 	                int district_Status = rs.getInt("district_Status");
 	                district = new District(t.getDistrict_Id(), district_Name, district_Status);
+=======
+	                boolean district_Status = rs.getBoolean("district_Status");
+	                district = new District(t.getDistrict_Id(), "", district_Status); // Tạm thời set district_Name là rỗng
+>>>>>>> 906790c5ce4401371dc295a95bc25ebb2a8f9660
 	            }
 	        }
 	    } catch (SQLException e) {
@@ -113,9 +132,14 @@ public class DAO_District implements Interface<District> {
 	         ResultSet rs = st.executeQuery("SELECT * FROM DISTRICT WHERE " + condition)) {
 	        while (rs.next()) {
 	            int district_Id = rs.getInt("district_Id");
+<<<<<<< HEAD
 	            String district_Name = rs.getString("district_Name");
 	            int district_Status = rs.getInt("district_Status");
 	            District district = new District(district_Id, district_Name, district_Status);
+=======
+	            boolean district_Status = rs.getBoolean("district_Status");
+	            District district = new District(district_Id, "", district_Status); // Tạm thời set district_Name là rỗng
+>>>>>>> 906790c5ce4401371dc295a95bc25ebb2a8f9660
 	            districts.add(district);
 	        }
 	    } catch (SQLException e) {

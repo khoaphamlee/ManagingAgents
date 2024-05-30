@@ -87,9 +87,12 @@ public class SettingScreenController implements Initializable  {
 	
     @FXML
     private MFXTextField agenttype_maxdebt;
+<<<<<<< HEAD
     
     @FXML
     private MFXComboBox<String> statusCbb;
+=======
+>>>>>>> 906790c5ce4401371dc295a95bc25ebb2a8f9660
 	
 	private boolean noAction;
 	
@@ -97,12 +100,17 @@ public class SettingScreenController implements Initializable  {
     
     private DAO_Agent_Type daoAgentType;
     
+<<<<<<< HEAD
     private String convertIntToStatusString(int status) {
         return status == 1 ? "Active" : "Inactive";
     }
 
     private int convertStatusStringToInt(String status) {
         return "Active".equalsIgnoreCase(status) ? 1 : 0;
+=======
+	public String convertStatus(boolean status) {
+        return status ? "Active" : "Inactive";
+>>>>>>> 906790c5ce4401371dc295a95bc25ebb2a8f9660
     }
 ;
 
@@ -121,7 +129,7 @@ public void initialize(URL arg0, ResourceBundle arg1) {
 	noAction = false;
 	setupScreen();
 	setupTable();
-	loadDataFromDatabase();
+	//loadDataFromDatabase();
 	setupTabChange ();
     
         
@@ -380,10 +388,14 @@ public void initialize(URL arg0, ResourceBundle arg1) {
 		        new StringFilter<>("Status", AgentTypeScreenTable::getAgentType_Status)
 		);
 	    
+<<<<<<< HEAD
         statusCbb.getItems().addAll("Active", "Inactive");
         statusCbb.setPromptText("Select Status");
         
 	    addBtn.setOnAction(event->handleAddButtonAction(event));
+=======
+	    //addBtn.setOnAction(event->handleAddButtonAction(event));
+>>>>>>> 906790c5ce4401371dc295a95bc25ebb2a8f9660
 	    
 
 	    
@@ -425,6 +437,7 @@ public void initialize(URL arg0, ResourceBundle arg1) {
         return Id;
 	}
 	
+<<<<<<< HEAD
 	private void loadDataFromDatabase() {
 	    table.getItems().clear();
 
@@ -432,6 +445,15 @@ public void initialize(URL arg0, ResourceBundle arg1) {
 
 	    for (Agent_Type agentType : agentTypes) {
 	        String stringStatus = convertIntToStatusString(agentType.getAgentType_Status());
+=======
+	/*private void loadDataFromDatabase() {
+	    //table.getItems().clear();
+
+	    List<Agent_Type> agentTypes = daoAgentType.selectAll();
+
+	    table.getItems().addAll(agentTypes);
+	}*/
+>>>>>>> 906790c5ce4401371dc295a95bc25ebb2a8f9660
 
 	        AgentTypeScreenTable agentTypeTable = new AgentTypeScreenTable(
 	                agentType.getAgentType_Id(),
@@ -450,6 +472,7 @@ public void initialize(URL arg0, ResourceBundle arg1) {
 	    alert.setHeaderText(null);
 	    alert.setContentText("Are you sure you want to add?");
 	    
+<<<<<<< HEAD
 	    Optional<ButtonType> result = alert.showAndWait();
 	    if (result.isPresent() && result.get() == ButtonType.OK) {
 	        try {
@@ -475,6 +498,33 @@ public void initialize(URL arg0, ResourceBundle arg1) {
 	    }
 	}
 
+=======
+		Optional<ButtonType> result = alert.showAndWait();
+		    if (result.isPresent() && result.get() == ButtonType.OK) {
+		        try {
+	
+		            int id = generatedId();
+		            String name = agenttype_name.getText();
+		            //long maxx = agenttype_maxdebt.getValue();
+		            long maxx = 1;
+		            boolean status = true;
+		            
+		            String stringStatus = convertStatus(status);
+		            Agent_Type newAgentType = new Agent_Type(id, name, maxx, status);
+		            AgentTypeScreenTable newAgentTypeTable = new AgentTypeScreenTable(id, name, maxx, stringStatus);
+		            table.getItems().add(newAgentTypeTable);
+	
+		            addToDatabase(newAgentType);
+		        } catch (NumberFormatException e) {
+		            e.printStackTrace();
+	
+		       }
+			    agenttype_id.setText(String.valueOf(generatedId()));
+		        agenttype_name.clear();
+		        //agenttype_maxdebt.getSelectionModel().clearSelection();
+		        
+    }}
+>>>>>>> 906790c5ce4401371dc295a95bc25ebb2a8f9660
 	
 }
 
