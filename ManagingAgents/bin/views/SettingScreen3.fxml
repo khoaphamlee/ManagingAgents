@@ -54,6 +54,7 @@
                   <Font size="24.0" />
                </font>
             </Label>
+<<<<<<< HEAD
             <MFXTextField fx:id="rateTf" layoutX="388.0" layoutY="70.0" maxHeight="36.0" minHeight="36.0" prefHeight="36.0" prefWidth="142.0" AnchorPane.bottomAnchor="65.0" AnchorPane.leftAnchor="388.0" />
             <MFXButton fx:id="saveBtn" buttonType="RAISED" depthLevel="LEVEL1" layoutX="631.0" layoutY="65.0" prefHeight="42.0" prefWidth="110.0" text="Save" AnchorPane.bottomAnchor="63.00000000000001" AnchorPane.leftAnchor="631.0">
                <font>
@@ -72,6 +73,9 @@
                   <Font size="18.0" />
                </font>
             </Label>
+=======
+            <MFXTextField fx:id="rateTf" layoutX="388.0" layoutY="70.0" maxHeight="36.0" minHeight="36.0" prefHeight="36.0" prefWidth="222.0" AnchorPane.bottomAnchor="64.4" AnchorPane.leftAnchor="388.0" />
+>>>>>>> bdab178a8e0469e9b6ac50a1e13c9cd5dd462780
          </children>
          <effect>
             <DropShadow>
@@ -181,6 +185,7 @@
          </children>
       </AnchorPane>
       <AnchorPane prefHeight="808.0" prefWidth="442.0" style="-fx-background-color: #FFFBD1;" AnchorPane.bottomAnchor="51.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="155.0">
+<<<<<<< HEAD
     <effect>
         <DropShadow>
             <color>
@@ -207,6 +212,38 @@
             <graphic>
                 <ImageView fitHeight="21.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
                     <image>
+=======
+         <effect>
+            <DropShadow>
+               <color>
+                  <Color opacity="0.30091190338134766" />
+               </color>
+            </DropShadow>
+         </effect>
+         <children>
+            <Label layoutX="12.0" layoutY="172.0" text="Name: " AnchorPane.leftAnchor="12.0" AnchorPane.topAnchor="172.0">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Label layoutX="164.0" layoutY="14.0" prefHeight="54.0" prefWidth="154.0" text="Type" AnchorPane.leftAnchor="164.0" AnchorPane.rightAnchor="118.40000000000003" AnchorPane.topAnchor="14.0">
+               <font>
+                  <Font size="39.0" />
+               </font>
+            </Label>
+<<<<<<< HEAD
+            <MFXTextField fx:id="unitTf" layoutX="212.0" layoutY="172.0" maxHeight="36.0" minHeight="36.0" prefHeight="36.0" prefWidth="222.0" AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="172.0" />
+=======
+            <MFXTextField layoutX="212.0" layoutY="172.0" maxHeight="36.0" minHeight="36.0" prefHeight="36.0" prefWidth="222.0" AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="172.0" />
+>>>>>>> 906790c5ce4401371dc295a95bc25ebb2a8f9660
+            <MFXButton fx:id="addBtn" buttonType="RAISED" depthLevel="LEVEL1" layoutX="221.0" layoutY="511.0" prefHeight="42.0" prefWidth="130.0" text="Add new " AnchorPane.bottomAnchor="255.0" AnchorPane.rightAnchor="91.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="21.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+>>>>>>> bdab178a8e0469e9b6ac50a1e13c9cd5dd462780
                         <Image url="@../images/add.png" />
                     </image>
                 </ImageView>
@@ -220,6 +257,7 @@
                 <ImageView fitHeight="21.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
                     <image>
                         <Image url="@../images/pencil.png" />
+<<<<<<< HEAD
                     </image>
                 </ImageView>
             </graphic>
@@ -236,11 +274,43 @@
             </font>
         </MFXComboBox>
             <Label layoutX="12.0" layoutY="229.0" text="Status: ">
+=======
+                     </image>
+                  </ImageView>
+               </graphic>
+            </MFXButton>
+            <Label layoutX="164.0" layoutY="91.0" text="ID" AnchorPane.rightAnchor="277.59999999999997" AnchorPane.topAnchor="91.0">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+<<<<<<< HEAD
+            <MFXTextField fx:id="idTf" layoutX="194.0" layoutY="89.0" maxHeight="23.0" minHeight="23.0" prefHeight="20.0" prefWidth="57.0" AnchorPane.rightAnchor="176.39999999999998" AnchorPane.topAnchor="89.0" />
+            <Label layoutX="12.0" layoutY="229.0" text="Status:" AnchorPane.leftAnchor="12.0" AnchorPane.topAnchor="228.0">
+=======
+            <MFXTextField layoutX="194.0" layoutY="89.0" maxHeight="23.0" minHeight="23.0" prefHeight="20.0" prefWidth="57.0" AnchorPane.rightAnchor="176.39999999999998" AnchorPane.topAnchor="89.0" />
+            <Label layoutX="12.0" layoutY="229.0" text="Name: " AnchorPane.leftAnchor="12.0" AnchorPane.topAnchor="228.0">
+>>>>>>> 906790c5ce4401371dc295a95bc25ebb2a8f9660
+>>>>>>> bdab178a8e0469e9b6ac50a1e13c9cd5dd462780
                <font>
                   <Font size="24.0" />
                </font>
             </Label>
+<<<<<<< HEAD
     </children>
 </AnchorPane>
+=======
+<<<<<<< HEAD
+            <MFXComboBox fx:id="statusCbb" layoutX="213.0" layoutY="229.0" maxHeight="36.0" minHeight="36.0" prefHeight="36.0" prefWidth="222.0" text="Choose" AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="228.0">
+=======
+            <MFXComboBox fx:id="districtCbb1" layoutX="213.0" layoutY="229.0" maxHeight="36.0" minHeight="36.0" prefHeight="36.0" prefWidth="222.0" text="Choose" AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="228.0">
+>>>>>>> 906790c5ce4401371dc295a95bc25ebb2a8f9660
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </MFXComboBox>
+         </children>
+      </AnchorPane>
+>>>>>>> bdab178a8e0469e9b6ac50a1e13c9cd5dd462780
    </children>
 </AnchorPane>

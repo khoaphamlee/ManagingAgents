@@ -46,6 +46,7 @@ public class District {
     public void setDistrict_Status(int district_Status) {
         this.district_Status = district_Status;
     }
+<<<<<<< HEAD
     public String getDistrict_Status2() {
     	if(district_Status ==1)
         return "Active";
@@ -56,4 +57,6 @@ public class District {
     	
     	return district_Name;
     }
+=======
+>>>>>>> bdab178a8e0469e9b6ac50a1e13c9cd5dd462780
 }

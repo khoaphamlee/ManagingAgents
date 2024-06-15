@@ -8,8 +8,15 @@ import java.util.ArrayList;
 import java.sql.SQLException;
 
 import Database.JDBCUtil;
+<<<<<<< HEAD
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+=======
+<<<<<<< HEAD
+=======
+
+>>>>>>> 906790c5ce4401371dc295a95bc25ebb2a8f9660
+>>>>>>> bdab178a8e0469e9b6ac50a1e13c9cd5dd462780
 import models.Unit;
 
 public class DAO_Unit implements Interface<Unit> {
@@ -23,8 +30,13 @@ public class DAO_Unit implements Interface<Unit> {
         try {
             Connection connect = JDBCUtil.getConnection();
             Statement st = connect.createStatement();
+<<<<<<< HEAD
             String sql = "INSERT INTO UNIT( Unit_Name, Unit_Status) " +
                          "VALUES (' "  + t.getUnit_Name() + "', " + t.getUnit_Status() + ")";
+=======
+            String sql = "INSERT INTO UNIT(Unit_Id, Unit_Name, Unit_Status) " +
+                         "VALUES (" + t.getUnit_Id() + " , '" + t.getUnit_Name() + "', " + t.getUnit_Status() + ")";
+>>>>>>> bdab178a8e0469e9b6ac50a1e13c9cd5dd462780
             result = st.executeUpdate(sql);
             System.out.println("Bạn đã thực thi");
             JDBCUtil.closeConnection(connect);
@@ -92,6 +104,7 @@ public class DAO_Unit implements Interface<Unit> {
         }
         return kq;
     }
+<<<<<<< HEAD
     
     
     public ObservableList<Unit> selectAll2() {
@@ -233,4 +246,59 @@ public class DAO_Unit implements Interface<Unit> {
         return unitId;
     }
 
+=======
+
+    @Override
+    public Unit seclectById(Unit t) {
+        Unit kq = null;
+        try {
+            Connection con = JDBCUtil.getConnection();
+            Statement st = con.createStatement();
+            String sql = "SELECT * FROM UNIT where Unit_Id=" + t.getUnit_Id();
+            System.out.println(sql);
+            ResultSet rs = st.executeQuery(sql);
+
+            while (rs.next()) {
+                int Unit_Id = rs.getInt("Unit_Id");
+                String Unit_Name = rs.getString("Unit_Name");
+                int Unit_Status = rs.getInt("Unit_Status");
+                kq = new Unit(Unit_Id, Unit_Name, Unit_Status);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return kq;
+    }
+
+    @Override
+    public ArrayList<Unit> selectByCondition(String condition) {
+        ArrayList<Unit> kq = new ArrayList<>();
+        try {
+            Connection con = JDBCUtil.getConnection();
+            Statement st = con.createStatement();
+            String sql = "SELECT * FROM UNIT WHERE " + condition;
+            System.out.println(sql); 
+            ResultSet rs = st.executeQuery(sql);
+
+            while (rs.next()) {
+                int Unit_Id = rs.getInt("Unit_Id");
+                String Unit_Name = rs.getString("Unit_Name");
+                int Unit_Status = rs.getInt("Unit_Status");
+                Unit unit = new Unit(Unit_Id, Unit_Name, Unit_Status);
+                kq.add(unit);
+            }
+            JDBCUtil.closeConnection(con);     
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return kq;
+    }
+
+    public ResultSet getCurrentId() throws SQLException {
+        Connection con = JDBCUtil.getConnection();
+        Statement st = con.createStatement();
+        String sql = "SELECT MAX(Unit_Id) FROM UNIT";
+        return st.executeQuery(sql);
+    }
+>>>>>>> bdab178a8e0469e9b6ac50a1e13c9cd5dd462780
 }

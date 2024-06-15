@@ -207,8 +207,16 @@
                   <Font size="24.0" />
                </font>
             </Label>
+<<<<<<< HEAD
 
             <MFXComboBox fx:id="statusCbb" layoutX="204.0" layoutY="281.0" maxHeight="36.0" minHeight="36.0" prefHeight="36.0" prefWidth="222.0" text="Choose" AnchorPane.rightAnchor="16.0" AnchorPane.topAnchor="281.0">
+=======
+<<<<<<< HEAD
+            <MFXComboBox fx:id="statusCbb" layoutX="204.0" layoutY="281.0" maxHeight="36.0" minHeight="36.0" prefHeight="36.0" prefWidth="222.0" text="Choose" AnchorPane.rightAnchor="16.0" AnchorPane.topAnchor="281.0">
+=======
+            <MFXComboBox fx:id="districtCbb1" layoutX="204.0" layoutY="281.0" maxHeight="36.0" minHeight="36.0" prefHeight="36.0" prefWidth="222.0" text="Choose" AnchorPane.rightAnchor="16.0" AnchorPane.topAnchor="281.0">
+>>>>>>> 906790c5ce4401371dc295a95bc25ebb2a8f9660
+>>>>>>> bdab178a8e0469e9b6ac50a1e13c9cd5dd462780
                <font>
                   <Font size="20.0" />
                </font>

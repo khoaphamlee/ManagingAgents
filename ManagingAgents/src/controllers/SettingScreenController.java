@@ -95,9 +95,18 @@ public class SettingScreenController implements Initializable  {
 	
     @FXML
     private MFXTextField agenttype_maxdebt;
+<<<<<<< HEAD
     
     @FXML
     private MFXComboBox<String> statusCbb;
+=======
+<<<<<<< HEAD
+    
+    @FXML
+    private MFXComboBox<String> statusCbb;
+=======
+>>>>>>> 906790c5ce4401371dc295a95bc25ebb2a8f9660
+>>>>>>> bdab178a8e0469e9b6ac50a1e13c9cd5dd462780
 	
 	private boolean noAction;
 	
@@ -105,17 +114,26 @@ public class SettingScreenController implements Initializable  {
     
     private DAO_Agent_Type daoAgentType;
     
+<<<<<<< HEAD
     private AlertMessage alertMessage = new AlertMessage();
     
+=======
+<<<<<<< HEAD
+>>>>>>> bdab178a8e0469e9b6ac50a1e13c9cd5dd462780
     private String convertIntToStatusString(int status) {
         return status == 1 ? "Active" : "Inactive";
     }
 
     private int convertStatusStringToInt(String status) {
         return "Active".equalsIgnoreCase(status) ? 1 : 0;
+<<<<<<< HEAD
     }
+=======
+=======
+>>>>>>> bdab178a8e0469e9b6ac50a1e13c9cd5dd462780
 	public String convertStatus(boolean status) {
         return status ? "Active" : "Inactive";
+>>>>>>> 906790c5ce4401371dc295a95bc25ebb2a8f9660
     }
 	ObservableList<String> statusList = FXCollections.observableArrayList("Active", "Inactive");
 
@@ -151,7 +169,128 @@ Role role = DAO_Role.getInstance().selectByCondition2(" User_Id = " + CurrentUse
 
 }
 
+<<<<<<< HEAD
 private void setupTabChange() throws SQLException {
+=======
+	public void setupScreen() {
+		
+		agenttype_id.setText(String.valueOf(generatedId()));
+	    agenttype_id.setEditable(false);
+		
+		darkPane.setVisible(false);
+
+	    javafx.animation.FadeTransition fadeTransition=new javafx.animation.FadeTransition(Duration.seconds(0.39),darkPane);
+	    fadeTransition.setFromValue(1);
+	    fadeTransition.setToValue(0);
+	    fadeTransition.play();
+
+	    javafx.animation.TranslateTransition translateTransition=new javafx.animation.TranslateTransition(Duration.seconds(0.01),detailMenuPane);
+	    translateTransition.setByX(-600);
+	    translateTransition.play();
+
+	    canChange = true;
+	    menuPane.setOnMouseEntered(event -> {
+	    	timeChange += 1;
+	    	if(canChange&& timeChange ==1) {
+	    		menuImg.setVisible(false);
+	    		darkPane.setVisible(true);
+	        
+	        javafx.animation.FadeTransition fadeTransition1=new javafx.animation.FadeTransition(Duration.seconds(0.39),darkPane);
+	        //fadeTransition1.setFromValue(0);
+	        //fadeTransition1.setToValue(0.1);
+	        fadeTransition1.play();
+
+	        javafx.animation.TranslateTransition translateTransition1=new javafx.animation.TranslateTransition(Duration.seconds(0.39),detailMenuPane);
+	        translateTransition1.setByX(+600);
+	        translateTransition1.setOnFinished(event1 -> {
+	            canChange = false;
+	            
+	        });
+	        translateTransition1.play();
+	        
+	    	}
+	        
+	    });
+	    detailMenuPane.setOnMouseExited(event -> {
+	    	
+	    	if(!canChange && event.getX()> 100) {
+	    		
+	        javafx.animation.FadeTransition fadeTransition1=new javafx.animation.FadeTransition(Duration.seconds(0.39),darkPane);
+	        //fadeTransition1.setFromValue(0.15);
+	        //fadeTransition1.setToValue(0);
+	        fadeTransition1.play();
+
+	        fadeTransition1.setOnFinished(event1 -> {
+	        	darkPane.setVisible(false);
+	        });
+
+	        javafx.animation.TranslateTransition translateTransition1=new javafx.animation.TranslateTransition(Duration.seconds(0.39),detailMenuPane);
+	        translateTransition1.setByX(-600);
+	        translateTransition1.setOnFinished(event1 -> {
+	        	canChange = true;
+	            timeChange = 0;
+	            menuImg.setVisible(true);
+	            
+	        });
+	        translateTransition1.play();
+	    	}
+	    });
+	    
+	    
+	}
+	public void setupTable() {
+		MFXTableColumn<AgentTypeScreenTable> idColumn = new MFXTableColumn<>("ID");
+		MFXTableColumn<AgentTypeScreenTable> nameColumn = new MFXTableColumn<>("Name");
+		MFXTableColumn<AgentTypeScreenTable> statusColumn = new MFXTableColumn<>("Status");
+		
+		idColumn.setRowCellFactory(item -> new MFXTableRowCell<>(AgentTypeScreenTable::getAgentType_Id));
+	    nameColumn.setRowCellFactory(item -> new MFXTableRowCell<>(AgentTypeScreenTable::getAgentType_Name));
+	    statusColumn.setRowCellFactory(item -> new MFXTableRowCell<>(AgentTypeScreenTable::getAgentType_Status));
+	    
+	    table.getTableColumns().addAll(idColumn, nameColumn, statusColumn);
+	    
+	    idColumn.setPrefWidth(100);
+	    nameColumn.setPrefWidth(200);
+	    statusColumn.setPrefWidth(100);
+	    
+	    table.getFilters().addAll(
+		        new IntegerFilter<>("ID", AgentTypeScreenTable::getAgentType_Id),
+		        new StringFilter<>("Name", AgentTypeScreenTable::getAgentType_Name),
+		        new StringFilter<>("Status", AgentTypeScreenTable::getAgentType_Status)
+		);
+	    
+<<<<<<< HEAD
+        statusCbb.getItems().addAll("Active", "Inactive");
+        statusCbb.setPromptText("Select Status");
+        
+	    addBtn.setOnAction(event->handleAddButtonAction(event));
+=======
+	    //addBtn.setOnAction(event->handleAddButtonAction(event));
+>>>>>>> 906790c5ce4401371dc295a95bc25ebb2a8f9660
+	    
+
+	    
+	    table.getSelectionModel().selectionProperty().addListener((observable, oldValue, newValue) -> {
+			if (newValue != null) {
+				newValue.values().stream().findFirst().ifPresent(p -> {
+					agenttype_id.setText(String.valueOf(p.getAgentType_Id()));
+					agenttype_name.setText(p.getAgentType_Name());
+					agenttype_maxdebt.setText(String.valueOf(p.getAgentType_MaxDebt()));
+					statusCbb.setText(p.getAgentType_Status());
+				});
+			}
+		});
+	    
+	    setupScreen();
+	}
+	private void showAlert(String message) {
+	    Alert alert = new Alert(Alert.AlertType.ERROR);
+	    alert.setTitle("Error");
+	    alert.setHeaderText(null);
+	    alert.setContentText(message);
+	    alert.showAndWait();
+	}
+>>>>>>> bdab178a8e0469e9b6ac50a1e13c9cd5dd462780
 	
 	
 	
@@ -489,12 +628,85 @@ public void setupButton() {
             alertMessage.errorMessage("Please fill all blank fields!");
             return;
         }
+<<<<<<< HEAD
         
 		 else {
 			 
 			 
 			 try {
 				 int id = Integer.parseInt(agenttype_id.getText());
+=======
+        return Id;
+	}
+	
+<<<<<<< HEAD
+	private void loadDataFromDatabase() {
+	    table.getItems().clear();
+
+	    List<Agent_Type> agentTypes = daoAgentType.selectAll();
+
+	    for (Agent_Type agentType : agentTypes) {
+	        String stringStatus = convertIntToStatusString(agentType.getAgentType_Status());
+=======
+	/*private void loadDataFromDatabase() {
+	    //table.getItems().clear();
+
+	    List<Agent_Type> agentTypes = daoAgentType.selectAll();
+
+	    table.getItems().addAll(agentTypes);
+	}*/
+>>>>>>> 906790c5ce4401371dc295a95bc25ebb2a8f9660
+
+	        AgentTypeScreenTable agentTypeTable = new AgentTypeScreenTable(
+	                agentType.getAgentType_Id(),
+	                agentType.getAgentType_Name(),
+	                agentType.getAgentType_MaxDebt(),
+	                stringStatus
+	        );
+
+	        table.getItems().add(agentTypeTable);
+	    }
+	}
+	@FXML
+	private void handleAddButtonAction(ActionEvent event) {
+	    Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+	    alert.setTitle("Confirmation");
+	    alert.setHeaderText(null);
+	    alert.setContentText("Are you sure you want to add?");
+	    
+<<<<<<< HEAD
+	    Optional<ButtonType> result = alert.showAndWait();
+	    if (result.isPresent() && result.get() == ButtonType.OK) {
+	        try {
+	            int id = generatedId();
+	            String name = agenttype_name.getText();
+	            long maxx = Long.parseLong(agenttype_maxdebt.getText());
+	            String stringStatus = statusCbb.getValue();
+	            int status = convertStatusStringToInt(stringStatus);
+	            
+	            Agent_Type newAgentType = new Agent_Type(id, name, maxx, status);
+	            AgentTypeScreenTable newAgentTypeTable = new AgentTypeScreenTable(id, name, maxx, stringStatus);
+	            table.getItems().add(newAgentTypeTable);
+
+	            addToDatabase(newAgentType);
+	        } catch (NumberFormatException e) {
+	            e.printStackTrace();
+	        }
+
+	        agenttype_id.setText(String.valueOf(generatedId()));
+	        agenttype_name.clear();
+	        agenttype_maxdebt.clear();
+	        statusCbb.getSelectionModel().clearSelection();
+	    }
+	}
+
+=======
+		Optional<ButtonType> result = alert.showAndWait();
+		    if (result.isPresent() && result.get() == ButtonType.OK) {
+		        try {
+	
+		            int id = generatedId();
+>>>>>>> bdab178a8e0469e9b6ac50a1e13c9cd5dd462780
 		            String name = agenttype_name.getText();
 		            double maxDebt = Double.parseDouble(agenttype_maxdebt.getText());
 		            String stringStatus = statusCbb.getText();
@@ -525,6 +737,7 @@ public void setupButton() {
 	agenttype_id.setText(String.valueOf(p.getAgentType_Id()));
 	agenttype_name.setText(p.getAgentType_Name());
 	
+<<<<<<< HEAD
 	
 	agenttype_maxdebt.setText(String.valueOf(p.getAgentType_MaxDebt()));
 	statusCbb.setValue(statusCbb.getItems().get(0));
@@ -548,6 +761,15 @@ public void setupButton() {
 	
 	
 }
+=======
+		       }
+			    agenttype_id.setText(String.valueOf(generatedId()));
+		        agenttype_name.clear();
+		        //agenttype_maxdebt.getSelectionModel().clearSelection();
+		        
+    }}
+>>>>>>> 906790c5ce4401371dc295a95bc25ebb2a8f9660
+>>>>>>> bdab178a8e0469e9b6ac50a1e13c9cd5dd462780
 	
 }
 
