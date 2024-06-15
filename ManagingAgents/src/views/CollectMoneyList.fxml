@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import io.github.palexdev.materialfx.controls.MFXTableView?>
+<?import io.github.palexdev.materialfx.controls.MFXTextField?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="739.0" prefWidth="1049.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.CollectMoneyListController">
+   <children>
+      <AnchorPane layoutX="28.0" layoutY="31.2" prefHeight="797.0" prefWidth="948.0" style="-fx-background-color: #FFFBD1;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <effect>
+            <DropShadow>
+               <color>
+                  <Color opacity="0.30091190338134766" />
+               </color>
+            </DropShadow>
+         </effect>
+         <children>
+            <Label layoutX="32.0" layoutY="120.0" text="Agency:" AnchorPane.leftAnchor="32.0" AnchorPane.topAnchor="120.0">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Label layoutX="30.0" layoutY="28.0" prefHeight="54.0" prefWidth="367.0" text="Transaction history">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </Label>
+            <MFXTableView fx:id="table" layoutX="30.0" layoutY="186.0" prefHeight="466.0" prefWidth="990.0" AnchorPane.bottomAnchor="87.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="29.0" AnchorPane.topAnchor="186.0" />
+            <MFXButton fx:id="cancelBtn" buttonType="RAISED" layoutX="932.0" layoutY="698.0" prefHeight="26.0" prefWidth="105.0" text="Cancel" AnchorPane.bottomAnchor="15.0" AnchorPane.rightAnchor="12.0" />
+            <MFXTextField fx:id="agentTf" layoutX="132.0" layoutY="120.0" maxHeight="36.0" minHeight="36.0" prefHeight="36.0" prefWidth="402.0" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

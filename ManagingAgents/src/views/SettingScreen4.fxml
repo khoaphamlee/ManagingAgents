@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import io.github.palexdev.materialfx.controls.MFXCheckbox?>
+<?import io.github.palexdev.materialfx.controls.MFXComboBox?>
+<?import io.github.palexdev.materialfx.controls.MFXTableView?>
+<?import io.github.palexdev.materialfx.controls.MFXTextField?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1014.0" prefWidth="1336.0" stylesheets="@../styles/MainStylesSheet.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.SettingScreenController4">
+   <children>
+      <AnchorPane fx:id="darkPane" layoutY="7.0" prefHeight="973.0" prefWidth="1292.0" style="-fx-background-color: black;" AnchorPane.bottomAnchor="-7.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="7.0" />
+      <MFXButton fx:id="agencyTypeBtn" depthLevel="LEVEL1" prefHeight="34.0" prefWidth="142.0" style="-fx-background-color: #F0E68C;" text="Agency" AnchorPane.leftAnchor="115.0" AnchorPane.topAnchor="122.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </MFXButton>
+      <MFXButton fx:id="districtBtn" depthLevel="LEVEL1" prefHeight="34.0" prefWidth="142.0" style="-fx-background-color: #F0E68C;" text="District" AnchorPane.leftAnchor="262.0" AnchorPane.topAnchor="122.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </MFXButton>
+      <MFXButton fx:id="unitBtn" depthLevel="LEVEL1" prefHeight="34.0" prefWidth="142.0" style="-fx-background-color: #F0E68C;" text="Unit" AnchorPane.leftAnchor="409.0" AnchorPane.topAnchor="122.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </MFXButton>
+      <AnchorPane layoutX="38.0" layoutY="69.2" prefHeight="808.0" prefWidth="758.0" style="-fx-background-color: #FFFBD1;" AnchorPane.bottomAnchor="51.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="478.0" AnchorPane.topAnchor="155.0">
+         <effect>
+            <DropShadow>
+               <color>
+                  <Color opacity="0.30091190338134766" />
+               </color>
+            </DropShadow>
+         </effect>
+         <children>
+            <Label layoutX="32.0" layoutY="22.0" prefHeight="54.0" prefWidth="254.0" text="Staff ">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </Label>
+            <MFXTableView fx:id="userTable" layoutX="36.8" layoutY="108.0" prefHeight="492.0" prefWidth="680.0" AnchorPane.bottomAnchor="22.0" AnchorPane.leftAnchor="37.0" AnchorPane.rightAnchor="41.0" AnchorPane.topAnchor="108.0" />
+         </children>
+      </AnchorPane>
+      <MFXButton fx:id="staffBtn" depthLevel="LEVEL1" prefHeight="34.0" prefWidth="142.0" style="-fx-background-color: #FFFBD1;" text="Staff" AnchorPane.leftAnchor="556.0" AnchorPane.topAnchor="122.0">
+         <font>
+            <Font size="14.0" />
+         </font></MFXButton>
+      <AnchorPane fx:id="menuPane" layoutX="10.0" layoutY="10.0" prefHeight="600.0" prefWidth="62.0" style="-fx-background-color: #F0E68C;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <AnchorPane maxHeight="78.0" minHeight="66.0" prefHeight="66.0" prefWidth="62.0" style="-fx-background-color: #D8CF7E;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <ImageView fx:id="menuImg" fitHeight="23.0" fitWidth="21.0" layoutX="18.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/next.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+            <ImageView fitHeight="23.0" fitWidth="21.0" layoutX="13.0" layoutY="92.0" pickOnBounds="true" preserveRatio="true" AnchorPane.topAnchor="92.0">
+               <image>
+                  <Image url="@../images/home.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="34.0" fitWidth="21.0" layoutX="13.0" layoutY="146.0" pickOnBounds="true" preserveRatio="true" AnchorPane.topAnchor="146.0">
+               <image>
+                  <Image url="@../images/agent.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="26.0" fitWidth="21.0" layoutX="13.0" layoutY="204.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/box.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="34.0" fitWidth="21.0" layoutX="13.0" layoutY="267.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/bill.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="34.0" fitWidth="21.0" layoutX="13.0" layoutY="329.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/trend.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="34.0" fitWidth="21.0" layoutX="13.0" layoutY="388.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/settings.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="pane4" layoutX="66.4" layoutY="44.0" maxHeight="78.0" minHeight="66.0" prefHeight="66.0" prefWidth="836.0" style="-fx-background-color: white;" AnchorPane.leftAnchor="64.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Label style="-fx-border-right-color: black;" text="Setting" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="0.0">
+               <font>
+                  <Font size="28.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="detailMenuPane" layoutX="70.0" layoutY="10.0" prefHeight="544.0" prefWidth="142.0" style="-fx-background-color: #F0E68C;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <AnchorPane maxHeight="78.0" minHeight="66.0" prefHeight="66.0" prefWidth="142.0" style="-fx-background-color: #D8CF7E;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <ImageView fx:id="menuImg1" fitHeight="26.0" fitWidth="21.0" layoutX="107.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/back.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+            <MFXButton fx:id="homepageBtn" alignment="BASELINE_LEFT" layoutY="88.0" prefHeight="31.0" prefWidth="128.0" rippleAnimationSpeed="0.8" rippleBackgroundOpacity="0.1" style="-fx-background-color: #F0E68C;" text="Home page" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="88.0">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </MFXButton>
+            <MFXButton fx:id="agencyBtn" alignment="BOTTOM_LEFT" layoutY="139.0" prefHeight="31.0" prefWidth="128.0" rippleAnimationSpeed="0.8" rippleBackgroundOpacity="0.1" style="-fx-background-color: #F0E68C;" text="Agency" textAlignment="CENTER" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="139.0">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </MFXButton>
+            <MFXButton fx:id="goodsBtn" alignment="BOTTOM_LEFT" layoutY="198.0" prefHeight="31.0" prefWidth="128.0" rippleAnimationSpeed="0.8" rippleBackgroundOpacity="0.1" style="-fx-background-color: #F0E68C;" text="Goods" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="198.0">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </MFXButton>
+            <MFXButton fx:id="exportBtn" alignment="BOTTOM_LEFT" layoutX="5.0" layoutY="261.0" prefHeight="31.0" prefWidth="128.0" rippleAnimationSpeed="0.8" rippleBackgroundOpacity="0.1" style="-fx-background-color: #F0E68C;" text="Export" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </MFXButton>
+            <MFXButton fx:id="reportBtn" alignment="BOTTOM_LEFT" layoutY="325.0" prefHeight="31.0" prefWidth="128.0" rippleAnimationSpeed="0.8" rippleBackgroundOpacity="0.1" style="-fx-background-color: #F0E68C;" text="Report" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="325.0">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </MFXButton>
+            <MFXButton fx:id="settingBtn" alignment="BOTTOM_LEFT" layoutY="383.0" prefHeight="31.0" prefWidth="128.0" rippleAnimationSpeed="0.8" rippleBackgroundOpacity="0.1" style="-fx-background-color: #F0E68C;" text="Setting" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="383.0">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </MFXButton>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="20.0" layoutY="98.0" prefHeight="808.0" prefWidth="442.0" style="-fx-background-color: #FFFBD1;" AnchorPane.bottomAnchor="52.0" AnchorPane.rightAnchor="15.0">
+         <effect>
+            <DropShadow>
+               <color>
+                  <Color opacity="0.30091190338134766" />
+               </color>
+            </DropShadow>
+         </effect>
+         <children>
+            <Label layoutX="22.0" layoutY="304.0" text="Phone" AnchorPane.leftAnchor="22.0" AnchorPane.topAnchor="304.0">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Label layoutX="24.0" layoutY="350.0" text="Address:" AnchorPane.leftAnchor="24.0" AnchorPane.topAnchor="350.0">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Label layoutX="131.0" layoutY="47.0" prefHeight="56.0" prefWidth="191.0" text="Employee" AnchorPane.leftAnchor="131.0" AnchorPane.rightAnchor="120.19999999999999" AnchorPane.topAnchor="47.0">
+               <font>
+                  <Font size="39.0" />
+               </font>
+            </Label>
+            <MFXTextField fx:id="user_phone" layoutX="212.0" layoutY="304.0" maxHeight="36.0" minHeight="36.0" prefHeight="36.0" prefWidth="222.0" AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="304.0" />
+            <MFXButton fx:id="addBtn" buttonType="RAISED" depthLevel="LEVEL1" layoutX="218.0" layoutY="818.0" prefHeight="42.0" prefWidth="130.0" text="Add new " AnchorPane.bottomAnchor="15.200000000000045" AnchorPane.rightAnchor="94.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="21.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../PrivateHealthcareFacility/PrivateHealthcareFacility/src/images/add.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </MFXButton>
+            <MFXButton fx:id="editBtn" buttonType="RAISED" depthLevel="LEVEL1" layoutX="91.0" layoutY="818.0" prefHeight="42.0" prefWidth="110.0" text="Edit " AnchorPane.bottomAnchor="15.200000000000045" AnchorPane.rightAnchor="240.99999999999997">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="21.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../PrivateHealthcareFacility/PrivateHealthcareFacility/src/images/pencil.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </MFXButton>
+            <Label layoutX="165.0" layoutY="125.0" text="ID" AnchorPane.rightAnchor="263.79999999999995" AnchorPane.topAnchor="125.0">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <MFXTextField fx:id="user_id" layoutX="188.0" layoutY="123.0" maxHeight="23.0" minHeight="23.0" prefHeight="20.0" prefWidth="57.0" AnchorPane.rightAnchor="169.59999999999997" AnchorPane.topAnchor="123.0" />
+            <MFXTextField fx:id="user_address" layoutX="212.0" layoutY="350.0" maxHeight="36.0" minHeight="36.0" prefHeight="36.0" prefWidth="222.0" AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="350.0" />
+            <Label layoutX="24.0" layoutY="394.0" text="Position:" AnchorPane.leftAnchor="24.0" AnchorPane.topAnchor="394.0">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Label layoutX="24.0" layoutY="437.0" text="Usernname:" AnchorPane.leftAnchor="24.0" AnchorPane.topAnchor="437.0">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <MFXTextField fx:id="user_position" layoutX="212.0" layoutY="394.0" maxHeight="36.0" minHeight="36.0" prefHeight="36.0" prefWidth="222.0" AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="394.0" />
+            <MFXTextField fx:id="user_username" layoutX="212.0" layoutY="437.0" maxHeight="36.0" minHeight="36.0" prefHeight="36.0" prefWidth="222.0" AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="437.0" />
+            <Label layoutX="24.0" layoutY="566.0" text="Permission:" AnchorPane.leftAnchor="24.0" AnchorPane.topAnchor="566.0">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Label layoutX="227.0" layoutY="602.0" text="Report" AnchorPane.leftAnchor="227.0" AnchorPane.topAnchor="602.0">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Label layoutX="17.0" layoutY="602.0" text="Agency:" AnchorPane.leftAnchor="17.0" AnchorPane.topAnchor="602.0">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Label layoutX="14.0" layoutY="644.0" text="Goods:" AnchorPane.leftAnchor="17.0" AnchorPane.topAnchor="644.0">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Label layoutX="18.0" layoutY="684.0" text="Export:" AnchorPane.leftAnchor="17.0" AnchorPane.topAnchor="684.0">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <MFXCheckbox fx:id="r4" layoutX="332.0" layoutY="610.0" AnchorPane.leftAnchor="332.0" AnchorPane.topAnchor="610.0" />
+            <MFXCheckbox fx:id="r1" layoutX="158.0" layoutY="610.0" AnchorPane.leftAnchor="158.0" AnchorPane.topAnchor="610.0" />
+            <MFXCheckbox fx:id="r2" layoutX="158.0" layoutY="652.0" AnchorPane.leftAnchor="158.0" AnchorPane.topAnchor="652.0" />
+            <MFXCheckbox fx:id="r3" layoutX="158.0" layoutY="692.0" AnchorPane.leftAnchor="158.0" AnchorPane.topAnchor="692.0" />
+            <Label layoutX="21.0" layoutY="480.0" text="Password:" AnchorPane.leftAnchor="21.0" AnchorPane.topAnchor="480.0">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <MFXTextField fx:id="user_password" layoutX="212.0" layoutY="480.0" maxHeight="36.0" minHeight="36.0" prefHeight="36.0" prefWidth="222.0" AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="480.0" />
+            <Label layoutX="23.0" layoutY="524.0" text="Status" AnchorPane.leftAnchor="23.0" AnchorPane.topAnchor="524.0">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <MFXTextField fx:id="user_name" layoutX="211.0" layoutY="212.0" maxHeight="36.0" minHeight="36.0" prefHeight="36.0" prefWidth="222.0" AnchorPane.rightAnchor="9.0" AnchorPane.topAnchor="212.0" />
+            <Label layoutX="230.0" layoutY="646.0" text="Setting" AnchorPane.leftAnchor="230.0" AnchorPane.topAnchor="646.0">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <MFXCheckbox fx:id="r5" layoutX="332.0" layoutY="654.0" AnchorPane.leftAnchor="332.0" AnchorPane.topAnchor="654.0" />
+            <Label layoutX="18.0" layoutY="257.0" text="Email:" AnchorPane.leftAnchor="22.0" AnchorPane.topAnchor="257.0">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <MFXTextField fx:id="user_email" layoutX="212.0" layoutY="257.0" maxHeight="36.0" minHeight="36.0" prefHeight="36.0" prefWidth="222.0" AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="257.0" />
+            <Label layoutX="21.0" layoutY="212.0" text="Name:" AnchorPane.leftAnchor="21.0" AnchorPane.topAnchor="212.0">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <MFXComboBox fx:id="em_status" layoutX="212.0" layoutY="524.0" maxHeight="36.0" minHeight="36.0" prefHeight="36.0" prefWidth="222.0" AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="524.0" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
